@@ -1,0 +1,9 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerEmptyDiv {
+  width: 30em;
+}

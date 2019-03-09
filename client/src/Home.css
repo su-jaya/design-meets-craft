@@ -18,6 +18,10 @@
   justify-content: center;
 }
 
+/* .homeAboutImage {
+
+} */
+
 .homeAdexBackground {
   height: 30em;
   background-color: #dab644;
@@ -29,9 +33,9 @@
   justify-content: center;
 }
 
-.homeReferencesBackground {
+/* .homeReferencesBackground {
   height: 30em;
-}
+} */
 
 .tbd {
   height: 10em;

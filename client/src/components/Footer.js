@@ -14,7 +14,7 @@ class Footer extends Component {
             <Col>
               <Nav className="flex-column align-items-start">
                 <Nav.Link className="footerHeadline">ABOUT</Nav.Link>
-                <Nav.Link>About us</Nav.Link>
+                <Nav.Link to="/aboutus">About us</Nav.Link>
                 <Nav.Link>Contact us</Nav.Link>
                 <Nav.Link>Knowledge Center</Nav.Link>
                 <Nav.Link>Partners</Nav.Link>

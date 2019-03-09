@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
@@ -22,7 +23,9 @@ class Home extends Component {
             craft businesses.
           </h2>
           <div>
-            <button>DESIGNER</button>
+            <Link to="/signup">
+              <button>DESIGNER</button>
+            </Link>
             <span> or </span>
             <button>ARTISAN</button>
           </div>
@@ -31,7 +34,14 @@ class Home extends Component {
         <div className="homeAboutBackground">
           <Container>
             <Row>
-              <Col />
+              <Col className="homeAboutImage">
+                <Image
+                  src="./images/temp_match.png"
+                  height="400em"
+                  alt=""
+                  fluid
+                />
+              </Col>
               <Col>
                 <h2>It's in your Hands</h2>
                 <p>
@@ -46,7 +56,9 @@ class Home extends Component {
                   sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                   labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
-                <button>LEARN MORE ABOUT US</button>
+                <Link to="/aboutus">
+                  <button>LEARN MORE ABOUT US</button>
+                </Link>
               </Col>
             </Row>
           </Container>
@@ -85,7 +97,13 @@ class Home extends Component {
                   sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                   labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
+                {/* <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="http://adex.abury.net/"
+                > */}
                 <button>VOTE NOW</button>
+                {/* </a> */}
               </Col>
             </Row>
           </Container>
@@ -97,11 +115,7 @@ class Home extends Component {
         </div>
 
         <div className="homeReferencesBackground">
-          <Image
-            src="/../../../public/images/temp_references.png"
-            alt="image"
-            fluid
-          />
+          <Image src="./images/temp_references.png" alt="image" fluid />
         </div>
         <Footer />
       </div>
