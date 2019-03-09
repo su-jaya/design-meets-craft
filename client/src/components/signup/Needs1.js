@@ -23,7 +23,6 @@ class Needs1 extends Component {
   handleChange(event) {
     console.log(event.keyCode)
 
-
   }
 
   render() {
