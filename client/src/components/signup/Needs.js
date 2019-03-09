@@ -16,12 +16,15 @@ class Needs1 extends Component {
     country: "",
     telephone: "",
     language: "",
-    tags: ["hi", "bye"]
+    tags: ["first", "second"]
   };
 
 
-  handleChange(event) {
-    console.log(event.keyCode)
+  handleChange(event, changed) {
+    let copy = this.state.tags
+    copy.splice(copy.indexOf(changed[0]),1 )
+
+
 
   }
 
@@ -37,7 +40,7 @@ class Needs1 extends Component {
           <label htmlFor="materials">The materials you like to work with?</label>
           <textarea id="materials"></textarea>
 
-          <TagsInput value={this.state.tags} onChange={(event) => this.handleChange(event)}/>
+          <TagsInput value={this.state.tags} onChange={(event, changed) => this.handleChange(event, changed)}/>
 
           <label htmlFor="destination">Destination</label>
           <textarea id="destination"></textarea>
