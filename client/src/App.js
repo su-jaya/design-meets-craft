@@ -10,6 +10,7 @@ import Home from "./components/home/Home";
 function App() {
 
 return (
+ <div className="App">
 <Home />
 
 <Switch>
@@ -18,7 +19,7 @@ return (
 <Route path={"/needs1"} component={Needs1} />
 </Switch>
 
-
+</div> 
 )
 
 }
