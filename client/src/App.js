@@ -5,7 +5,7 @@ import {Route, Switch} from "react-router-dom"
 import AboutYou from './components/signup/AboutYou';
 import Needs from './components/signup/Needs';
 import Home from "./components/home/Home";
-
+import AboutUs from "./components/about/AboutUs";
 
 function App() {
 
@@ -17,12 +17,12 @@ return (
 <Route path="/signup" component={Registration} />
 <Route path="/aboutyou" component={AboutYou} />
 <Route path="/needs" component={Needs} />
+<Route path="/aboutus" component={AboutUs} />
+
 </Switch>
 
 </div> 
 )
-
 }
-
 
 export default App;
