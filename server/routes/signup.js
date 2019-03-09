@@ -6,7 +6,7 @@ router.post("/designer", (req, res) => {
   res.json("worked")
 })
 
-router.post("/aboutyou1", (req, res) => {
+router.post("/aboutyou", (req, res) => {
   res.json("worked")
 })
 
