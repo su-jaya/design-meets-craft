@@ -1,0 +1,19 @@
+.footerBackground {
+  background-color: #f3f3f3;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  height: 24em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footerHeadline {
+  color: #cba598;
+  font-weight: bold;
+}
+
+.footerCopyright {
+  display: flex;
+  justify-content: left;
+}

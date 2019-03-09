@@ -4,12 +4,13 @@ import Registration from "./components/signup/Registration"
 import {Route, Switch} from "react-router-dom"
 import AboutYou1 from './components/signup/AboutYou1';
 import Needs1 from './components/signup/Needs1';
+import Home from "./components/home/Home";
 
 
 function App() {
 
 return (
-
+<Home />
 
 <Switch>
 <Route path={"/signup"} component={Registration} />

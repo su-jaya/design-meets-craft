@@ -1,0 +1,40 @@
+.homeSliderBackground {
+  background-color: #757268;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.homeAboutBackground {
+  background-color: #f3f3f3;
+  height: 30em;
+  text-align: left;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.homeAdexBackground {
+  height: 30em;
+  background-color: #dab644;
+  text-align: left;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.homeReferencesBackground {
+  height: 30em;
+}
+
+.tbd {
+  height: 10em;
+  text-align: left;
+  padding: 3em;
+}
