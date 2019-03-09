@@ -1,0 +1,123 @@
+.registrationBarContainer {
+  margin: 0;
+  display: flex;
+  flex-direction: space-evenly;
+  align-items: stretch;
+  height: 0.4em;
+}
+
+.registrationBarComponent {
+  width: 25%;
+}
+
+.registrationBarActive {
+  background-color: #bea192;
+}
+
+.registrationBarInactive {
+  background-color: #e9e9e9;
+}
+
+.registrationBarMiddle {
+  margin-right: 0.1em;
+}
+
+.registrationHeading {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: left;
+  margin: 1.8em 2em 1.8em 2em;
+}
+
+.registrationContainerAndNote {
+  display: flex;
+  flex-direction: row;
+  margin: 1em 13em 4em 13em;
+}
+
+.registrationContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4em;
+}
+
+.registrationHeadline {
+  text-align: left;
+  font-weight: 300;
+  margin-top: 1.5em;
+}
+
+.registrationContainer .subtitle {
+  text-align: left;
+  color: #8e8f91;
+  margin-bottom: 3em;
+}
+
+.registrationProfession {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 0 2em 0;
+}
+
+.registrationProfessionBox {
+  padding: 1.2em 1.2em;
+}
+
+.registrationProfessionBox.designer {
+  border: 2px solid #d4b5aa;
+}
+
+.registrationProfessionBox.artisan {
+  border: 2px solid #edeeca;
+}
+
+.registrationProfessionHeadline {
+  font-weight: 300;
+}
+
+.registrationSmallText {
+  color: #8e8f91;
+  font-size: 0.8em;
+}
+
+.registrationOr {
+  width: 4em;
+}
+
+.registrationForm {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.registrationFormName {
+  display: flex;
+  flex-direction: row;
+}
+
+.registrationFormNameComponent {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.registrationForm label {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.registrationForm input {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.registrationNote {
+  width: 25em;
+  height: 16em;
+  padding: 2em;
+  margin-top: 3em;
+  text-align: left;
+  background-color: lightgrey;
+}
