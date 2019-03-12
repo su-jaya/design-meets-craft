@@ -27,7 +27,7 @@ class Needs1 extends Component {
       "coffee"
     ],
     // Tagging for Material
-    tagsMaterials: [],
+    tagsMaterial: [],
     tagMaterial: "",
     suggestedTagsMaterial: [
       "men",
@@ -53,27 +53,29 @@ class Needs1 extends Component {
   };
 
   // Remove Tags
-  handleChange(tags) {
+  handleChange(tags, changed, changedIdx, toChange) {
+    let field = `tags${toChange}`;
     this.setState({
-      tagsCategory: tags
+      [field]: tags
     });
   }
 
   // Add Own Tag
-  onChangeInput(tag) {
+  onChangeInput(tag, toChange) {
+    let field = `tag${toChange}`;
     this.setState({
-      tagCategory: tag
+      [field]: tag
     });
   }
 
   // Add Suggested Tag
-  addNewOne(event, change) {
-    let tagsCategory = this.state.tagsCategory;
+  addNewOne(event, change, toChange, field) {
+    let copy = toChange;
 
-    if (tagsCategory.includes(change[0]) === false) {
-      tagsCategory.push(change[0]);
+    if (copy.includes(change[0]) === false) {
+      copy.push(change[0]);
       this.setState({
-        tagsCategory: tagsCategory
+        [field]: copy
       });
     }
   }
@@ -83,33 +85,99 @@ class Needs1 extends Component {
       <div>
         <h2>Specify your needs</h2>
         <form>
-          <label htmlFor="category">What category are you working in?</label>
-          <br />
-          <textarea id="category" />
-          <br />
+          {/* CATEGORY */}
+          <div className="parentTag">
+            <label htmlFor="category">What category are you working in?</label>
+            <div className="inputField">
+              <TagsInput
+                id="category"
+                value={this.state.tagsCategory}
+                onChange={(tags, changed, changedIdx) =>
+                  this.handleChange(tags, changed, changedIdx, "Category")
+                }
+                inputValue={this.state.tagCategory}
+                onChangeInput={(tag, toChange) =>
+                  this.onChangeInput(tag, "Category")
+                }
+              />
+            </div>
+            <TagsInput
+              className="suggestedTags"
+              value={this.state.suggestedTagsCategory}
+              onChange={(event, change, toChange) =>
+                this.addNewOne(
+                  event,
+                  change,
+                  this.state.tagsCategory,
+                  "tagsCategory"
+                )
+              }
+            />
+          </div>
 
-          <label htmlFor="materials">
-            The materials you like to work with?
-          </label>
-          <br />
-          <TagsInput
-            id="materials"
-            value={this.state.tagsCategory}
-            onChange={tags => this.handleChange(tags)}
-            inputValue={this.state.tagCategory}
-            onChangeInput={tag => this.onChangeInput(tag)}
-          />
-          <br />
-          <TagsInput
-            className="suggestedTags"
-            value={this.state.suggestedTagsCategory}
-            onChange={(event, change) => this.addNewOne(event, change)}
-          />
+          {/* MATERIALS */}
 
-          <label htmlFor="destination">Destination</label>
-          <br />
-          <textarea id="destination" />
-          <br />
+          <div className="parentTag">
+            <label htmlFor="materials">
+              The materials you like to work with?
+            </label>
+            <div className="inputField">
+              <TagsInput
+                id="materials"
+                value={this.state.tagsMaterial}
+                onChange={(tags, changed, changedIdx) =>
+                  this.handleChange(tags, changed, changedIdx, "Material")
+                }
+                inputValue={this.state.tagMaterial}
+                onChangeInput={(tag, toChange) =>
+                  this.onChangeInput(tag, "Material")
+                }
+              />
+            </div>
+            <TagsInput
+              className="suggestedTags"
+              value={this.state.suggestedTagsMaterial}
+              onChange={(event, change, toChange) =>
+                this.addNewOne(
+                  event,
+                  change,
+                  this.state.tagsMaterial,
+                  "tagsMaterial"
+                )
+              }
+            />
+          </div>
+
+          {/* DESTINATION */}
+
+          <div className="parentTag">
+            <label htmlFor="destination">Destination</label>
+            <div className="inputField">
+              <TagsInput
+                id="destination"
+                value={this.state.tagsDestination}
+                onChange={(tags, changed, changedIdx) =>
+                  this.handleChange(tags, changed, changedIdx, "Destination")
+                }
+                inputValue={this.state.tagDestination}
+                onChangeInput={(tag, toChange) =>
+                  this.onChangeInput(tag, "Destination")
+                }
+              />
+            </div>
+            <TagsInput
+              className="suggestedTags"
+              value={this.state.suggestedTagsDestination}
+              onChange={(event, change, toChange) =>
+                this.addNewOne(
+                  event,
+                  change,
+                  this.state.tagsDestination,
+                  "tagsDestination"
+                )
+              }
+            />
+          </div>
 
           <label htmlFor="capacity">Production capacity</label>
           <br />
