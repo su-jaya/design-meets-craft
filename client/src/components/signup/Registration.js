@@ -63,7 +63,7 @@ class Registration extends Component {
               First, please tell us what your profession is
             </p>
 
-            {/*Whats your profession */}
+            {/*Profession Boxes*/}
             <div className="registrationProfession">
               <div className="registrationProfessionBox designer">
                 <h3 className="registrationProfessionHeadline">Designer</h3>
@@ -144,12 +144,14 @@ class Registration extends Component {
                 onChange={e => this.changeHandler(e)}
               />
 
-              <p>
+              <p className="registrationSignUpText">
                 By clicking Sign Up, you agree to our Terms and that you have
-                read our Privacy Policy, including our Cookie Policy
+                read our Privacy Policy, including our Cookie Policy.
               </p>
 
-              <button type="submit">Sign Up</button>
+
+              <button type="submit" className="registrationSignUpButton">Sign Up</button>
+
             </form>
           </div>
           <div className="registrationNote">
