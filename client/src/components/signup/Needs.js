@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 
@@ -61,8 +62,9 @@ class Needs1 extends Component {
   }
 
   // Add Own Tag
-  onChangeInput(tag, toChange) {
+  onChangeInput(tag, toChange, tags) {
     let field = `tag${toChange}`;
+    console.log(tag);
     this.setState({
       [field]: tag
     });
@@ -97,7 +99,7 @@ class Needs1 extends Component {
                 }
                 inputValue={this.state.tagCategory}
                 onChangeInput={(tag, toChange) =>
-                  this.onChangeInput(tag, "Category")
+                  this.onChangeInput(tag, "Category", this.state.tagsCategory)
                 }
               />
             </div>
@@ -189,7 +191,9 @@ class Needs1 extends Component {
           <textarea id="lookingfor" />
           <br />
 
-          <button type="button">Back</button>
+          <Link to="/aboutyou">
+            <button type="button">Back</button>
+          </Link>
           <button type="submit">Next</button>
         </form>
       </div>
