@@ -4,12 +4,25 @@ import "../AuthButtons.css";
 
 class AuthButtons extends Component {
   render() {
+    console.log(this.props.authButtonStatus);
+    let dynamicbutton;
+    if (this.props.authButtonStatus === "signup") {
+      dynamicbutton = (
+        <Link to="/signup">
+          <button className="authButtonsSignUp">SIGN UP NOW</button>
+        </Link>
+      );
+    } else {
+      dynamicbutton = (
+        <Link to="/">
+          <button className="authButtonsSignUp">CANCEL</button>
+        </Link>
+      );
+    }
     return (
       <div className="authButtons">
-        <button>Log In</button>
-        <Link to="/signup">
-          <button>Sign Up</button>
-        </Link>
+        <button className="authButtonsLogin">Login</button>
+        {dynamicbutton}
       </div>
     );
   }
