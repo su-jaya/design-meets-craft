@@ -1,3 +1,5 @@
+// link to next page only if registration successfull
+
 import React, { Component } from "react";
 import axios from "axios";
 import Header from "../Header";
@@ -10,7 +12,8 @@ class Registration extends Component {
     lastName: "",
     email: "",
     password: "",
-    passwordConfirm: ""
+    passwordConfirm: "",
+    errorMessage: ""
   };
 
   // Change Handler Form
@@ -27,15 +30,11 @@ class Registration extends Component {
     event.preventDefault();
     axios
       .post("http://localhost:5000/signup/designer", this.state)
-      .then(() => {
+      .then(res => {
+        let errorMessage = res.data;
         this.setState({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          passwordConfirm: ""
+          errorMessage: errorMessage
         });
-        console.log(this.state);
       })
       .catch(err => console.log(err));
   };
@@ -86,6 +85,8 @@ class Registration extends Component {
             <p className="subtitle">
               After the first step you get an email with your access data
             </p>
+
+            {this.state.errorMessage === "" ? "" : this.state.errorMessage}
 
             <form
               className="registrationForm"
@@ -148,7 +149,9 @@ class Registration extends Component {
                 read our Privacy Policy, including our Cookie Policy.
               </p>
 
-              <button className="registrationSignUpButton">Sign Up</button>
+
+              <button type="submit" className="registrationSignUpButton">Sign Up</button>
+
             </form>
           </div>
           <div className="registrationNote">
