@@ -5,6 +5,17 @@ import "../Header.css";
 
 class Header extends Component {
   render() {
+    let authButtonStatus;
+    if (
+      this.props.url === "/signup" ||
+      this.props.url === "/aboutyou" ||
+      this.props.url === "/needs"
+    ) {
+      authButtonStatus = "cancel";
+    } else {
+      authButtonStatus = "signup";
+    }
+
     return (
       <div className="headerContainer">
         <div className="headerEmptyDiv" />
@@ -17,7 +28,7 @@ class Header extends Component {
             />
           </Link>
         </div>
-        <AuthButtons />
+        <AuthButtons authButtonStatus={authButtonStatus} />
       </div>
     );
   }

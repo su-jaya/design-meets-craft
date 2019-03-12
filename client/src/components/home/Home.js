@@ -11,9 +11,10 @@ import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
+    console.log(this.props.match.url);
     return (
       <div>
-        <Header />
+        <Header url={this.props.match.url} />
         <NavBar />
 
         <div className="homeSliderBackground">
@@ -24,11 +25,11 @@ class Home extends Component {
           </h2>
           <div>
             <Link to="/signup">
-              <button>DESIGNER</button>
+              <button className="homeSliderButton">DESIGNER</button>
             </Link>
 
-            <span> or </span>
-            <button>ARTISAN</button>
+            <span className="homeSliderOr"> or </span>
+            <button className="homeSliderButton">ARTISAN</button>
           </div>
         </div>
 

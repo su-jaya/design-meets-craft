@@ -43,7 +43,7 @@ class Registration extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header url={this.props.match.url} />
 
         {/*Process Bar */}
         <div>
