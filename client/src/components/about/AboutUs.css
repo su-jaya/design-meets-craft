@@ -1,0 +1,53 @@
+.aboutUsBanner {
+  background-color: #926464;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.aboutUsVision {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4em;
+}
+
+.aboutUsVisionText {
+  text-align: left;
+  padding-top: 2em;
+}
+
+.aboutUsBenefits {
+  height: 40em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aboutUsArtisans {
+  background-color: #d7d8c5;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.aboutUsArtisansButton {
+  background: black;
+  color: white;
+  font-size: 1em;
+  width: 10em;
+  margin-right: 1em;
+  padding: 0.8em;
+}
+
+.aboutUsChallenges {
+  height: 40em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
