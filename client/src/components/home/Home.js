@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavBar from "../NavBar";
 import Header from "../Header";
 import Footer from "../Footer";
-import "../../Home.css";
+import "./Home.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
-    console.log(this.props.match.url);
+    // console.log(this.props.match.url);
     return (
       <div>
         <Header url={this.props.match.url} />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../AuthButtons.css";
+import "./AuthButtons.css";
 
 class AuthButtons extends Component {
   render() {
