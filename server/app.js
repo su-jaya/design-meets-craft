@@ -53,7 +53,7 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 app.use(
   session({
-    secret: "some secret goes here",
+    secret: `${process.env.SECRET}`,
     resave: true,
     saveUninitialized: true
   })
@@ -73,6 +73,6 @@ const index = require("./routes/index");
 app.use("/", index);
 
 const authRoutes = require("./routes/auth-routes");
-app.use("/signup", authRoutes);
+app.use("/auth", authRoutes);
 
 module.exports = app;
