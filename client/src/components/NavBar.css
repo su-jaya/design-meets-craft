@@ -1,3 +1,12 @@
 .navBar {
-  margin: 1.5em;
+  margin: 1em;
+}
+
+.navbar-nav a {
+  color: black !important;
+  padding: 0.3em 1.4em !important;
+}
+
+.navbar-nav a:hover {
+  color: #d4b5aa !important;
 }
