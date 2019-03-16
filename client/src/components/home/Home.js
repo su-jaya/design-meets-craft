@@ -16,6 +16,8 @@ class Home extends Component {
         <Header url={this.props.match.url} />
         <NavBar />
 
+        {/* Home Slider Section */}
+
         <div className="homeSliderBackground">
           <h1>Using design to inspire change.</h1>
           <h2>
@@ -31,6 +33,8 @@ class Home extends Component {
             <button className="homeSliderButton">ARTISAN</button>
           </div>
         </div>
+
+        {/* Home About Section */}
 
         <div className="homeAboutBackground">
           <Container>
@@ -58,34 +62,44 @@ class Home extends Component {
                   labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
                 <Link to="/aboutus">
-                  <button>LEARN MORE ABOUT US</button>
+                  <button className="homeAboutButton">
+                    LEARN MORE ABOUT US
+                  </button>
                 </Link>
               </Col>
             </Row>
           </Container>
         </div>
 
+        {/* Home Designer Stories Section */}
+
         <div className="tbd">
           <h1>Designer Stories</h1>
           tbd
         </div>
+
+        {/* Home Designers Section */}
 
         <div className="tbd">
           <h1>Designers</h1>
           tbd
         </div>
 
+        {/* Home Artisans Section */}
+
         <div className="tbd">
           <h1>Artisans</h1>
           tbd
         </div>
+
+        {/* Home ADEx Section */}
 
         <div className="homeAdexBackground">
           <Container>
             <Row>
               <Col />
               <Col>
-                <h2>Vote for your favourite Designer</h2>
+                <h2>Vote for your Favourite Designer</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                   diam nonumy eirmod tempor invidunt ut labore et dolore magna
@@ -98,22 +112,26 @@ class Home extends Component {
                   sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                   labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
-                {/* <a
-                  rel="noopener noreferrer"
-                  target="_blank"
+                <a
                   href="http://adex.abury.net/"
-                > */}
-                <button>VOTE NOW</button>
-                {/* </a> */}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="homeAdexButton">VOTE NOW</button>
+                </a>
               </Col>
             </Row>
           </Container>
         </div>
 
+        {/* Home Destinations Section */}
+
         <div className="tbd">
           <h1>Design for Good Destinations</h1>
           tbd
         </div>
+
+        {/* Home Partners Section */}
 
         <div className="homeReferencesBackground">
           <Image src="./images/temp_references.png" alt="image" fluid />

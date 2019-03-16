@@ -1,3 +1,5 @@
+/* Registration Bar */
+
 .registrationBarContainer {
   margin: 0;
   display: flex;
@@ -21,6 +23,8 @@
 .registrationBarMiddle {
   margin-right: 0.1em;
 }
+
+/* Registration Main Container */
 
 .registrationHeading {
   font-size: 1.1em;
@@ -47,7 +51,7 @@
   margin-top: 1.5em;
 }
 
-.registrationContainer .subtitle {
+.registrationSubtitle {
   text-align: left;
   color: #8e8f91;
   margin-bottom: 3em;
@@ -86,6 +90,8 @@
   width: 4em;
 }
 
+/* Registration Form */
+
 .registrationForm {
   display: flex;
   flex-direction: column;
@@ -108,15 +114,80 @@
   font-size: 0.9em;
 }
 
-.registrationForm input {
+.registrationForm input,
+.registrationForm textarea,
+.registrationForm select {
   margin-top: 0;
   margin-bottom: 1em;
+  border: 0.7px solid lightgrey;
+  border-radius: 4px;
+}
+
+.registrationFormLanguage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.registrationFormLanguageComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.registrationFormAddButton {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+.registrationFormAddButton button {
+  background: #bfbfbf;
+  color: white;
+  border: none;
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  cursor: pointer;
 }
 
 .registrationSignUpButton {
   color: white;
   background-color: #92b647;
   padding: 0.5em;
+  border: none;
+}
+
+.registrationNextButtonPosition {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4em;
+}
+
+.registrationNextButton {
+  color: white;
+  background-color: #92b647;
+  padding: 0.5em;
+  border: none;
+  width: 8em;
+  cursor: pointer;
+}
+
+.registrationNeedsButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4em;
+}
+
+.registrationBackButton {
+  background-color: #f3f3f3;
+  border: none;
+  color: #8e8f91;
+  padding: 0.5em;
+  width: 8em;
+  cursor: pointer;
 }
 
 .registrationSignUpText {
@@ -124,11 +195,39 @@
   font-size: 0.9em;
 }
 
+/* Registration Note */
+
 .registrationNote {
-  width: 25em;
+  /* width: 25em; */
   height: 16em;
   padding: 2em;
   margin-top: 3em;
   text-align: left;
   background-color: lightgrey;
+}
+
+/* Tags */
+
+.react-tagsinput-tag {
+  background-color: #f9f9f9 !important;
+  border: none !important;
+  color: grey !important;
+  border-radius: 5px !important;
+  font-size: 0.8em !important;
+}
+
+.react-tagsinput-tag a::before {
+  content: " +" !important;
+  font-weight: normal !important;
+}
+
+.react-tagsinput-input {
+  border: none !important;
+}
+
+.react-tagsinput {
+  margin-top: 0 !important;
+  margin-bottom: 1em !important;
+  border: 0.7px solid lightgrey !important;
+  border-radius: 4px !important;
 }

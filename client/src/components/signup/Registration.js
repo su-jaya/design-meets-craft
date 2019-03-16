@@ -3,6 +3,9 @@ import axios from "axios";
 import Header from "../Header";
 import "./Registration.css";
 import Footer from "../Footer";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Registration extends Component {
   state = {
@@ -56,110 +59,114 @@ class Registration extends Component {
           </div>
         </div>
 
-        <div className="registrationContainerAndNote">
-          <div className="registrationContainer">
-            {/*What's Your Profession */}
-            <h2 className="registrationHeadline">What's your profession</h2>
-            <p className="subtitle">
-              First, please tell us what your profession is
-            </p>
-
-            {/*Profession Boxes*/}
-            <div className="registrationProfession">
-              <div className="registrationProfessionBox designer">
-                <h3 className="registrationProfessionHeadline">Designer</h3>
-                <p className="registrationSmallText">
-                  Fashion ipsum dolor sit amet, consetetur
-                </p>
-              </div>
-              <p className="registrationOr">or</p>
-              <div className="registrationProfessionBox artisan">
-                <h3 className="registrationProfessionHeadline">Artisan</h3>
-                <p className="registrationSmallText">
-                  Fashion ipsum dolor sit amet, consetetur
-                </p>
-              </div>
-            </div>
-
-            {/*Create your account*/}
-            <h2 className="registrationHeadline">Create your account</h2>
-            <p className="subtitle">
-              After the first step you get an email with your access data
-            </p>
-
-            <form
-              className="registrationForm"
-              onSubmit={event => this.submitHandler(event)}
-            >
-              <div className="registrationFormName">
-                <div className="registrationFormNameComponent">
-                  <label htmlFor="firstName">First Name</label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    value={this.state.firstName}
-                    required
-                    onChange={e => this.changeHandler(e)}
-                  />
-                </div>
-
-                <div className="registrationFormNameComponent">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    value={this.state.lastName}
-                    required
-                    onChange={e => this.changeHandler(e)}
-                  />
-                </div>
-              </div>
-
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                value={this.state.email}
-                required
-                onChange={e => this.changeHandler(e)}
-              />
-
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                value={this.state.password}
-                minLength="8"
-                required
-                onChange={e => this.changeHandler(e)}
-              />
-
-              <label htmlFor="passwordConfirm">Confirm Password</label>
-              <input
-                type="password"
-                id="passwordConfirm"
-                value={this.state.passwordConfirm}
-                required
-                onChange={e => this.changeHandler(e)}
-              />
-
-              <p className="registrationSignUpText">
-                By clicking Sign Up, you agree to our Terms and that you have
-                read our Privacy Policy, including our Cookie Policy.
+        <Container className="registrationContainerAndNote">
+          <Row>
+            <Col xs lg="7" className="registrationContainer">
+              {/*What's Your Profession */}
+              <h2 className="registrationHeadline">What's your profession</h2>
+              <p className="registrationSubtitle">
+                First, please tell us what your profession is
               </p>
 
-              <button className="registrationSignUpButton">Sign Up</button>
-            </form>
-          </div>
-          <div className="registrationNote">
-            <h3>Note</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat.
-            </p>
-          </div>
-        </div>
+              {/*Profession Boxes*/}
+              <Container className="registrationProfession">
+                <Col md={6} className="registrationProfessionBox designer">
+                  <h3 className="registrationProfessionHeadline">Designer</h3>
+                  <p className="registrationSmallText">
+                    Fashion ipsum dolor sit amet, consetetur
+                  </p>
+                </Col>
+                <Col className="registrationOr">
+                  <p>or</p>
+                </Col>
+                <Col md={6} className="registrationProfessionBox artisan">
+                  <h3 className="registrationProfessionHeadline">Artisan</h3>
+                  <p className="registrationSmallText">
+                    Fashion ipsum dolor sit amet, consetetur
+                  </p>
+                </Col>
+              </Container>
+
+              {/*Create your account*/}
+              <h2 className="registrationHeadline">Create your account</h2>
+              <p className="subtitle">
+                After the first step you get an email with your access data
+              </p>
+
+              <form
+                className="registrationForm"
+                onSubmit={event => this.submitHandler(event)}
+              >
+                <div className="registrationFormName">
+                  <div className="registrationFormNameComponent">
+                    <label htmlFor="firstName">First Name</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      value={this.state.firstName}
+                      required
+                      onChange={e => this.changeHandler(e)}
+                    />
+                  </div>
+
+                  <div className="registrationFormNameComponent">
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      value={this.state.lastName}
+                      required
+                      onChange={e => this.changeHandler(e)}
+                    />
+                  </div>
+                </div>
+
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={this.state.email}
+                  required
+                  onChange={e => this.changeHandler(e)}
+                />
+
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={this.state.password}
+                  minLength="8"
+                  required
+                  onChange={e => this.changeHandler(e)}
+                />
+
+                <label htmlFor="passwordConfirm">Confirm Password</label>
+                <input
+                  type="password"
+                  id="passwordConfirm"
+                  value={this.state.passwordConfirm}
+                  required
+                  onChange={e => this.changeHandler(e)}
+                />
+
+                <p className="registrationSignUpText">
+                  By clicking Sign Up, you agree to our Terms and that you have
+                  read our Privacy Policy, including our Cookie Policy.
+                </p>
+
+                <button className="registrationSignUpButton">Sign Up</button>
+              </form>
+            </Col>
+            <Col xs lg="3" className="registrationNote">
+              <h3>Note</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat.
+              </p>
+            </Col>
+          </Row>
+        </Container>
         <Footer />
       </div>
     );
