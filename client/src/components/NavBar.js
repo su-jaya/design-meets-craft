@@ -14,7 +14,7 @@ class NavBar extends Component {
           </Nav.Link>
           <Nav.Link className="navItem">Designer</Nav.Link>
           <Nav.Link className="navItem">Artisan</Nav.Link>
-          <NavDropdown title="About us" id="collapsible-nav-dropdown">
+          <NavDropdown title="About us" id="collasible-nav-dropdown">
             <NavDropdown.Item href="/aboutus">
               About Design Meets Craft
             </NavDropdown.Item>

@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
+import Header from "../Header";
+import "./Registration.css";
+import Footer from "../Footer";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Needs1 extends Component {
   state = {
@@ -85,117 +91,168 @@ class Needs1 extends Component {
   render() {
     return (
       <div>
-        <h2>Specify your needs</h2>
-        <form>
-          {/* CATEGORY */}
-          <div className="parentTag">
-            <label htmlFor="category">What category are you working in?</label>
-            <div className="inputField">
-              <TagsInput
-                id="category"
-                value={this.state.tagsCategory}
-                onChange={(tags, changed, changedIdx) =>
-                  this.handleChange(tags, changed, changedIdx, "Category")
-                }
-                inputValue={this.state.tagCategory}
-                onChangeInput={(tag, toChange) =>
-                  this.onChangeInput(tag, "Category", this.state.tagsCategory)
-                }
-              />
-            </div>
-            <TagsInput
-              className="suggestedTags"
-              value={this.state.suggestedTagsCategory}
-              onChange={(event, change, toChange) =>
-                this.addNewOne(
-                  event,
-                  change,
-                  this.state.tagsCategory,
-                  "tagsCategory"
-                )
-              }
-            />
+        <Header url={this.props.match.url} />
+
+        {/*Process Bar */}
+        <div>
+          <h1 className="registrationHeading">2/4: About You</h1>
+          <div className="registrationBarContainer">
+            <div className="registrationBarComponent registrationBarInactive registrationBarMiddle" />
+            <div className="registrationBarComponent registrationBarInactive registrationBarMiddle" />
+            <div className="registrationBarComponent registrationBarActive registrationBarMiddle" />
+            <div className="registrationBarComponent registrationBarInactive" />
           </div>
+        </div>
 
-          {/* MATERIALS */}
+        <Container className="registrationContainerAndNote">
+          <Row>
+            <Col xs lg="7" className="registrationContainer">
+              <h2 className="registrationHeadline">Specify your needs</h2>
+              <p className="registrationSubtitle">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </p>
+              <form className="registrationForm">
+                {/* CATEGORY */}
+                <div className="parentTag">
+                  <label htmlFor="category">
+                    What category are you working in?
+                  </label>
+                  <div className="inputField">
+                    <TagsInput
+                      id="category"
+                      value={this.state.tagsCategory}
+                      onChange={(tags, changed, changedIdx) =>
+                        this.handleChange(tags, changed, changedIdx, "Category")
+                      }
+                      inputValue={this.state.tagCategory}
+                      onChangeInput={(tag, toChange) =>
+                        this.onChangeInput(
+                          tag,
+                          "Category",
+                          this.state.tagsCategory
+                        )
+                      }
+                    />
+                  </div>
+                  <TagsInput
+                    className="suggestedTags"
+                    value={this.state.suggestedTagsCategory}
+                    onChange={(event, change, toChange) =>
+                      this.addNewOne(
+                        event,
+                        change,
+                        this.state.tagsCategory,
+                        "tagsCategory"
+                      )
+                    }
+                  />
+                </div>
 
-          <div className="parentTag">
-            <label htmlFor="materials">
-              The materials you like to work with?
-            </label>
-            <div className="inputField">
-              <TagsInput
-                id="materials"
-                value={this.state.tagsMaterial}
-                onChange={(tags, changed, changedIdx) =>
-                  this.handleChange(tags, changed, changedIdx, "Material")
-                }
-                inputValue={this.state.tagMaterial}
-                onChangeInput={(tag, toChange) =>
-                  this.onChangeInput(tag, "Material")
-                }
-              />
-            </div>
-            <TagsInput
-              className="suggestedTags"
-              value={this.state.suggestedTagsMaterial}
-              onChange={(event, change, toChange) =>
-                this.addNewOne(
-                  event,
-                  change,
-                  this.state.tagsMaterial,
-                  "tagsMaterial"
-                )
-              }
-            />
-          </div>
+                {/* MATERIALS */}
 
-          {/* DESTINATION */}
+                <div className="parentTag">
+                  <label htmlFor="materials">
+                    The materials you like to work with?
+                  </label>
+                  <div className="inputField">
+                    <TagsInput
+                      id="materials"
+                      value={this.state.tagsMaterial}
+                      onChange={(tags, changed, changedIdx) =>
+                        this.handleChange(tags, changed, changedIdx, "Material")
+                      }
+                      inputValue={this.state.tagMaterial}
+                      onChangeInput={(tag, toChange) =>
+                        this.onChangeInput(tag, "Material")
+                      }
+                    />
+                  </div>
+                  <TagsInput
+                    className="suggestedTags"
+                    value={this.state.suggestedTagsMaterial}
+                    onChange={(event, change, toChange) =>
+                      this.addNewOne(
+                        event,
+                        change,
+                        this.state.tagsMaterial,
+                        "tagsMaterial"
+                      )
+                    }
+                  />
+                </div>
 
-          <div className="parentTag">
-            <label htmlFor="destination">Destination</label>
-            <div className="inputField">
-              <TagsInput
-                id="destination"
-                value={this.state.tagsDestination}
-                onChange={(tags, changed, changedIdx) =>
-                  this.handleChange(tags, changed, changedIdx, "Destination")
-                }
-                inputValue={this.state.tagDestination}
-                onChangeInput={(tag, toChange) =>
-                  this.onChangeInput(tag, "Destination")
-                }
-              />
-            </div>
-            <TagsInput
-              className="suggestedTags"
-              value={this.state.suggestedTagsDestination}
-              onChange={(event, change, toChange) =>
-                this.addNewOne(
-                  event,
-                  change,
-                  this.state.tagsDestination,
-                  "tagsDestination"
-                )
-              }
-            />
-          </div>
+                {/* DESTINATION */}
 
-          <label htmlFor="capacity">Production capacity</label>
-          <br />
-          <textarea id="capacity" />
-          <br />
+                <div className="parentTag">
+                  <label htmlFor="destination">Destination</label>
+                  <div className="inputField">
+                    <TagsInput
+                      id="destination"
+                      value={this.state.tagsDestination}
+                      onChange={(tags, changed, changedIdx) =>
+                        this.handleChange(
+                          tags,
+                          changed,
+                          changedIdx,
+                          "Destination"
+                        )
+                      }
+                      inputValue={this.state.tagDestination}
+                      onChangeInput={(tag, toChange) =>
+                        this.onChangeInput(tag, "Destination")
+                      }
+                    />
+                  </div>
+                  <TagsInput
+                    className="suggestedTags"
+                    value={this.state.suggestedTagsDestination}
+                    onChange={(event, change, toChange) =>
+                      this.addNewOne(
+                        event,
+                        change,
+                        this.state.tagsDestination,
+                        "tagsDestination"
+                      )
+                    }
+                  />
+                </div>
 
-          <label htmlFor="lookingfor">You are looking for</label>
-          <br />
-          <textarea id="lookingfor" />
-          <br />
+                <label htmlFor="capacity">Production capacity</label>
+                <textarea id="capacity" />
 
-          <Link to="/aboutyou">
-            <button type="button">Back</button>
-          </Link>
-          <button type="submit">Next</button>
-        </form>
+                <label htmlFor="lookingfor">You are looking for</label>
+                <textarea id="lookingfor" />
+                <div className="registrationNeedsButtons">
+                  <Link to="/aboutyou">
+                    <button className="registrationBackButton" type="button">
+                      Back
+                    </button>
+                  </Link>
+                  <button className="registrationNextButton" type="submit">
+                    Next
+                  </button>
+                </div>
+              </form>
+            </Col>
+            <Col>
+              <div xs lg="3" className="registrationNote">
+                <h3>Note</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat.
+                </p>
+              </div>
+              <div xs lg="3" className="registrationNote">
+                <h3>MOST USED TAGS</h3>
+                <p>tags tags tags</p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+        <Footer />
       </div>
     );
   }

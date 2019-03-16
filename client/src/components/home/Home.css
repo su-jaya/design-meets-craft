@@ -12,6 +12,7 @@
   color: white;
   padding: 0.5em 2em;
   border: 2px solid white;
+  cursor: pointer;
 }
 
 .homeSliderOr {
@@ -33,9 +34,15 @@
   margin: 0.2em auto 1.5em auto;
 }
 
-/* .homeAboutImage {
-
-} */
+.homeAboutButton {
+  background: black;
+  color: white;
+  font-size: 1em;
+  margin: 0.5em;
+  padding: 0.8em;
+  cursor: pointer;
+  border: none;
+}
 
 .homeAdexBackground {
   height: 30em;
@@ -48,9 +55,15 @@
   justify-content: center;
 }
 
-/* .homeReferencesBackground {
-  height: 30em;
-} */
+.homeAdexButton {
+  width: 14em;
+  margin: 0.5em;
+  padding: 0.8em;
+  background: #387c7d;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
 .tbd {
   height: 10em;
