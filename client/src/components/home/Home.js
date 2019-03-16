@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
-    // console.log(this.props.match.url);
     return (
       <div>
         <Header url={this.props.match.url} />
