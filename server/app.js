@@ -11,6 +11,9 @@ const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
+const Designer = require("./models/Designer.js");
 
 mongoose
   .connect("mongodb://localhost/server", { useNewUrlParser: true })
@@ -59,6 +62,43 @@ app.use(
   })
 );
 
+passport.serializeUser((loggedInUser, cb) => {
+  cb(null, loggedInUser._id);
+});
+
+passport.deserializeUser((userIdFromSession, cb) => {
+  User.findById(userIdFromSession, (err, userDocument) => {
+    if (err) {
+      cb(err);
+      return;
+    }
+    cb(null, userDocument);
+  });
+});
+
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (username, password, next) => {
+    Designer.findOne({ email: username }, (err, foundUser) => {
+      if (err) {
+        next(err);
+        return;
+      }
+
+      if (!foundUser) {
+        next(null, false, { message: "Incorrect username." });
+        return;
+      }
+
+      if (!bcrypt.compareSync(password, foundUser.password)) {
+        next(null, false, { message: "Incorrect password." });
+        return;
+      }
+
+      next(null, foundUser);
+    });
+  })
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -69,10 +109,10 @@ app.use(
   })
 );
 
-const index = require("./routes/index");
-app.use("/", index);
-
 const authRoutes = require("./routes/auth-routes");
 app.use("/auth", authRoutes);
+
+const index = require("./routes/index");
+app.use("/", index);
 
 module.exports = app;
