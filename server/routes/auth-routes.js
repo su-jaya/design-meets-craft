@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 const Designer = require("../models/Designer");
 
 // SIGN UP DESIGNER
+
 authRoutes.post("/signup/designer", (req, res, next) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
@@ -49,21 +50,23 @@ authRoutes.post("/signup/designer", (req, res, next) => {
         res.status(200).json({ message: "no Error" });
       }
 
-      req.login(aNewUser, err => {
-        if (err) {
-          res.status(500).json({ message: "Login after signup went bad." });
-          return;
-        }
-        res.status(200).json({ message: "user's info:" + aNewUser });
-      });
+      // req.login(aNewUser, err => {
+      //   if (err) {
+      //     res.status(500).json({ message: "Login after signup went bad." });
+      //     return;
+      //   }
+      //   res.status(200).json({ message: "user's info:" + aNewUser });
+      // });
     });
   });
 });
 
 // LOG IN DESIGNER
 authRoutes.post("/login/designer", (req, res, next) => {
+  console.log(req.body);
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
+      console.log(err);
       res
         .status(500)
         .json({ message: "Something went wrong authenticating user" });

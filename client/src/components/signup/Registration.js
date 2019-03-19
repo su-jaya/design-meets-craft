@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Header from "../Header";
 import "./Registration.css";
 import Footer from "../Footer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import AuthService from "./auth-service";
+import { Redirect } from "react-router-dom";
 
 class Registration extends Component {
   state = {
@@ -13,34 +14,46 @@ class Registration extends Component {
     lastName: "",
     email: "",
     password: "",
-    passwordConfirm: ""
+    passwordConfirm: "",
+    message: ""
   };
+
+  service = new AuthService();
 
   // Change Handler Form
-
-  changeHandler = e => {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-  };
-
-  // On Submit
-
   submitHandler = event => {
     event.preventDefault();
-    axios
-      .post("http://localhost:5000/signup/designer", this.state)
-      .then(() => {
+    const firstName = this.state.firstName;
+    const lastName = this.state.lastName;
+    const email = this.state.email;
+    const password = this.state.password;
+    const passwordConfirm = this.state.passwordConfirm;
+
+    this.service
+      .signup(firstName, lastName, email, password, passwordConfirm)
+      .then(response => {
+        console.log(response.message);
         this.setState({
           firstName: "",
           lastName: "",
           email: "",
           password: "",
-          passwordConfirm: ""
+          passwordConfirm: "",
+          message: response.message
         });
-        console.log(this.state);
+        this.props.getUser(response);
       })
-      .catch(err => console.log(err));
+      .catch(error => {
+        this.setState({
+          message: error.response.data.message
+        });
+      });
+  };
+
+  changeHandler = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
   };
 
   render() {
@@ -93,6 +106,12 @@ class Registration extends Component {
                 After the first step you get an email with your access data
               </p>
 
+              {this.state.message === "no Error" ? (
+                <Redirect push to="/aboutyou" />
+              ) : (
+                this.state.message
+              )}
+
               <form
                 className="registrationForm"
                 onSubmit={event => this.submitHandler(event)}
@@ -126,7 +145,7 @@ class Registration extends Component {
                   type="email"
                   id="email"
                   value={this.state.email}
-                  required
+                  // required
                   onChange={e => this.changeHandler(e)}
                 />
 
@@ -135,7 +154,7 @@ class Registration extends Component {
                   type="password"
                   id="password"
                   value={this.state.password}
-                  minLength="8"
+                  // minLength="8"
                   required
                   onChange={e => this.changeHandler(e)}
                 />
