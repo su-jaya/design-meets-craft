@@ -46,17 +46,16 @@ authRoutes.post("/signup/designer", (req, res, next) => {
           .status(400)
           .json({ message: "Saving user to database went wrong." });
         return;
-      } else {
-        res.status(200).json({ message: "no Error" });
       }
 
-      // req.login(aNewUser, err => {
-      //   if (err) {
-      //     res.status(500).json({ message: "Login after signup went bad." });
-      //     return;
-      //   }
-      //   res.status(200).json({ message: "user's info:" + aNewUser });
-      // });
+      req.login(aNewUser, err => {
+        if (err) {
+          res.status(500).json({ message: "Login after signup went bad." });
+          return;
+        }
+        //res.status(200).json({ message: "user's info:" + aNewUser });
+        res.status(200).json({ message: "no Error" });
+      });
     });
   });
 });
@@ -109,7 +108,8 @@ authRoutes.get("/loggedin", (req, res, next) => {
 });
 
 authRoutes.post("/signup/designer/aboutyou", (req, res) => {
-  console.log(req.body);
+  console.log(req.data);
+  res.status(200).json({ message: "no Error" });
 });
 
 module.exports = authRoutes;

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Header from "../Header";
 import "./Registration.css";
 import Footer from "../Footer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Redirect } from "react-router-dom";
 
 class AboutYou1 extends Component {
   state = {
@@ -19,7 +19,9 @@ class AboutYou1 extends Component {
     zip: "",
     country: "",
     telephone: "",
-    languageDropdown: [1]
+    languageDropdown: [1],
+    successMessage: "",
+    loggedInUser: null
   };
 
   // On Change
@@ -33,8 +35,8 @@ class AboutYou1 extends Component {
   submitHandler = event => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/signup/aboutyou", this.state)
-      .then(() => {
+      .post("http://localhost:5000/auth/signup/designer/aboutyou", this.state)
+      .then(response => {
         this.setState({
           youinasentence: "",
           position: "",
@@ -45,7 +47,8 @@ class AboutYou1 extends Component {
           zip: "",
           country: "",
           telephone: "",
-          languages: ""
+          languages: "",
+          successMessage: response.data.message
         });
       })
       .catch(err => console.log(err));
@@ -59,7 +62,15 @@ class AboutYou1 extends Component {
     });
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loggedInUser: nextProps["getUser"] });
+  }
+
   render() {
+    if (!this.state.loggedInUser) {
+      return <h1>Loading...</h1>;
+    }
+
     const languageDropdown = (
       <>
         <option value="Afrikanns">Afrikanns</option>
@@ -136,10 +147,15 @@ class AboutYou1 extends Component {
         <option value="Xhosa">Xhosa</option>
       </>
     );
-
     return (
       <div>
         <Header url={this.props.match.url} />
+
+        {this.state.successMessage === "no Error" ? (
+          <Redirect push to="/needs" />
+        ) : (
+          ""
+        )}
 
         {/*Process Bar */}
         <div>
@@ -189,6 +205,7 @@ class AboutYou1 extends Component {
                   id="brand"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.brand}
+                  required
                 />
 
                 <label htmlFor="website">Website</label>
@@ -205,6 +222,7 @@ class AboutYou1 extends Component {
                   id="adress"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.adress}
+                  required
                 />
 
                 <label htmlFor="city">City</label>
@@ -213,6 +231,7 @@ class AboutYou1 extends Component {
                   id="city"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.city}
+                  required
                 />
 
                 <label htmlFor="zip">ZIP</label>
@@ -563,11 +582,9 @@ class AboutYou1 extends Component {
                   </div>
                 </div>
                 <div className="registrationNextButtonPosition">
-                  <Link to="/needs">
-                    <button className="registrationNextButton" type="submit">
-                      NEXT
-                    </button>
-                  </Link>
+                  <button className="registrationNextButton" type="submit">
+                    NEXT
+                  </button>
                 </div>
               </form>
             </Col>

@@ -67,7 +67,7 @@ passport.serializeUser((loggedInUser, cb) => {
 });
 
 passport.deserializeUser((userIdFromSession, cb) => {
-  User.findById(userIdFromSession, (err, userDocument) => {
+  Designer.findById(userIdFromSession, (err, userDocument) => {
     if (err) {
       cb(err);
       return;
