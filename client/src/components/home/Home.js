@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
+import Card from "../Card";
 
 class Home extends Component {
   render() {
@@ -80,9 +81,27 @@ class Home extends Component {
 
         {/* Home Designers Section */}
 
-        <div className="tbd">
-          <h1>Designers</h1>
-          tbd
+        <div>
+          <div className="homeDesignerHeadline">
+            <h1>Designers</h1>
+            <button className="homeDesignerButton">SEE ALL</button>
+          </div>
+          <Container className="homeDesignersContainer" fluid={true}>
+            <Row className="homeDesignersRow">
+              <Col className="homeDesignersColumn mx-auto">
+                <Card />
+              </Col>
+              <Col className="homeDesignersColumn mx-auto">
+                <Card />
+              </Col>
+              <Col className="homeDesignersColumn mx-auto">
+                <Card />
+              </Col>
+              <Col className="homeDesignersColumn mx-auto">
+                <Card />
+              </Col>
+            </Row>
+          </Container>
         </div>
 
         {/* Home Artisans Section */}

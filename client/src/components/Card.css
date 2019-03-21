@@ -1,0 +1,74 @@
+.cardContainer {
+  background-image: url("/images/DmC_cardcontainer.png");
+  background-repeat: no-repeat;
+  background-size: 340px 32em;
+  background-position: center;
+  width: 340px;
+  height: 32em;
+  margin-right: 0.8em;
+  padding: 1em;
+  text-align: left;
+}
+
+.cardBanner {
+  border: 1px solid #e9e9e9;
+  margin-top: 3px;
+}
+
+.cardAvatar {
+  position: absolute;
+  top: 140px;
+  left: 120px;
+  width: 95px;
+  border-radius: 50%;
+  border: 3px solid #e9e9e9;
+}
+
+.cardText {
+  margin-top: 2em;
+  padding: 14px;
+}
+.cardHeadline {
+  color: #d4b5aa;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.cardSubtitle {
+  color: #8e8f91;
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.cardDescription {
+  font-style: italic;
+  padding-top: 0px;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.cardDivider {
+  width: 280px;
+  border-top: 2px solid #e9e9e9;
+  margin: 10px 0;
+}
+
+.cardTags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.cardTags p {
+  margin-right: 0.5em;
+  padding: 0 0.5em;
+  font-size: 13px;
+  background: #f2f2f2;
+  margin-bottom: 6px;
+  border-radius: 4px;
+}
