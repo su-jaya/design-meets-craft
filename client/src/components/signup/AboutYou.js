@@ -20,12 +20,15 @@ class AboutYou1 extends Component {
     country: "",
     telephone: "",
     languageDropdown: [1],
+    languages: [],
     successMessage: "",
     loggedInUser: null
   };
 
   // On Change
   changeHandler = event => {
+    console.log(event.target.value);
+    // console.log(languageDropdown)
     this.setState({
       [event.target.id]: event.target.value
     });
@@ -147,6 +150,7 @@ class AboutYou1 extends Component {
         <option value="Xhosa">Xhosa</option>
       </>
     );
+
     return (
       <div>
         <Header url={this.props.match.url} />
@@ -171,7 +175,9 @@ class AboutYou1 extends Component {
         <Container className="registrationContainerAndNote">
           <Row>
             <Col xs lg="7" className="registrationContainer">
-              <h2 className="registrationHeadline">Hello - name - </h2>
+              <h2 className="registrationHeadline">
+                Hello {this.state.loggedInUser.firstName}
+              </h2>
               <p className="registrationSubtitle">
                 Tell us some details about you so that the others can get to
                 know you and your work better. You can always change your

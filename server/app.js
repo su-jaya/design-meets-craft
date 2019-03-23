@@ -14,6 +14,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const Designer = require("./models/Designer.js");
+const MongoStore = require("connect-mongo")(session);
 
 mongoose
   .connect("mongodb://localhost/server", { useNewUrlParser: true })
@@ -58,7 +59,11 @@ app.use(
   session({
     secret: `${process.env.SECRET}`,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60 // 1 day
+    })
   })
 );
 
