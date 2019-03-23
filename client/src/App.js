@@ -8,6 +8,7 @@ import Home from "./components/home/Home";
 import AboutUs from "./components/about/AboutUs";
 import AuthService from "./components/signup/auth-service";
 import Login from "./components/signup/Login";
+import Profile from "./components/profile/Profile";
 
 class App extends React.Component {
   state = {
@@ -60,6 +61,7 @@ class App extends React.Component {
           <Route path="/needs" component={Needs} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </div>
     );
