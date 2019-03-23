@@ -74,10 +74,10 @@ class Home extends Component {
 
         {/* Home Designer Stories Section */}
 
-        <div className="tbd">
+        {/* <div className="tbd">
           <h1>Designer Stories</h1>
           tbd
-        </div>
+        </div> */}
 
         {/* Home Designers Section */}
 
@@ -89,26 +89,44 @@ class Home extends Component {
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
               <Col className="homeDesignersColumn mx-auto">
-                <Card />
+                <Card class="cardHeadlineDesigner" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card />
+                <Card class="cardHeadlineDesigner" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card />
+                <Card class="cardHeadlineDesigner" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card />
+                <Card class="cardHeadlineDesigner" />
               </Col>
             </Row>
           </Container>
         </div>
 
         {/* Home Artisans Section */}
-
-        <div className="tbd">
-          <h1>Artisans</h1>
-          tbd
+        <div className="homeDivider" />
+        <div>
+          <div className="homeDesignerHeadline">
+            <h1>Artisans</h1>
+            <button className="homeDesignerButton">SEE ALL</button>
+          </div>
+          <Container className="homeDesignersContainer" fluid={true}>
+            <Row className="homeDesignersRow">
+              <Col className="homeDesignersColumn mx-auto">
+                <Card class="cardHeadlineArtisan" />
+              </Col>
+              <Col className="homeDesignersColumn mx-auto">
+                <Card class="cardHeadlineArtisan" />
+              </Col>
+              <Col className="homeDesignersColumn mx-auto">
+                <Card class="cardHeadlineArtisan" />
+              </Col>
+              <Col className="homeDesignersColumn mx-auto">
+                <Card class="cardHeadlineArtisan" />
+              </Col>
+            </Row>
+          </Container>
         </div>
 
         {/* Home ADEx Section */}
@@ -145,10 +163,10 @@ class Home extends Component {
 
         {/* Home Destinations Section */}
 
-        <div className="tbd">
+        {/* <div className="tbd">
           <h1>Design for Good Destinations</h1>
           tbd
-        </div>
+        </div> */}
 
         {/* Home Partners Section */}
 

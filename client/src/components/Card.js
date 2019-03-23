@@ -19,7 +19,7 @@ class Card extends Component {
           alt="card avatar"
         />
         <div className="cardText">
-          <h3 className="cardHeadline">Francesca Imoli</h3>
+          <h3 className={this.props.class}>Francesca Imoli</h3>
           <p className="cardSubtitle">Designer</p>
           <p className="cardDescription">
             "An English Canadian with strong French, Latin, & Aboriginal

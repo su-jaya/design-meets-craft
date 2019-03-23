@@ -16,9 +16,9 @@
 }
 
 .cardAvatar {
-  position: absolute;
-  top: 140px;
-  left: 120px;
+  position: relative;
+  top: -55px;
+  left: 100px;
   width: 95px;
   border-radius: 50%;
   border: 3px solid #e9e9e9;
@@ -27,13 +27,27 @@
 .cardText {
   margin-top: 2em;
   padding: 14px;
+  position: relative;
+  top: -55px;
 }
-.cardHeadline {
+.cardHeadlineDesigner {
   color: #d4b5aa;
   font-size: 1.1em;
   font-weight: bold;
   padding-bottom: 0;
   margin-bottom: 0;
+  position: relative;
+  top: -35px;
+}
+
+.cardHeadlineArtisan {
+  color: #909460;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  position: relative;
+  top: -35px;
 }
 
 .cardSubtitle {
@@ -41,6 +55,8 @@
   padding-top: 0;
   margin-top: 0;
   margin-bottom: 8px;
+  position: relative;
+  top: -35px;
 }
 
 .cardDescription {
@@ -48,12 +64,16 @@
   padding-top: 0px;
   font-size: 13px;
   margin-bottom: 0;
+  position: relative;
+  top: -35px;
 }
 
 .cardDivider {
   width: 280px;
   border-top: 2px solid #e9e9e9;
   margin: 10px 0;
+  position: relative;
+  top: -35px;
 }
 
 .cardTags {
@@ -62,6 +82,8 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 15px 0;
+  position: relative;
+  top: -35px;
 }
 
 .cardTags p {
