@@ -103,7 +103,7 @@ class Registration extends Component {
 
               {/*Create your account*/}
               <h2 className="registrationHeadline">Create your account</h2>
-              <p className="subtitle">
+              <p className="registrationSubtitle">
                 After the first step you get an email with your access data
               </p>
 

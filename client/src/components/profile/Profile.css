@@ -38,7 +38,7 @@
 .profileBoxSubtitle {
   position: relative;
   top: -168px;
-  color: #8e8f91;
+  color: #a9aaac;
 }
 
 .profileBoxDesc {
@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #b8b9bb;
+  color: #a9aaac;
   margin-top: 1.5em;
 }
 
@@ -86,17 +86,35 @@
   border: none;
 }
 
+.profileEditContainer {
+  margin-bottom: 3em;
+}
+
 .profileEditHeadline {
   display: flex;
   justify-content: space-between;
-  padding: 0.8em 3em;
+  padding: 0.8em 1.3em;
 }
 
 .profileEditHeadline h1 {
   font-size: 2.2em;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 .profileEditHeadline button {
   border: none;
+  color: #8e8f91;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.profileEditIcon {
+  margin-right: 0.3em;
+}
+
+.profileEditText {
+  text-align: left;
+  margin: 1em 1.3em;
+  background: #f3f3f3;
+  padding: 1.2em;
 }

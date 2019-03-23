@@ -10,6 +10,7 @@ import Card from "../Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Footer from "../Footer";
 
 class Profile extends Component {
   render() {
@@ -53,7 +54,9 @@ class Profile extends Component {
           <button className="profileMatchesButton">SEE ALL</button>
         </div>
 
-        <div>tags</div>
+        <div>
+          <p>tags tags tags tags tags tags tags tags tags</p>
+        </div>
 
         <Container className="homeDesignersContainer" fluid={true}>
           <Row className="homeDesignersRow">
@@ -74,48 +77,127 @@ class Profile extends Component {
         <div className="homeDivider" />
 
         {/* Profile Edits */}
-        <div>
-          <div className="profileEditHeadline">
-            <h1>Your profession</h1>
-            <button>Edit</button>
-          </div>
-          <p>tags</p>
-        </div>
-        <div>
-          <div className="profileEditHeadline">
-            <h1>Your needs</h1>
-            <button>Edit</button>
-          </div>
-          <p>tags</p>
-        </div>
-        <div>
-          <div className="profileEditHeadline">
-            <h1>Destination</h1>
-            <button>Edit</button>
-          </div>
-          <p>tags</p>
-        </div>
-        <div>
-          <div className="profileEditHeadline">
-            <h1>Production capacity</h1>
-            <button>Edit</button>
-          </div>
-          <p>tags</p>
-        </div>
-        <div>
-          <div className="profileEditHeadline">
-            <h1>Looking for</h1>
-            <button>Edit</button>
-          </div>
-          <p>tags</p>
-        </div>
-        <div>
-          <div className="profileEditHeadline">
-            <h1>Gallery</h1>
-            <button>Edit</button>
-          </div>
-          <p>tags</p>
-        </div>
+        <Container fluid={true} className="profileEditContainer">
+          <Row>
+            <Col xs={8}>
+              <div>
+                <div className="profileEditHeadline">
+                  <h1>Your profession</h1>
+                  <button>
+                    <img
+                      className="profileEditIcon"
+                      src="/images/DmC_penicon.png"
+                      alt="pen icon"
+                      width="15em"
+                    />
+                    Edit
+                  </button>
+                </div>
+                <p>tags tags tags tags tags tags tags tags tags</p>
+              </div>
+              <div className="homeDivider" />
+              <div>
+                <div className="profileEditHeadline">
+                  <h1>Your needs</h1>
+                  <button>
+                    <img
+                      className="profileEditIcon"
+                      src="/images/DmC_penicon.png"
+                      alt="pen icon"
+                      width="15em"
+                    />
+                    Edit
+                  </button>
+                </div>
+                <p>tags tags tags tags tags tags tags tags tags</p>
+              </div>
+              <div className="homeDivider" />
+              <div>
+                <div className="profileEditHeadline">
+                  <h1>Destination</h1>
+                  <button>
+                    <img
+                      className="profileEditIcon"
+                      src="/images/DmC_penicon.png"
+                      alt="pen icon"
+                      width="15em"
+                    />
+                    Edit
+                  </button>
+                </div>
+                <p>tags tags tags tags tags tags tags tags tags</p>
+              </div>
+              <div className="homeDivider" />
+              <div>
+                <div className="profileEditHeadline">
+                  <h1>Production capacity</h1>
+                  <button>
+                    <img
+                      className="profileEditIcon"
+                      src="/images/DmC_penicon.png"
+                      alt="pen icon"
+                      width="15em"
+                    />
+                    Edit
+                  </button>
+                </div>
+                <p className="profileEditText">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                  sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                  nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua.
+                </p>
+              </div>
+              <div className="homeDivider" />
+              <div>
+                <div className="profileEditHeadline">
+                  <h1>Looking for</h1>
+                  <button>
+                    <img
+                      className="profileEditIcon"
+                      src="/images/DmC_penicon.png"
+                      alt="pen icon"
+                      width="15em"
+                    />
+                    Edit
+                  </button>
+                </div>
+                <p className="profileEditText">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                  sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                  nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua.
+                </p>
+              </div>
+              <div className="homeDivider" />
+              <div>
+                <div className="profileEditHeadline">
+                  <h1>Gallery</h1>
+                  <button>
+                    <img
+                      className="profileEditIcon"
+                      src="/images/DmC_penicon.png"
+                      alt="pen icon"
+                      width="15em"
+                    />
+                    Edit
+                  </button>
+                </div>
+                <p>images</p>
+              </div>
+            </Col>
+            <Col />
+          </Row>
+        </Container>
+        <Footer />
       </div>
     );
   }
