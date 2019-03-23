@@ -42,7 +42,7 @@
 .registrationContainer {
   display: flex;
   flex-direction: column;
-  margin-right: 4em;
+  margin-right: 1.7em;
 }
 
 .registrationHeadline {
@@ -193,17 +193,6 @@
 .registrationSignUpText {
   text-align: center;
   font-size: 0.9em;
-}
-
-/* Registration Note */
-
-.registrationNote {
-  /* width: 25em; */
-  height: 16em;
-  padding: 2em;
-  margin-top: 3em;
-  text-align: left;
-  background-color: lightgrey;
 }
 
 /* Tags */

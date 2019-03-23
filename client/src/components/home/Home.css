@@ -53,6 +53,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 2.5em;
 }
 
 .homeAdexButton {
@@ -63,12 +64,6 @@
   border: none;
   color: white;
   cursor: pointer;
-}
-
-.tbd {
-  height: 10em;
-  text-align: left;
-  padding: 3em;
 }
 
 .homeDesignerHeadline {
@@ -98,4 +93,9 @@
 
 .homeDesignersColumn {
   padding: 0;
+}
+
+.homeDivider {
+  border-top: 2px solid #e9e9e9;
+  margin: 2em 2.4em;
 }

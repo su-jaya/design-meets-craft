@@ -8,6 +8,7 @@ import Footer from "../Footer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Note from "./Note";
 
 class Needs1 extends Component {
   state = {
@@ -236,19 +237,8 @@ class Needs1 extends Component {
                 </div>
               </form>
             </Col>
-            <Col>
-              <div xs lg="3" className="registrationNote">
-                <h3>Note</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat.
-                </p>
-              </div>
-              <div xs lg="3" className="registrationNote">
-                <h3>MOST USED TAGS</h3>
-                <p>tags tags tags</p>
-              </div>
+            <Col xs lg="3">
+              <Note />
             </Col>
           </Row>
         </Container>

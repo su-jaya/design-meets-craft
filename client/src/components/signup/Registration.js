@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AuthService from "./auth-service";
 import { Redirect } from "react-router-dom";
+import Note from "./Note";
 
 class Registration extends Component {
   state = {
@@ -176,13 +177,8 @@ class Registration extends Component {
                 <button className="registrationSignUpButton">Sign Up</button>
               </form>
             </Col>
-            <Col xs lg="3" className="registrationNote">
-              <h3>Note</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat.
-              </p>
+            <Col xs lg="3">
+              <Note />
             </Col>
           </Row>
         </Container>
