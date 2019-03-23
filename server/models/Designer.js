@@ -6,17 +6,16 @@ const schema = mongoose.Schema({
   email: String,
   password: String,
   passwordConfirm: String,
-  aboutYou: {
-    youinasentence: String,
-    position: String,
-    brand: String,
-    website: String,
-    adress: String,
-    city: String,
-    zip: Number,
-    country: String,
-    telephone: Number
-  }
+  youinasentence: String,
+  position: String,
+  brand: String,
+  website: String,
+  adress: String,
+  city: String,
+  zip: Number,
+  country: String,
+  telephone: Number,
+  language: Array
 });
 
 module.exports = mongoose.model("Designer", schema);

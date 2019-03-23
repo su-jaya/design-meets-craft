@@ -46,17 +46,16 @@ authRoutes.post("/signup/designer", (req, res, next) => {
           .status(400)
           .json({ message: "Saving user to database went wrong." });
         return;
-      } else {
-        res.status(200).json({ message: "no Error" });
       }
 
-      // req.login(aNewUser, err => {
-      //   if (err) {
-      //     res.status(500).json({ message: "Login after signup went bad." });
-      //     return;
-      //   }
-      //   res.status(200).json({ message: "user's info:" + aNewUser });
-      // });
+      req.login(aNewUser, err => {
+        if (err) {
+          res.status(500).json({ message: "Login after signup went bad." });
+          return;
+        }
+        //res.status(200).json({ message: "user's info:" + aNewUser });
+        res.status(200).json({ message: "no Error" });
+      });
     });
   });
 });
@@ -109,7 +108,30 @@ authRoutes.get("/loggedin", (req, res, next) => {
 });
 
 authRoutes.post("/signup/designer/aboutyou", (req, res) => {
+  let userId = req.body.loggedInUser._id;
   console.log(req.body);
+
+  let aboutYou = {
+    youinasentence: req.body.youinasentence,
+    position: req.body.position,
+    brand: req.body.brand,
+    website: req.body.website,
+    adress: req.body.adress,
+    city: req.body.city,
+    zip: req.body.zip,
+    country: req.body.country,
+    telephone: req.body.telephone
+  };
+
+  Designer.findByIdAndUpdate(userId, aboutYou)
+    .then(user => console.log(user))
+    .catch(err => console.log(err));
+
+  // Designer.updateOne({ _id: userId }, {$push})
+
+  //       Topic.updateOne({ _id: topic }, { $push: { upvote: user } }).then(result => {res.send(result)})
+
+  res.status(200).json({ message: "no Error" });
 });
 
 module.exports = authRoutes;

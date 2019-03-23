@@ -41,38 +41,28 @@ class App extends React.Component {
 
   render() {
     this.fetchUser();
-    if (this.state.loggedInUser) {
-      return (
-        <div className="App">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/signup" component={Registration} />
-            <Route path="/aboutyou" component={AboutYou} />
-            <Route path="/needs" component={Needs} />
-            <Route path="/aboutus" component={AboutUs} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route
-              path="/signup"
-              render={props => (
-                <Registration getUser={this.getTheUser} {...props} />
-              )}
-            />
-            <Route path="/aboutyou" component={AboutYou} />
-            <Route path="/needs" component={Needs} />
-            <Route path="/aboutus" component={AboutUs} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </div>
-      );
-    }
+    return (
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/signup"
+            render={props => (
+              <Registration getUser={this.getTheUser} {...props} />
+            )}
+          />
+          <Route
+            path="/aboutyou"
+            render={props => (
+              <AboutYou getUser={this.state.loggedInUser} {...props} />
+            )}
+          />
+          <Route path="/needs" component={Needs} />
+          <Route path="/aboutus" component={AboutUs} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </div>
+    );
   }
 }
 
