@@ -9,19 +9,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Note from "./Note";
+import axios from "axios";
 
 class Needs1 extends Component {
   state = {
-    youinasentence: "",
-    position: "",
-    brand: "",
-    website: "",
-    adress: "",
-    city: "",
-    zip: "",
-    country: "",
-    telephone: "",
-    language: "",
     // Tagging for Category
     tagsCategory: [],
     tagCategory: "",
@@ -57,7 +48,9 @@ class Needs1 extends Component {
       "denim",
       "plastic",
       "coffee"
-    ]
+    ],
+    capacity: "",
+    lookingfor: ""
   };
 
   // Remove Tags
@@ -71,7 +64,6 @@ class Needs1 extends Component {
   // Add Own Tag
   onChangeInput(tag, toChange, tags) {
     let field = `tag${toChange}`;
-    console.log(tag);
     this.setState({
       [field]: tag
     });
@@ -88,6 +80,21 @@ class Needs1 extends Component {
       });
     }
   }
+
+  // On Change remaining fields
+  changeHandler = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  };
+
+  submitHandler = event => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:5000/auth/signup/designer/needs", this.state)
+      .then(result => console.log(result))
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -114,7 +121,10 @@ class Needs1 extends Component {
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua.
               </p>
-              <form className="registrationForm">
+              <form
+                onSubmit={event => this.submitHandler(event)}
+                className="registrationForm"
+              >
                 {/* CATEGORY */}
                 <div className="parentTag">
                   <label htmlFor="category">
@@ -221,10 +231,16 @@ class Needs1 extends Component {
                 </div>
 
                 <label htmlFor="capacity">Production capacity</label>
-                <textarea id="capacity" />
+                <textarea
+                  id="capacity"
+                  onChange={event => this.changeHandler(event)}
+                />
 
                 <label htmlFor="lookingfor">You are looking for</label>
-                <textarea id="lookingfor" />
+                <textarea
+                  id="lookingfor"
+                  onChange={event => this.changeHandler(event)}
+                />
                 <div className="registrationNeedsButtons">
                   <Link to="/aboutyou">
                     <button className="registrationBackButton" type="button">

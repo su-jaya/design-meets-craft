@@ -6,10 +6,10 @@ import Footer from "../Footer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Languages } from "../LanguageDropdown";
 
-import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import Note from "./Note";
-
 
 class AboutYou1 extends Component {
   state = {
@@ -23,18 +23,27 @@ class AboutYou1 extends Component {
     country: "",
     telephone: "",
     languageDropdown: [1],
-    languages: [],
+    language: [],
     successMessage: "",
     loggedInUser: null
   };
 
   // On Change
   changeHandler = event => {
-    console.log(event.target.value);
-    // console.log(languageDropdown)
-    this.setState({
-      [event.target.id]: event.target.value
-    });
+    if (
+      Languages.includes(event.target.value) &&
+      !this.state.language.includes(event.target.value)
+    ) {
+      let langarray = this.state.language;
+      langarray.push(event.target.value);
+      this.setState({
+        language: langarray
+      });
+    } else {
+      this.setState({
+        [event.target.id]: event.target.value
+      });
+    }
   };
 
   // On Submit
@@ -53,7 +62,7 @@ class AboutYou1 extends Component {
           zip: "",
           country: "",
           telephone: "",
-          languages: "",
+          language: [],
           successMessage: response.data.message
         });
       })
@@ -69,88 +78,17 @@ class AboutYou1 extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ loggedInUser: nextProps["getUser"] });
+    this.setState({ loggedInUser: nextProps["userInSession"] });
   }
 
   render() {
-    if (!this.state.loggedInUser) {
-      return <h1>Loading...</h1>;
-    }
-
     const languageDropdown = (
       <>
-        <option value="Afrikanns">Afrikanns</option>
-        <option value="Albanian">Albanian</option>
-        <option value="Arabic">Arabic</option>
-        <option value="Armenian">Armenian</option>
-        <option value="Basque">Basque</option>
-        <option value="Bengali">Bengali</option>
-        <option value="Bulgarian">Bulgarian</option>
-        <option value="Catalan">Catalan</option>
-        <option value="Cambodian">Cambodian</option>
-        <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
-        <option value="Croation">Croation</option>
-        <option value="Czech">Czech</option>
-        <option value="Danish">Danish</option>
-        <option value="Dutch">Dutch</option>
-        <option value="English">English</option>
-        <option value="Estonian">Estonian</option>
-        <option value="Fiji">Fiji</option>
-        <option value="Finnish">Finnish</option>
-        <option value="French">French</option>
-        <option value="Georgian">Georgian</option>
-        <option value="German">German</option>
-        <option value="Greek">Greek</option>
-        <option value="Gujarati">Gujarati</option>
-        <option value="Hebrew">Hebrew</option>
-        <option value="Hindi">Hindi</option>
-        <option value="Hungarian">Hungarian</option>
-        <option value="Icelandic">Icelandic</option>
-        <option value="Indonesian">Indonesian</option>
-        <option value="Irish">Irish</option>
-        <option value="Italian">Italian</option>
-        <option value="Japanese">Japanese</option>
-        <option value="Javanese">Javanese</option>
-        <option value="Korean">Korean</option>
-        <option value="Latin">Latin</option>
-        <option value="Latvian">Latvian</option>
-        <option value="Lithuanian">Lithuanian</option>
-        <option value="Macedonian">Macedonian</option>
-        <option value="Malay">Malay</option>
-        <option value="Malayalam">Malayalam</option>
-        <option value="Maltese">Maltese</option>
-        <option value="Maori">Maori</option>
-        <option value="Marathi">Marathi</option>
-        <option value="Mongolian">Mongolian</option>
-        <option value="Nepali">Nepali</option>
-        <option value="Norwegian">Norwegian</option>
-        <option value="Persian">Persian</option>
-        <option value="Polish">Polish</option>
-        <option value="Portuguese">Portuguese</option>
-        <option value="Punjabi">Punjabi</option>
-        <option value="Quechua">Quechua</option>
-        <option value="Romanian">Romanian</option>
-        <option value="Russian">Russian</option>
-        <option value="Samoan">Samoan</option>
-        <option value="Serbian">Serbian</option>
-        <option value="Slovak">Slovak</option>
-        <option value="Slovenian">Slovenian</option>
-        <option value="Spanish">Spanish</option>
-        <option value="Swahili">Swahili</option>
-        <option value="Swedish ">Swedish </option>
-        <option value="Tamil">Tamil</option>
-        <option value="Tatar">Tatar</option>
-        <option value="Telugu">Telugu</option>
-        <option value="Thai">Thai</option>
-        <option value="Tibetan">Tibetan</option>
-        <option value="Tonga">Tonga</option>
-        <option value="Turkish">Turkish</option>
-        <option value="Ukranian">Ukranian</option>
-        <option value="Urdu">Urdu</option>
-        <option value="Uzbek">Uzbek</option>
-        <option value="Vietnamese">Vietnamese</option>
-        <option value="Welsh">Welsh</option>
-        <option value="Xhosa">Xhosa</option>
+        {Languages.map((e, idx) => (
+          <option key={idx} value={e}>
+            {e}
+          </option>
+        ))}
       </>
     );
 
@@ -179,8 +117,14 @@ class AboutYou1 extends Component {
           <Row>
             <Col xs lg="7" className="registrationContainer">
               <h2 className="registrationHeadline">
-                Hello {this.state.loggedInUser.firstName}
+                Hello 
+                {!this.state.loggedInUser ? (
+                  <p>Loading..</p>
+                ) : (
+                  this.state.loggedInUser.firstName
+                )}
               </h2>
+
               <p className="registrationSubtitle">
                 Tell us some details about you so that the others can get to
                 know you and your work better. You can always change your

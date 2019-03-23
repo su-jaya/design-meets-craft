@@ -36,11 +36,13 @@ const app = express();
 
 // Middleware Setup
 app.use(logger("dev"));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 // Express View engine setup
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
   require("node-sass-middleware")({
@@ -52,7 +54,6 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 app.use(
@@ -66,6 +67,9 @@ app.use(
     })
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser((loggedInUser, cb) => {
   cb(null, loggedInUser._id);
@@ -103,9 +107,6 @@ passport.use(
     });
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(
   cors({

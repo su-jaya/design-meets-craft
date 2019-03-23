@@ -15,7 +15,15 @@ const schema = mongoose.Schema({
   zip: Number,
   country: String,
   telephone: Number,
-  language: Array
+  language: Array,
+  tagsCategory: [],
+  tagsMaterial: [],
+  tagsDestination: [],
+  capacity: String,
+  lookingfor: String,
+  pictureName: String,
+  description: String,
+  imageUrl: String
 });
 
 module.exports = mongoose.model("Designer", schema);

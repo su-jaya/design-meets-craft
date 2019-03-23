@@ -33,7 +33,7 @@ class App extends React.Component {
     }
   }
 
-  getTheUser = userObj => {
+  setTheUser = userObj => {
     this.setState({
       loggedInUser: userObj
     });
@@ -48,16 +48,21 @@ class App extends React.Component {
           <Route
             path="/signup"
             render={props => (
-              <Registration getUser={this.getTheUser} {...props} />
+              <Registration setUser={this.setTheUser} {...props} />
             )}
           />
           <Route
             path="/aboutyou"
             render={props => (
-              <AboutYou getUser={this.state.loggedInUser} {...props} />
+              <AboutYou userInSession={this.state.loggedInUser} {...props} />
             )}
           />
-          <Route path="/needs" component={Needs} />
+          <Route
+            path="/needs"
+            render={props => (
+              <Needs userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/login" component={Login} />
         </Switch>
