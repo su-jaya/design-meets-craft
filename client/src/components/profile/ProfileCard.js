@@ -18,9 +18,33 @@ class ProfileCard extends Component {
           ipsum dolor sit amet, consetetur sadipscing elitr.
         </p>
         <div className="profileBoxLinks">
-          <p>Mailbox</p>
-          <p>Contact Info</p>
-          <p>Account Settings</p>
+          <p>
+            <img
+              className="profileEditIcon"
+              src="images/DmC_mailicon.png"
+              alt="mail icon"
+              width="20em"
+            />
+            Mailbox
+          </p>
+          <p>
+            <img
+              className="profileEditIcon"
+              src="images/DmC_chaticon.png"
+              alt="mail icon"
+              width="20em"
+            />
+            Contact Info
+          </p>
+          <p>
+            <img
+              className="profileEditIcon"
+              src="images/DmC_settingsicon.png"
+              alt="mail icon"
+              width="20em"
+            />
+            Account Settings
+          </p>
         </div>
       </div>
     );
