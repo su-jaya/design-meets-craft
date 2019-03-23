@@ -1,0 +1,34 @@
+/* Registration Note */
+
+.note {
+  background-image: url("/images/DmC_notecontainer.png");
+  background-repeat: no-repeat;
+  background-size: 340px 20em;
+  background-position: center;
+  width: 340px;
+  height: 20em;
+  padding: 3.5em;
+  margin-top: 2em;
+  text-align: left;
+}
+
+.noteHeadline {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.note h3 {
+  color: #729a9c;
+  font-weight: normal;
+  margin: 0;
+  padding: 0.4em 0;
+  font-size: 1.5em;
+}
+
+.note p {
+  color: #8e8f91;
+  font-size: 0.8em;
+  margin-top: 1.8em;
+}
