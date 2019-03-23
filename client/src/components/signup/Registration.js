@@ -42,7 +42,7 @@ class Registration extends Component {
           passwordConfirm: "",
           message: response.message
         });
-        this.props.getUser(response);
+        this.props.setUser(response.user);
       })
       .catch(error => {
         this.setState({
