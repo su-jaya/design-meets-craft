@@ -1,0 +1,102 @@
+.profileBanner {
+  height: 25em;
+}
+
+.profileBoxPosition {
+  position: absolute;
+  top: 26em;
+  left: 47em;
+}
+
+.profileBox {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: white;
+  width: 40em;
+  height: 18em;
+  text-align: left;
+  padding: 3em 3em 1em 3em;
+}
+
+.profileAvatar {
+  position: relative;
+  top: -168px;
+  left: 165px;
+  width: 12em;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profileBoxHeadline {
+  position: relative;
+  top: -168px;
+  color: #bea192;
+  font-size: 2em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.profileBoxSubtitle {
+  position: relative;
+  top: -168px;
+  color: #8e8f91;
+}
+
+.profileBoxDesc {
+  position: relative;
+  top: -168px;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.profileBoxLinks {
+  position: relative;
+  top: -168px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #b8b9bb;
+  margin-top: 1.5em;
+}
+
+.profileNavBar {
+  padding: 0 2em;
+  border-bottom: 1px solid #c3c3c370;
+  width: 45em;
+  margin: 2em 0 3em 0;
+}
+
+.profileMatchesHeadline {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em 3em;
+}
+
+.profileMatchesHeadline h1 {
+  font-size: 2em;
+  font-weight: normal;
+}
+
+.profileMatchesButton {
+  background: black;
+  color: white;
+  font-size: 1em;
+  margin: 0.5em;
+  padding: 0.5em;
+  cursor: pointer;
+  border: none;
+}
+
+.profileEditHeadline {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em 3em;
+}
+
+.profileEditHeadline h1 {
+  font-size: 2.2em;
+  font-weight: normal;
+}
+
+.profileEditHeadline button {
+  border: none;
+}
