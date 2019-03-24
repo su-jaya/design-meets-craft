@@ -45,7 +45,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
           <Route
             path="/signup"
             render={props => (
@@ -64,9 +70,21 @@ class App extends React.Component {
               <Needs userInSession={this.state.loggedInUser} {...props} />
             )}
           />
-          <Route path="/aboutus" component={AboutUs} />
+          <Route
+            path="/aboutus"
+            render={props => (
+              <AboutUs userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
           <Route path="/login" component={Login} />
-          <Route path="/profile" component={Profile} />
+
+          {/* path to be changed into /profile/designer/:id */}
+          <Route
+            path="/profile"
+            render={props => (
+              <Profile userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
         </Switch>
       </div>
     );

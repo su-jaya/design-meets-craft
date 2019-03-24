@@ -16,7 +16,10 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header
+          url={this.props.match.url}
+          loggedIn={this.props.userInSession}
+        />
         <NavBar />
 
         {/* Banner */}

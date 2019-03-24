@@ -12,7 +12,10 @@ class AboutUs extends Component {
   render() {
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header
+          url={this.props.match.url}
+          loggedIn={this.props.userInSession}
+        />
         <NavBar />
 
         {/* BANNER */}
