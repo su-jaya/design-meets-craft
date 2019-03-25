@@ -16,7 +16,9 @@
 }
 
 .homeSliderOr {
-  margin: auto 2em;
+  margin: auto 0.4em;
+  font-family: "Olympic Branding";
+  font-size: 5em;
 }
 
 .homeAboutBackground {
