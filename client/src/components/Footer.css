@@ -1,4 +1,4 @@
-.footerBackground {
+.footer {
   background-color: #f3f3f3;
   padding-top: 2em;
   padding-bottom: 2em;
@@ -8,12 +8,32 @@
   justify-content: center;
 }
 
+.footerContainer {
+  padding: 2em 7em 2em 3.2em;
+}
+
 .footerHeadline {
   color: #cba598;
   font-weight: bold;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+}
+
+.footerNavItem {
+  color: black;
+  font-size: 0.9em;
+}
+
+.footerNavItem:hover {
+  color: #cba598;
+  text-decoration: none;
+}
+
+.footerSocialMedia {
+  margin: 0.4em 0.7em;
 }
 
 .footerCopyright {
-  display: flex;
-  justify-content: left;
+  font-size: 0.7em;
+  text-align: left;
 }

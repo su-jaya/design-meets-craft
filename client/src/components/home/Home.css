@@ -23,13 +23,7 @@
 
 .homeAboutBackground {
   background-color: #f3f3f3;
-  height: 30em;
-  text-align: left;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 3em 3em 3em 0;
 }
 
 .homeSliderBackground h2 {
@@ -44,6 +38,14 @@
   padding: 0.8em;
   cursor: pointer;
   border: none;
+}
+
+.homeAboutText {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5em;
 }
 
 .homeAdexBackground {

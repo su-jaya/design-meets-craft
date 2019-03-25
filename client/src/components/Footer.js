@@ -4,44 +4,110 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import "./Footer.css";
+import { Link } from "react-router-dom";
+import SocialMedia from "./SocialMedia";
 
 class Footer extends Component {
   render() {
     return (
-      <div className="footerBackground">
-        <Container>
+      <div className="footer">
+        <Container className="footerContainer" fluid>
           <Row>
             <Col>
               <Nav className="flex-column align-items-start">
-                <Nav.Link className="footerHeadline">ABOUT</Nav.Link>
-                <Nav.Link to="/aboutus">About us</Nav.Link>
-                <Nav.Link>Contact us</Nav.Link>
-                <Nav.Link>Knowledge Center</Nav.Link>
-                <Nav.Link>Partners</Nav.Link>
+                <Nav.Item as="li">
+                  <div className="footerHeadline">ABOUT</div>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="/aboutus" className="footerNavItem">
+                    About us
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="#" className="footerNavItem">
+                    Contact us
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="#" className="footerNavItem">
+                    Knowledge Center
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="#" className="footerNavItem">
+                    Partners
+                  </Link>
+                </Nav.Item>
               </Nav>
             </Col>
             <Col>
               <Nav className="flex-column align-items-start">
-                <Nav.Link className="footerHeadline">NEWS</Nav.Link>
-                <Nav.Link>Press</Nav.Link>
-                <Nav.Link>Journal</Nav.Link>
-                <Nav.Link>Events</Nav.Link>
-                <Nav.Link>Career</Nav.Link>
+                <Nav.Item as="li" className="footerHeadline">
+                  NEWS
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Press
+                  </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Journal
+                  </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Events
+                  </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Career
+                  </Link>
+                </Nav.Item>
               </Nav>
             </Col>
             <Col>
               <Nav className="flex-column align-items-start">
-                <Nav.Link className="footerHeadline">INFORMATION</Nav.Link>
-                <Nav.Link>Privacy Policy</Nav.Link>
-                <Nav.Link>Terms & Conditions</Nav.Link>
-                <Nav.Link>Cookie Policy</Nav.Link>
-                <Nav.Link>Imprint</Nav.Link>
+                <Nav.Item className="footerHeadline">INFORMATION</Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Privacy Policy
+                  </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Terms & Conditions
+                  </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Cookie Policy
+                  </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Link to="#" className="footerNavItem">
+                    Imprint
+                  </Link>
+                </Nav.Item>
               </Nav>
             </Col>
-            <Col className="footerHeadline">SUBSCRIBE TO OUR NEWSLETTER:</Col>
+            <Col>
+              <Nav className="footerHeadline">SUBSCRIBE TO OUR NEWSLETTER:</Nav>
+              <br />
+              <Nav className="flex-column align-items-start footerHeadline">
+                CONNECT TO:
+                <SocialMedia />
+              </Nav>
+            </Col>
           </Row>
         </Container>
-        {/* <div className="footerCopyright">Copyright Design Meets Craft 2019</div> */}
+
+        <Container className="footerContainer" fluid>
+          <div className="footerCopyright">
+            © Copyright Design Meets Craft 2019
+          </div>
+        </Container>
       </div>
     );
   }
