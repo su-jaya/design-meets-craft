@@ -40,40 +40,31 @@ class Home extends Component {
 
         {/* Home About Section */}
 
-        <div className="homeAboutBackground">
-          <Container>
-            <Row>
-              <Col className="homeAboutImage">
-                <Image
-                  src="./images/temp_match.png"
-                  height="400em"
-                  alt=""
-                  fluid
-                />
-              </Col>
-              <Col>
-                <h2>It's in your Hands</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat.
-                </p>
-                <p>
-                  At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                  dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                  sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-                <Link to="/aboutus">
-                  <button className="homeAboutButton">
-                    LEARN MORE ABOUT US
-                  </button>
-                </Link>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+        <Container className="homeAboutBackground" fluid>
+          <Row>
+            <Col sm={6}>
+              <Image src="./images/temp_match.png" alt="" fluid />
+            </Col>
+            <Col sm={6} className="homeAboutText">
+              <h2>It's in your Hands</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat.
+              </p>
+              <p>
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+                dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua.
+              </p>
+              <Link to="/aboutus">
+                <button className="homeAboutButton">LEARN MORE ABOUT US</button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
 
         {/* Home Designer Stories Section */}
 
