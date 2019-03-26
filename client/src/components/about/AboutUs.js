@@ -22,16 +22,13 @@ class AboutUs extends Component {
 
         <div className="aboutUsBanner">
           <h1>Our Purpose</h1>
-          <h2>
-            "Design Meets Craft" matches designers and brands with traditional
-            craft businesses.
-          </h2>
+          <h2>We believe that design has the power to change the world!</h2>
         </div>
 
         {/* OUR VISION */}
 
         <div className="aboutUsVision">
-          <h2>Our Vision</h2>
+          <h2>Our vision</h2>
 
           <p>
             We believe that together we can shape the future positively with our
@@ -71,13 +68,21 @@ class AboutUs extends Component {
           </div>
         </div>
 
+        <Image
+          className="homezigzagDivider"
+          src="/images/DmC_homezigzagBorder.png"
+          alt="zig zag border"
+          fluid
+        />
+
         {/* BENEFITS */}
         <div className="aboutUsBenefits">
           <h2>Discover your Benefits</h2>
           <p>400 Designers & more than 550 Crafters in 90 countries</p>
           <div>
-            <Image src="./images/DmC_Benefits.png" alt="image" fluid />
-            <Container>
+            <Container className="aboutUsContainer" fluid>
+              <Image src="./images/DmC_Benefits.png" alt="image" fluid />
+
               <Row>
                 <Col>
                   <h3>GLOBAL NETWORK</h3>
@@ -121,7 +126,7 @@ class AboutUs extends Component {
           <Container>
             <Row>
               <Col />
-              <Col>
+              <Col className="aboutUsArtisansText">
                 <h2>Artisans</h2>
                 <p>
                   Our passion lies with creativity, designing and making – but
@@ -142,11 +147,11 @@ class AboutUs extends Component {
           <h2>Challenges we want to tackle</h2>
           <p>We want to preserve craft techniques</p>
           <div>
-            <Image src="./images/DmC_Challenges.png" alt="image" fluid />
-            <Container>
+            <Container className="aboutUsContainer" fluid>
+              <Image src="./images/DmC_Challenges.png" alt="image" fluid />
               <Row>
                 <Col>
-                  <h3>LOSS OF CULTURAL HERITAGE AND CRAFT SKILLS</h3>
+                  <h3>LOSS OF CULTURAL HERITAGE & CRAFT SKILLS</h3>
                   <p>
                     Our simple and unique matching mechanism makes it easy for
                     you to find your perfect match fast. We connect you directly
@@ -154,7 +159,10 @@ class AboutUs extends Component {
                   </p>
                 </Col>
                 <Col>
-                  <h3>UNEMPLOYED / POVERTY</h3>
+                  <h3>
+                    UNEMPLOYED / <br />
+                    POVERTY
+                  </h3>
                   <p>
                     Everyone joining DmC sings the „Code of Conduct“ and can be
                     expelled if not followed. Save communication in a secured
@@ -169,7 +177,11 @@ class AboutUs extends Component {
                   </p>
                 </Col>
                 <Col>
-                  <h3>FEAR OF FOREIGN CULTURES</h3>
+                  <h3>
+                    FEAR
+                    <br />
+                    OF FOREIGN CULTURES
+                  </h3>
                   <p>
                     DmC is about personal encounters and emotional benefits. In
                     our system you can directly contact your match and exchange,

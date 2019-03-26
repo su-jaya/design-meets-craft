@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Nav from "react-bootstrap/Nav";
 import "./NavBar.css";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+// import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
 class NavBar extends Component {
@@ -14,12 +14,15 @@ class NavBar extends Component {
             <Link to="/">Discover</Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Link to="#">Designer</Link>
+            <Link to="#">Designers</Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Link to="#">Artisan</Link>
+            <Link to="#">Artisans</Link>
           </Nav.Item>
-          <NavDropdown title="About us" id="collasible-nav-dropdown">
+          <Nav.Item as="li">
+            <Link to="/aboutus">About us</Link>
+          </Nav.Item>
+          {/* <NavDropdown title="About us" id="collasible-nav-dropdown">
             <NavDropdown.Item as="li">
               <Link to="/aboutus">About Design Meets Craft</Link>
             </NavDropdown.Item>
@@ -35,7 +38,7 @@ class NavBar extends Component {
             <NavDropdown.Item as="li">
               <Link to="/aboutus">Membership</Link>
             </NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
           <Nav.Item as="li">
             <Link to="#">Design for Good</Link>
           </Nav.Item>
