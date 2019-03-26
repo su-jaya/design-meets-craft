@@ -66,6 +66,13 @@ class Home extends Component {
           </Row>
         </Container>
 
+        <Image
+          className="homezigzagDivider"
+          src="/images/DmC_homezigzagBorder.png"
+          alt="zig zag border"
+          fluid
+        />
+
         {/* Home Designer Stories Section */}
 
         {/* <div className="tbd">
