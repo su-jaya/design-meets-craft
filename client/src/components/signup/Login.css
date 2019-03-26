@@ -1,0 +1,27 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  /* padding: 3em 30em; */
+  justify-content: center;
+}
+
+.loginForm label {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.loginForm input,
+.loginForm textarea {
+  margin-top: 0;
+  margin-bottom: 1em;
+  border: 0.7px solid lightgrey;
+  border-radius: 4px;
+}
+
+.loginButton {
+  color: white;
+  background-color: #92b647;
+  padding: 0.5em;
+  border: none;
+}
