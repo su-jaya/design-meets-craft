@@ -21,9 +21,9 @@ const schema = mongoose.Schema({
   tagsDestination: [],
   capacity: String,
   lookingfor: String,
-  pictureName: String,
-  description: String,
-  imageUrl: String
+  brandLogo: String,
+  titleImage: String,
+  Gallery: Array
 });
 
 module.exports = mongoose.model("Designer", schema);
