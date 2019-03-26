@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import AuthService from "./auth-service";
 import { Link } from "react-router-dom";
+import Header from "../Header";
+import Navbar from "../NavBar";
+import Footer from "../Footer";
+import "./Login.css";
 
 class Login extends Component {
   constructor(props) {
@@ -31,7 +35,9 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
+        <Header />
+        <Navbar />
+        <form className="loginForm" onSubmit={this.handleFormSubmit}>
           <label>Email:</label>
           <input
             type="text"
@@ -46,12 +52,13 @@ class Login extends Component {
             onChange={e => this.handleChange(e)}
           />
 
-          <input type="submit" value="Login" />
+          <input className="loginButton" type="submit" value="Login" />
         </form>
         <p>
           Don't have account?
           <Link to={"/signup"}> Signup</Link>
         </p>
+        <Footer />
       </div>
     );
   }
