@@ -132,34 +132,39 @@ authRoutes.post("/signup/designer/aboutyou", (req, res) => {
 
 // NEEDS DESIGNER
 authRoutes.post("/signup/designer/needs", (req, res) => {
-  // let userId = req.body.loggedInUser._id;
-  console.log(req.session.passport.user);
+  let userId = req.user;
 
-  // let needs = {
-  //   tagsCategory: req.body.tagsCategory,
-  //   tagsMaterial: req.body.tagsMaterial,
-  //   tagsDestination: req.body.tagsDestination,
-  //   capacity: req.body.capacity,
-  //   lookingfor: req.body.lookingfor
-  // };
+  let needs = {
+    tagsCategory: req.body.tagsCategory,
+    tagsMaterial: req.body.tagsMaterial,
+    tagsDestination: req.body.tagsDestination,
+    capacity: req.body.capacity,
+    lookingfor: req.body.lookingfor
+  };
 
-  // Designer.findByIdAndUpdate(userId, needs)
-  //   .then(user => console.log(user))
-  //   .catch(err => console.log(err));
-  // res.status(200).json({ message: "no Error" });
+  Designer.findByIdAndUpdate(userId, needs)
+    .then(user => console.log(user))
+    .catch(err => console.log(err));
+  res.status(200).json({ message: "no Error" });
 });
 
 // UPLOAD DESIGNER
-// authRoutes.post(
-//   "/signup/designer/upload",
-//   uploader.single("imageUrl"),
-//   (req, res, next) => {
-//     if (!req.file) {
-//       next(new Error("No file uploaded!"));
-//       return;
-//     }
-//     res.json({ secure_url: req.file.secure_url });
-//   }
-// );
+authRoutes.post(
+  "/signup/designer/upload",
+  uploader.single("brandLogo"),
+  (req, res, next) => {
+    let userId = req.user._id;
+
+    Designer.findByIdAndUpdate(userId, { imageUrl: req.file.url })
+      .then(user => console.log(user))
+      .catch(err => console.log(err));
+
+    if (!req.file) {
+      next(new Error("No file uploaded!"));
+      return;
+    }
+    res.json({ secure_url: req.file.secure_url });
+  }
+);
 
 module.exports = authRoutes;

@@ -91,7 +91,9 @@ class Needs1 extends Component {
   submitHandler = event => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/auth/signup/designer/needs", this.state)
+      .post("http://localhost:5000/auth/signup/designer/needs", this.state, {
+        withCredentials: true
+      })
       .then(result => console.log(result))
       .catch(err => console.log(err));
   };
