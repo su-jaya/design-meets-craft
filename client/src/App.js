@@ -11,6 +11,7 @@ import Login from "./components/signup/Login";
 import Profile from "./components/profile/Profile";
 import Artisans from "./components/designers-artisans/Artisans";
 import Designers from "./components/designers-artisans/Designers";
+import Uploads from "./components/signup/Uploads";
 
 class App extends React.Component {
   state = {
@@ -79,6 +80,10 @@ class App extends React.Component {
             )}
           />
           <Route path="/login" component={Login} />
+          <Route
+            path="/upload"
+            render={props => <Uploads setUser={this.setTheUser} {...props} />}
+          />
 
           {/* path to be changed into /profile/designer/:id */}
           <Route
