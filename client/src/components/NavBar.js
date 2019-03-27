@@ -14,10 +14,10 @@ class NavBar extends Component {
             <Link to="/">Discover</Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Link to="#">Designers</Link>
+            <Link to="/designers">Designers</Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Link to="#">Artisans</Link>
+            <Link to="/artisans">Artisans</Link>
           </Nav.Item>
           <Nav.Item as="li">
             <Link to="/aboutus">About us</Link>

@@ -9,6 +9,8 @@ import AboutUs from "./components/about/AboutUs";
 import AuthService from "./components/signup/auth-service";
 import Login from "./components/signup/Login";
 import Profile from "./components/profile/Profile";
+import Artisans from "./components/designers-artisans/Artisans";
+import Designers from "./components/designers-artisans/Designers";
 import Uploads from "./components/signup/Uploads";
 
 class App extends React.Component {
@@ -88,6 +90,20 @@ class App extends React.Component {
             path="/profile"
             render={props => (
               <Profile userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
+
+          <Route
+            path="/designers"
+            render={props => (
+              <Designers userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
+
+          <Route
+            path="/artisans"
+            render={props => (
+              <Artisans userInSession={this.state.loggedInUser} {...props} />
             )}
           />
         </Switch>
