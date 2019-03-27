@@ -1,9 +1,11 @@
+.login {
+  padding: 3em 0;
+}
+
 .loginForm {
   display: flex;
   flex-direction: column;
   text-align: left;
-  /* padding: 3em 30em; */
-  justify-content: center;
 }
 
 .loginForm label {
@@ -24,4 +26,14 @@
   background-color: #92b647;
   padding: 0.5em;
   border: none;
+}
+
+.loginSignupButton {
+  color: black;
+  font-style: italic;
+}
+
+.loginSignupButton:hover {
+  color: #bea192;
+  text-decoration: none;
 }
