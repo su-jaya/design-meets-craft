@@ -5,6 +5,9 @@ import Header from "../Header";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
 import "./Login.css";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Login extends Component {
   constructor(props) {
@@ -37,27 +40,35 @@ class Login extends Component {
       <div>
         <Header />
         <Navbar />
-        <form className="loginForm" onSubmit={this.handleFormSubmit}>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Password:</label>
-          <textarea
-            name="password"
-            value={this.state.password}
-            onChange={e => this.handleChange(e)}
-          />
+        <Container className="login">
+          <Row>
+            <Col md={{ span: 4, offset: 4 }}>
+              <form className="loginForm" onSubmit={this.handleFormSubmit}>
+                <label>Email:</label>
+                <input
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  onChange={e => this.handleChange(e)}
+                />
+                <label>Password:</label>
+                <textarea
+                  name="password"
+                  value={this.state.password}
+                  onChange={e => this.handleChange(e)}
+                />
 
-          <input className="loginButton" type="submit" value="Login" />
-        </form>
-        <p>
-          Don't have account?
-          <Link to={"/signup"}> Signup</Link>
-        </p>
+                <input className="loginButton" type="submit" value="Login" />
+              </form>
+              <p>
+                Don't have an account yet?<span> </span>
+                <Link to={"/signup"} className="loginSignupButton">
+                  Signup
+                </Link>
+              </p>
+            </Col>
+          </Row>
+        </Container>
         <Footer />
       </div>
     );
