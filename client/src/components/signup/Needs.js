@@ -11,7 +11,7 @@ import Col from "react-bootstrap/Col";
 import Note from "./Note";
 import axios from "axios";
 
-class Needs1 extends Component {
+class Needs extends Component {
   state = {
     // Tagging for Category
     tagsCategory: [],
@@ -106,7 +106,7 @@ class Needs1 extends Component {
 
         {/*Process Bar */}
         <div>
-          <h1 className="registrationHeading">2/4: About You</h1>
+          <h1 className="registrationHeading">3/4: Specify your Needs</h1>
           <div className="registrationBarContainer">
             <div className="registrationBarComponent registrationBarInactive registrationBarMiddle" />
             <div className="registrationBarComponent registrationBarInactive registrationBarMiddle" />
@@ -268,4 +268,4 @@ class Needs1 extends Component {
   }
 }
 
-export default Needs1;
+export default Needs;
