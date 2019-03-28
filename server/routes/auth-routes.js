@@ -150,12 +150,11 @@ authRoutes.post("/signup/designer/needs", (req, res) => {
 
 // UPLOAD DESIGNER
 authRoutes.post(
-  "/signup/designer/upload",
+  "/signup/designer/upload/brandLogo",
   uploader.single("brandLogo"),
   (req, res, next) => {
     let userId = req.user._id;
-
-    Designer.findByIdAndUpdate(userId, { imageUrl: req.file.url })
+    Designer.findByIdAndUpdate(userId, { brandLogo: req.file.url })
       .then(user => console.log(user))
       .catch(err => console.log(err));
 
@@ -164,6 +163,42 @@ authRoutes.post(
       return;
     }
     res.json({ secure_url: req.file.secure_url });
+  }
+);
+
+authRoutes.post(
+  "/signup/designer/upload/titleImage",
+  uploader.single("titleImage"),
+  (req, res, next) => {
+    let userId = req.user._id;
+    Designer.findByIdAndUpdate(userId, { titleImage: req.file.url })
+      .then(user => console.log(user))
+      .catch(err => console.log(err));
+
+    if (!req.file) {
+      next(new Error("No file uploaded!"));
+      return;
+    }
+    res.json({ secure_url: req.file.secure_url });
+  }
+);
+
+authRoutes.post(
+  "/signup/designer/upload/gallery",
+  uploader.array("gallery", 6),
+  (req, res, next) => {
+    let galleryArr = req.files.map(e => e.url);
+
+    let userId = req.user._id;
+    Designer.findByIdAndUpdate(userId, { gallery: galleryArr })
+      .then(user => console.log(user))
+      .catch(err => console.log(err));
+
+    if (!req.files) {
+      next(new Error("No file uploaded!"));
+      return;
+    }
+    res.json({ secure_url: galleryArr });
   }
 );
 

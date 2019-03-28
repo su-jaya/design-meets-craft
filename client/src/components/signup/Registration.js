@@ -33,7 +33,6 @@ class Registration extends Component {
     this.service
       .signup(firstName, lastName, email, password, passwordConfirm)
       .then(response => {
-        console.log(response.message);
         this.setState({
           firstName: "",
           lastName: "",

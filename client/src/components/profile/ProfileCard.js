@@ -3,20 +3,19 @@ import "./Profile.css";
 
 class ProfileCard extends Component {
   render() {
+    let theUser = this.props;
     return (
       <div className="profileBox">
         <img
           className="profileAvatar"
-          src="./images/avatar_test.jpg"
+          src={theUser.brandLogo}
           alt="card avatar"
         />
-        <h1 className="profileBoxHeadline">Adam French</h1>
-        <p className="profileBoxSubtitle">Designer from France</p>
-        <p className="profileBoxDesc">
-          Hi, my name is Adam French. I'm a Paris based Fashion Designer. I
-          started my own brand called "The French Connection" in 2009. Lorem
-          ipsum dolor sit amet, consetetur sadipscing elitr.
-        </p>
+        <h1 className="profileBoxHeadline">
+          {`${theUser.firstName} ${theUser.lastName}`}
+        </h1>
+        <p className="profileBoxSubtitle">{theUser.position}</p>
+        <p className="profileBoxDesc">{theUser.youinasentence}</p>
         <div className="profileBoxLinks">
           <p>
             <img
