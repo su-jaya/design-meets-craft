@@ -27,7 +27,7 @@ class Login extends Component {
         this.props.getUser(response);
         console.log(response.message);
       })
-      .catch(error => console.log(error.response.data.message));
+      .catch(error => console.log(error));
   };
 
   handleChange = event => {

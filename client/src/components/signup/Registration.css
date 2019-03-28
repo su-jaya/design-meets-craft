@@ -220,3 +220,29 @@
   border: 0.7px solid lightgrey !important;
   border-radius: 4px !important;
 }
+
+/* Upload Page */
+
+.uploadContainer {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  padding: 1.4em 0;
+}
+
+.uploadContainer img {
+  width: 30%;
+  height: 30%;
+}
+
+.uploadContainer h3 {
+  font-weight: normal;
+}
+
+.uploadContainer p {
+  font-size: 0.9em;
+}
+
+.uploadContainerText {
+  padding: 0 1.5em;
+}
