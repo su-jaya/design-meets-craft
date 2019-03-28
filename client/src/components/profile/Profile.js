@@ -22,20 +22,9 @@ class Profile extends Component {
     tagNeeds: "",
     tagsDestination: [],
     tagDestination: "",
-    titleImage: "",
+    titleImage: "/images/default_title_imagine.jpg",
     gallery: []
   };
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      loggedInUser: nextProps["userInSession"],
-      tagsProfession: nextProps.userInSession.tagsCategory,
-      tagsNeeds: nextProps.userInSession.tagsMaterial,
-      tagsDestination: nextProps.userInSession.tagsDestination,
-      titleImage: nextProps.userInSession.titleImage,
-      gallery: nextProps.userInSession.gallery
-    });
-  }
 
   // Remove Tags
   handleChange(tags, changed, changedIdx, toChange) {
@@ -55,6 +44,9 @@ class Profile extends Component {
 
   render() {
     let theUser = this.props.userInSession;
+    if (!theUser) {
+      return <h1>Loading...</h1>;
+    }
     console.log(this.state);
     return (
       <div>
@@ -140,16 +132,16 @@ class Profile extends Component {
                 </div>
                 <TagsInput
                   id="profession"
-                  value={this.state.tagsProfession}
+                  value={this.props.userInSession.tagsCategory}
                   onChange={(tags, changed, changedIdx) =>
                     this.handleChange(tags, changed, changedIdx, "Profession")
                   }
-                  inputValue={this.state.tagProfession}
+                  inputValue={this.props.userInSession.tagsCategory}
                   onChangeInput={(tag, toChange) =>
                     this.onChangeInput(
                       tag,
                       "Profession",
-                      this.state.tagsProfession
+                      this.props.userInSession.tagsCategory
                     )
                   }
                 />

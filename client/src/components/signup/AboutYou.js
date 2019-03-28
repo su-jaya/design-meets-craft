@@ -20,7 +20,7 @@ class AboutYou1 extends Component {
     adress: "",
     city: "",
     zip: "",
-    country: "Germany",
+    country: "",
     telephone: "",
     languageDropdown: [1],
     language: [],
@@ -517,7 +517,6 @@ class AboutYou1 extends Component {
                           key={idx}
                           id={`language${idx}`}
                           onChange={event => this.changeHandler(event)}
-                          value="hello"
                         >
                           {languageDropdown}
                         </select>

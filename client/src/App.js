@@ -80,17 +80,17 @@ class App extends React.Component {
             )}
           />
           <Route path="/login" component={Login} />
-          <Route
-            path="/upload"
-            render={props => <Uploads setUser={this.setTheUser} {...props} />}
-          />
+          <Route path="/upload" render={props => <Uploads {...props} />} />
 
           {/* path to be changed into /profile/designer/:id */}
           <Route
             path="/profile"
-            render={props => (
-              <Profile userInSession={this.state.loggedInUser} {...props} />
-            )}
+            render={props => {
+              console.log("this.state", this.state);
+              return (
+                <Profile userInSession={this.state.loggedInUser} {...props} />
+              );
+            }}
           />
 
           <Route
