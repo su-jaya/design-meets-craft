@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 import Header from "../Header";
@@ -50,7 +50,8 @@ class Needs1 extends Component {
       "coffee"
     ],
     capacity: "",
-    lookingfor: ""
+    lookingfor: "",
+    redirect: false
   };
 
   // Remove Tags
@@ -94,7 +95,7 @@ class Needs1 extends Component {
       .post("http://localhost:5000/auth/signup/designer/needs", this.state, {
         withCredentials: true
       })
-      .then(result => console.log(result))
+      .then(() => this.setState({ redirect: true }))
       .catch(err => console.log(err));
   };
 
@@ -243,6 +244,7 @@ class Needs1 extends Component {
                   id="lookingfor"
                   onChange={event => this.changeHandler(event)}
                 />
+                {this.state.redirect ? <Redirect push to="/upload" /> : ""}
                 <div className="registrationNeedsButtons">
                   <Link to="/aboutyou">
                     <button className="registrationBackButton" type="button">

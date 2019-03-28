@@ -11,9 +11,51 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Footer from "../Footer";
+import TagsInput from "react-tagsinput";
 
 class Profile extends Component {
+  state = {
+    loggedInUser: null,
+    tagsProfession: [],
+    tagProfession: "",
+    tagsNeeds: [],
+    tagNeeds: "",
+    tagsDestination: [],
+    tagDestination: "",
+    titleImage: "",
+    gallery: []
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      loggedInUser: nextProps["userInSession"],
+      tagsProfession: nextProps.userInSession.tagsCategory,
+      tagsNeeds: nextProps.userInSession.tagsMaterial,
+      tagsDestination: nextProps.userInSession.tagsDestination,
+      titleImage: nextProps.userInSession.titleImage,
+      gallery: nextProps.userInSession.gallery
+    });
+  }
+
+  // Remove Tags
+  handleChange(tags, changed, changedIdx, toChange) {
+    let field = `tags${toChange}`;
+    this.setState({
+      [field]: tags
+    });
+  }
+
+  // Add Own Tag
+  onChangeInput(tag, toChange, tags) {
+    let field = `tag${toChange}`;
+    this.setState({
+      [field]: tag
+    });
+  }
+
   render() {
+    let theUser = this.props.userInSession;
+    console.log(this.state);
     return (
       <div>
         <Header
@@ -25,7 +67,7 @@ class Profile extends Component {
         {/* Banner */}
         <div className="profileBanner">
           <Image
-            src="/images/banner_test.png"
+            src={this.state.titleImage}
             alt="profile banner"
             className="w-100 center-block"
             height="400em"
@@ -34,7 +76,7 @@ class Profile extends Component {
 
         {/* Profile Box */}
         <div className="profileBoxPosition">
-          <ProfileCard />
+          <ProfileCard {...theUser} />
         </div>
 
         {/* Profile NavBar */}
@@ -96,7 +138,21 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                <p>tags tags tags tags tags tags tags tags tags</p>
+                <TagsInput
+                  id="profession"
+                  value={this.state.tagsProfession}
+                  onChange={(tags, changed, changedIdx) =>
+                    this.handleChange(tags, changed, changedIdx, "Profession")
+                  }
+                  inputValue={this.state.tagProfession}
+                  onChangeInput={(tag, toChange) =>
+                    this.onChangeInput(
+                      tag,
+                      "Profession",
+                      this.state.tagsProfession
+                    )
+                  }
+                />
               </div>
               <div className="homeDivider" />
               <div>
@@ -112,7 +168,17 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                <p>tags tags tags tags tags tags tags tags tags</p>
+                <TagsInput
+                  id="needs"
+                  value={this.state.tagsNeeds}
+                  onChange={(tags, changed, changedIdx) =>
+                    this.handleChange(tags, changed, changedIdx, "Needs")
+                  }
+                  inputValue={this.state.tagNeeds}
+                  onChangeInput={(tag, toChange) =>
+                    this.onChangeInput(tag, "Needs", this.state.tagsNeeds)
+                  }
+                />
               </div>
               <div className="homeDivider" />
               <div>
@@ -128,7 +194,21 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                <p>tags tags tags tags tags tags tags tags tags</p>
+                <TagsInput
+                  id="destination"
+                  value={this.state.tagsDestination}
+                  onChange={(tags, changed, changedIdx) =>
+                    this.handleChange(tags, changed, changedIdx, "Destination")
+                  }
+                  inputValue={this.state.tagDestination}
+                  onChangeInput={(tag, toChange) =>
+                    this.onChangeInput(
+                      tag,
+                      "Destination",
+                      this.state.tagsDestination
+                    )
+                  }
+                />
               </div>
               <div className="homeDivider" />
               <div>
@@ -145,14 +225,11 @@ class Profile extends Component {
                   </button>
                 </div>
                 <p className="profileEditText">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                  sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                  nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua.
+                  {!this.state.loggedInUser ? (
+                    <strong>Loading...</strong>
+                  ) : (
+                    this.state.loggedInUser.capacity
+                  )}
                 </p>
               </div>
               <div className="homeDivider" />
@@ -170,14 +247,11 @@ class Profile extends Component {
                   </button>
                 </div>
                 <p className="profileEditText">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                  sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                  nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua.
+                  {!this.state.loggedInUser ? (
+                    <strong>Loading..</strong>
+                  ) : (
+                    this.state.loggedInUser.lookingfor
+                  )}
                 </p>
               </div>
               <div className="homeDivider" />
@@ -194,7 +268,9 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                <p>images</p>
+                {this.state.gallery.map((e, idx) => (
+                  <img src={e} alt={idx} />
+                ))}
               </div>
             </Col>
             <Col />

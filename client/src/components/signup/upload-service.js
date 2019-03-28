@@ -13,9 +13,9 @@ const errorHandler = err => {
 export default {
   service,
 
-  handleUpload(theFile) {
+  handleUpload(theFile, typeOfPicture) {
     return service
-      .post("/signup/designer/upload", theFile)
+      .post(`/signup/designer/upload/${typeOfPicture}`, theFile)
       .then(res => res.data)
       .catch(errorHandler);
   }
