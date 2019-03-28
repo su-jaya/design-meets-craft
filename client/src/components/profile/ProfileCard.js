@@ -8,7 +8,11 @@ class ProfileCard extends Component {
       <div className="profileBox">
         <img
           className="profileAvatar"
-          src={theUser.brandLogo}
+          src={
+            theUser.brandLogo === undefined
+              ? "images/default_brandLogo.jpg"
+              : theUser.brandLogo
+          }
           alt="card avatar"
         />
         <h1 className="profileBoxHeadline">
