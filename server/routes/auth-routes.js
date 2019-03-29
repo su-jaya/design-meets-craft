@@ -9,12 +9,13 @@ const uploader = require("../cloudinary");
 
 // SIGN UP DESIGNER
 
-authRoutes.post("/signup/designer", (req, res, next) => {
+authRoutes.post("/signup", (req, res, next) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
   const passwordConfirm = req.body.passwordConfirm;
+  const role = req.body.role;
 
   if (password != passwordConfirm) {
     res.status(400).json({
@@ -38,7 +39,8 @@ authRoutes.post("/signup/designer", (req, res, next) => {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: hashPass
+      password: hashPass,
+      role: role
     });
 
     aNewUser.save(err => {
@@ -68,21 +70,21 @@ authRoutes.post("/login/designer", (req, res, next) => {
       console.log(err);
       res
         .status(500)
-        .json({ message: "Something went wrong authenticating user" });
+        .json({ message: "Something went wrong. Please try again" });
       return;
     }
 
     if (!theUser) {
-      // "failureDetails" contains the error messages
-      // from our logic in "LocalStrategy" { message: '...' }.
-      res.status(401).json(failureDetails);
+      res.status(401).json({ message: `wrong email or password` });
       return;
     }
 
     // save user in session
     req.login(theUser, err => {
       if (err) {
-        res.status(500).json({ message: "Session save went bad." });
+        res
+          .status(500)
+          .json({ message: "Something went wrong. Please try again" });
         return;
       }
 
@@ -165,6 +167,8 @@ authRoutes.post(
     res.json({ secure_url: req.file.secure_url });
   }
 );
+
+// upload/w_300,h_300,c_thumb,g_face
 
 authRoutes.post(
   "/signup/designer/upload/titleImage",

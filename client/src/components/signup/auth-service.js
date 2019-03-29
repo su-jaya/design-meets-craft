@@ -9,14 +9,15 @@ class AuthService {
     this.service = service;
   }
 
-  signup = (firstName, lastName, email, password, passwordConfirm) => {
+  signup = (firstName, lastName, email, password, passwordConfirm, role) => {
     return this.service
-      .post("/signup/designer", {
+      .post("/signup", {
         firstName,
         lastName,
         email,
         password,
-        passwordConfirm
+        passwordConfirm,
+        role
       })
       .then(response => response.data);
   };

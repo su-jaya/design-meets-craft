@@ -6,8 +6,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AuthService from "./auth-service";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Note from "./Note";
+import queryString from "query-string";
 
 class Registration extends Component {
   state = {
@@ -29,9 +30,17 @@ class Registration extends Component {
     const email = this.state.email;
     const password = this.state.password;
     const passwordConfirm = this.state.passwordConfirm;
+    const role = Object.values(
+      queryString.parse(this.props.location.search)
+    )[0];
+
+    if (role === undefined) {
+      this.setState({ message: "please select a profession" });
+      return;
+    }
 
     this.service
-      .signup(firstName, lastName, email, password, passwordConfirm)
+      .signup(firstName, lastName, email, password, passwordConfirm, role)
       .then(response => {
         this.setState({
           firstName: "",
@@ -83,21 +92,52 @@ class Registration extends Component {
 
               {/*Profession Boxes*/}
               <Container className="registrationProfession">
-                <Col md={6} className="registrationProfessionBox designer">
-                  <h3 className="registrationProfessionHeadline">Designer</h3>
-                  <p className="registrationSmallText">
-                    Fashion ipsum dolor sit amet, consetetur
-                  </p>
-                </Col>
+                <Link
+                  to="/signup?role=designer"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Col
+                    md={6}
+                    style={
+                      Object.values(
+                        queryString.parse(this.props.location.search)
+                      )[0] === "designer"
+                        ? { backgroundColor: "#d4b5aa" }
+                        : { backgroundColor: "white" }
+                    }
+                    className="registrationProfessionBox designer"
+                  >
+                    <h3 className="registrationProfessionHeadline">Designer</h3>
+                    <p className="registrationSmallText">
+                      Fashion ipsum dolor sit amet, consetetur
+                    </p>
+                  </Col>
+                </Link>
+                ´{" "}
                 <Col className="registrationOr">
                   <p>or</p>
                 </Col>
-                <Col md={6} className="registrationProfessionBox artisan">
-                  <h3 className="registrationProfessionHeadline">Artisan</h3>
-                  <p className="registrationSmallText">
-                    Fashion ipsum dolor sit amet, consetetur
-                  </p>
-                </Col>
+                <Link
+                  to="/signup?role=artisan"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Col
+                    md={6}
+                    style={
+                      Object.values(
+                        queryString.parse(this.props.location.search)
+                      )[0] === "artisan"
+                        ? { backgroundColor: "#edeeca" }
+                        : { backgroundColor: "white" }
+                    }
+                    className="registrationProfessionBox artisan"
+                  >
+                    <h3 className="registrationProfessionHeadline">Artisan</h3>
+                    <p className="registrationSmallText">
+                      Fashion ipsum dolor sit amet, consetetur
+                    </p>
+                  </Col>
+                </Link>
               </Container>
 
               {/*Create your account*/}

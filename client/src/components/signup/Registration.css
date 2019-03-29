@@ -246,3 +246,12 @@
 .uploadContainerText {
   padding: 0 1.5em;
 }
+
+/* Spinner */
+#spinner {
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  margin-left: 3.5em;
+  margin-top: 3.5em;
+}

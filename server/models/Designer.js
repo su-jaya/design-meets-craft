@@ -23,7 +23,8 @@ const schema = mongoose.Schema({
   lookingfor: String,
   brandLogo: String,
   titleImage: String,
-  gallery: Array
+  gallery: Array,
+  role: String
 });
 
 module.exports = mongoose.model("Designer", schema);

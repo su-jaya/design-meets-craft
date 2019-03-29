@@ -14,7 +14,8 @@ class Uploads extends Component {
     brandLogo: "",
     titleImage: "",
     gallery: "",
-    errorMessage: ""
+    errorMessage: "",
+    spinner: false
   };
 
   handleFileUpload = (e, typeOfPicture) => {
@@ -24,10 +25,15 @@ class Uploads extends Component {
     for (var i = 0; i < e.target.files.length; i++) {
       uploadData.append(typeOfPicture, e.target.files[i]);
     }
+
+    this.setState({
+      spinner: typeOfPicture
+    });
+
     service
       .handleUpload(uploadData, typeOfPicture)
       .then(response => {
-        this.setState({ [typeOfPicture]: response.secure_url });
+        this.setState({ [typeOfPicture]: response.secure_url, spinner: false });
       })
       .catch(err => {
         this.setState({
@@ -69,6 +75,11 @@ class Uploads extends Component {
               <form onSubmit={e => this.handleSubmit(e)}>
                 {/* BRANDLOGO */}
                 <div className="uploadContainer">
+                  {this.state.spinner === "brandLogo" ? (
+                    <img src="/images/spinner.gif" id="spinner" alt="spinner" />
+                  ) : (
+                    ""
+                  )}
                   {this.state.brandLogo === "" ? (
                     <img src="/images/no_brand.png" alt="brandLogo" />
                   ) : (
@@ -93,6 +104,11 @@ class Uploads extends Component {
                 {/* TITLE IMAGE */}
 
                 <div className="uploadContainer">
+                  {this.state.spinner === "titleImage" ? (
+                    <img src="/images/spinner.gif" id="spinner" alt="spinner" />
+                  ) : (
+                    ""
+                  )}
                   {this.state.titleImage === "" ? (
                     <img src="/images/no_brand.png" alt="titleImage" />
                   ) : (
@@ -116,6 +132,11 @@ class Uploads extends Component {
 
                 {/* GALLERY */}
                 <div className="uploadContainer">
+                  {this.state.spinner === "gallery" ? (
+                    <img src="/images/spinner.gif" alt="spinner" id="spinner" />
+                  ) : (
+                    ""
+                  )}
                   {this.state.gallery === "" ? (
                     <img src="/images/no_brand.png" alt="gallery" />
                   ) : (
