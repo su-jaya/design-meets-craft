@@ -115,10 +115,10 @@ app.use(
   })
 );
 
-const authRoutes = require("./routes/auth-routes");
-app.use("/auth", authRoutes);
-
 const index = require("./routes/index");
 app.use("/", index);
+
+const authRoutes = require("./routes/auth-routes");
+app.use("/auth", authRoutes);
 
 module.exports = app;

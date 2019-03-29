@@ -12,6 +12,7 @@ import Profile from "./components/profile/Profile";
 import Artisans from "./components/designers-artisans/Artisans";
 import Designers from "./components/designers-artisans/Designers";
 import Uploads from "./components/signup/Uploads";
+import EditProfile from "./components/profile/EditProfile";
 
 class App extends React.Component {
   state = {
@@ -79,14 +80,24 @@ class App extends React.Component {
               <AboutUs userInSession={this.state.loggedInUser} {...props} />
             )}
           />
-          <Route path="/login" component={Login} />
           <Route path="/upload" render={props => <Uploads {...props} />} />
+
+          <Route
+            path="/login"
+            userInSession={this.state.loggedInUser}
+            component={Login}
+          />
+          <Route
+            path="/editprofile"
+            render={props => (
+              <EditProfile userInSession={this.state.loggedInUser} {...props} />
+            )}
+          />
 
           {/* path to be changed into /profile/designer/:id */}
           <Route
             path="/profile"
             render={props => {
-              console.log("this.state", this.state);
               return (
                 <Profile userInSession={this.state.loggedInUser} {...props} />
               );

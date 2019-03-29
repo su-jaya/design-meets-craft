@@ -118,3 +118,16 @@
   background: #f3f3f3;
   padding: 1.2em;
 }
+
+.viewTagsOnly input {
+  visibility: hidden;
+}
+
+.viewTagsOnly a {
+  visibility: hidden;
+}
+
+.viewTagsOnly span {
+  display: flex;
+  margin-left: 2%;
+}

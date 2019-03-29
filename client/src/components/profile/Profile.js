@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import ProfileCard from "./ProfileCard";
-import Card from "../Card";
+import Card from "../CardD";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -15,39 +15,17 @@ import TagsInput from "react-tagsinput";
 
 class Profile extends Component {
   state = {
-    loggedInUser: null,
-    tagsProfession: [],
-    tagProfession: "",
-    tagsNeeds: [],
-    tagNeeds: "",
-    tagsDestination: [],
-    tagDestination: "",
     titleImage: "/images/default_title_imagine.jpg",
     gallery: []
   };
 
-  // Remove Tags
-  handleChange(tags, changed, changedIdx, toChange) {
-    let field = `tags${toChange}`;
-    this.setState({
-      [field]: tags
-    });
-  }
-
-  // Add Own Tag
-  onChangeInput(tag, toChange, tags) {
-    let field = `tag${toChange}`;
-    this.setState({
-      [field]: tag
-    });
-  }
-
   render() {
     let theUser = this.props.userInSession;
+
     if (!theUser) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state);
+
     return (
       <div>
         <Header
@@ -59,7 +37,11 @@ class Profile extends Component {
         {/* Banner */}
         <div className="profileBanner">
           <Image
-            src={this.state.titleImage}
+            src={
+              theUser.titleImage === undefined
+                ? this.state.titleImage
+                : theUser.titleImage
+            }
             alt="profile banner"
             className="w-100 center-block"
             height="400em"
@@ -92,7 +74,11 @@ class Profile extends Component {
         </div>
 
         <div>
-          <p>tags tags tags tags tags tags tags tags tags</p>
+          <TagsInput
+            className="suggestedTags viewTagsOnly"
+            id="profession"
+            value={theUser.tagsCategory}
+          />
         </div>
 
         <Container className="homeDesignersContainer" fluid={true}>
@@ -131,19 +117,9 @@ class Profile extends Component {
                   </button>
                 </div>
                 <TagsInput
+                  className="suggestedTags viewTagsOnly"
                   id="profession"
-                  value={this.props.userInSession.tagsCategory}
-                  onChange={(tags, changed, changedIdx) =>
-                    this.handleChange(tags, changed, changedIdx, "Profession")
-                  }
-                  inputValue={this.props.userInSession.tagsCategory}
-                  onChangeInput={(tag, toChange) =>
-                    this.onChangeInput(
-                      tag,
-                      "Profession",
-                      this.props.userInSession.tagsCategory
-                    )
-                  }
+                  value={theUser.tagsCategory}
                 />
               </div>
               <div className="homeDivider" />
@@ -161,15 +137,9 @@ class Profile extends Component {
                   </button>
                 </div>
                 <TagsInput
+                  className="suggestedTags viewTagsOnly"
                   id="needs"
-                  value={this.state.tagsNeeds}
-                  onChange={(tags, changed, changedIdx) =>
-                    this.handleChange(tags, changed, changedIdx, "Needs")
-                  }
-                  inputValue={this.state.tagNeeds}
-                  onChangeInput={(tag, toChange) =>
-                    this.onChangeInput(tag, "Needs", this.state.tagsNeeds)
-                  }
+                  value={theUser.tagsMaterial}
                 />
               </div>
               <div className="homeDivider" />
@@ -187,19 +157,9 @@ class Profile extends Component {
                   </button>
                 </div>
                 <TagsInput
+                  className="suggestedTags viewTagsOnly"
                   id="destination"
-                  value={this.state.tagsDestination}
-                  onChange={(tags, changed, changedIdx) =>
-                    this.handleChange(tags, changed, changedIdx, "Destination")
-                  }
-                  inputValue={this.state.tagDestination}
-                  onChangeInput={(tag, toChange) =>
-                    this.onChangeInput(
-                      tag,
-                      "Destination",
-                      this.state.tagsDestination
-                    )
-                  }
+                  value={theUser.tagsDestination}
                 />
               </div>
               <div className="homeDivider" />
@@ -216,13 +176,7 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                <p className="profileEditText">
-                  {!this.state.loggedInUser ? (
-                    <strong>Loading...</strong>
-                  ) : (
-                    this.state.loggedInUser.capacity
-                  )}
-                </p>
+                <p className="profileEditText">{theUser.capacity}</p>
               </div>
               <div className="homeDivider" />
               <div>
@@ -238,13 +192,7 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                <p className="profileEditText">
-                  {!this.state.loggedInUser ? (
-                    <strong>Loading..</strong>
-                  ) : (
-                    this.state.loggedInUser.lookingfor
-                  )}
-                </p>
+                <p className="profileEditText">{theUser.lookingfor}</p>
               </div>
               <div className="homeDivider" />
               <div>

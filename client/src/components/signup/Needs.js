@@ -65,6 +65,7 @@ class Needs extends Component {
   // Add Own Tag
   onChangeInput(tag, toChange, tags) {
     let field = `tag${toChange}`;
+
     this.setState({
       [field]: tag
     });
@@ -91,8 +92,17 @@ class Needs extends Component {
 
   submitHandler = event => {
     event.preventDefault();
+
+    let object = {
+      tagsCategory: [...new Set(this.state.tagsCategory)],
+      tagsMaterial: [...new Set(this.state.tagsMaterial)],
+      tagsDestination: [...new Set(this.state.tagsDestination)],
+      capacity: this.state.capacity,
+      lookingfor: this.state.lookingfor
+    };
+
     axios
-      .post("http://localhost:5000/auth/signup/designer/needs", this.state, {
+      .post("http://localhost:5000/auth/signup/designer/needs", object, {
         withCredentials: true
       })
       .then(() => this.setState({ redirect: true }))
@@ -103,7 +113,6 @@ class Needs extends Component {
     return (
       <div>
         <Header url={this.props.match.url} />
-
         {/*Process Bar */}
         <div>
           <h1 className="registrationHeading">3/4: Specify your Needs</h1>

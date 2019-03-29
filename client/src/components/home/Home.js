@@ -8,9 +8,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
-import Card from "../Card";
+import CardD from "../CardD";
+// import axios from "axios";
 
 class Home extends Component {
+  // componentDidMount() {
+  //   axios
+  //     .get("http://localhost:5000/getDesigners")
+  //     .then(users => console.log(users))
+  //     .catch(err => console.log(err));
+  // }
+
   render() {
     return (
       <div>
@@ -29,12 +37,14 @@ class Home extends Component {
             craft businesses.
           </h2>
           <div>
-            <Link to="/signup">
+            <Link to="/signup?role=designer">
               <button className="homeSliderButton">DESIGNER</button>
             </Link>
 
             <span className="homeSliderOr"> or </span>
-            <button className="homeSliderButton">ARTISAN</button>
+            <Link to="/signup?role=artisan">
+              <button className="homeSliderButton">ARTISAN</button>
+            </Link>
           </div>
         </div>
 
@@ -81,7 +91,6 @@ class Home extends Component {
         </div> */}
 
         {/* Home Designers Section */}
-
         <div>
           <div className="homeDesignerHeadline">
             <h1>Designers</h1>
@@ -90,16 +99,16 @@ class Home extends Component {
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineDesigner" />
+                <CardD class="cardHeadlineDesigner" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineDesigner" />
+                <CardD class="cardHeadlineDesigner" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineDesigner" />
+                <CardD class="cardHeadlineDesigner" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineDesigner" />
+                <CardD class="cardHeadlineDesigner" />
               </Col>
             </Row>
           </Container>
@@ -115,16 +124,16 @@ class Home extends Component {
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineArtisan" />
+                <CardD class="cardHeadlineArtisan" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineArtisan" />
+                <CardD class="cardHeadlineArtisan" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineArtisan" />
+                <CardD class="cardHeadlineArtisan" />
               </Col>
               <Col className="homeDesignersColumn mx-auto">
-                <Card class="cardHeadlineArtisan" />
+                <CardD class="cardHeadlineArtisan" />
               </Col>
             </Row>
           </Container>

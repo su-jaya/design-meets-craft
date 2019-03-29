@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Header from "../Header";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
@@ -7,7 +6,7 @@ import "./Designers-Artisans.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "../Card";
+import Card from "../CardD";
 
 class Artisans extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "./auth-service";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Header from "../Header";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
@@ -12,7 +12,7 @@ import Col from "react-bootstrap/Col";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "" };
+    this.state = { email: "", password: "", error: "" };
     this.service = new AuthService();
   }
 
@@ -23,18 +23,26 @@ class Login extends Component {
     this.service
       .login(email, password)
       .then(response => {
-        this.setState({ email: "", password: "" });
-        this.props.getUser(response);
-        console.log(response.message);
+        this.setState({
+          email: "",
+          password: "",
+          error: "no Error"
+        });
+        // this.props.getUser(response);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log("native" + error);
+        this.setState({
+          email: "",
+          password: "",
+          error: error.response.data.message
+        });
+      });
   };
-
-  // .response.data.message
 
   handleChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, error: "" });
   };
 
   render() {
@@ -43,19 +51,31 @@ class Login extends Component {
         <Header />
         <Navbar />
         <Container className="login">
+          {this.state.error === "no Error" ? (
+            <Redirect
+              to={{
+                pathname: "/profile",
+                userInSession: this.state.userInSession
+              }}
+            />
+          ) : (
+            this.state.error
+          )}
           <Row>
             <Col md={{ span: 4, offset: 4 }}>
               <form className="loginForm" onSubmit={this.handleFormSubmit}>
                 <label>Email:</label>
                 <input
-                  type="text"
+                  required
+                  type="email"
                   name="email"
                   value={this.state.email}
                   onChange={e => this.handleChange(e)}
                 />
                 <label>Password:</label>
-                <textarea
+                <input
                   name="password"
+                  type="password"
                   value={this.state.password}
                   onChange={e => this.handleChange(e)}
                 />
