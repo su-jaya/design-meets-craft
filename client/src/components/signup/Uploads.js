@@ -117,7 +117,17 @@ class Uploads extends Component {
                 {/* GALLERY */}
                 <div className="uploadContainer">
                   {this.state.gallery === "" ? (
-                    <img src="/images/no_brand.png" alt="gallery" />
+                    <div>
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                      <img src="/images/no_brand.png" alt="gallery" />
+                    </div>
                   ) : (
                     this.state.gallery.map((e, idx) => (
                       <img src={e} alt={`gallery${idx}`} />
