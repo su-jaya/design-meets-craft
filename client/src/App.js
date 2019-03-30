@@ -46,6 +46,7 @@ class App extends React.Component {
 
   render() {
     this.fetchUser();
+
     return (
       <div className="App">
         <Switch>
@@ -68,24 +69,13 @@ class App extends React.Component {
               <AboutYou userInSession={this.state.loggedInUser} {...props} />
             )}
           />
-          <Route
-            path="/needs"
-            render={props => (
-              <Needs userInSession={this.state.loggedInUser} {...props} />
-            )}
-          />
-          <Route
-            path="/aboutus"
-            render={props => (
-              <AboutUs userInSession={this.state.loggedInUser} {...props} />
-            )}
-          />
+          <Route path="/needs" render={props => <Needs {...props} />} />
+          <Route path="/aboutus" render={props => <AboutUs {...props} />} />
           <Route path="/upload" render={props => <Uploads {...props} />} />
 
           <Route
             path="/login"
-            userInSession={this.state.loggedInUser}
-            component={Login}
+            render={props => <Login setUser={this.setTheUser} />}
           />
           <Route
             path="/editprofile"
@@ -94,12 +84,19 @@ class App extends React.Component {
             )}
           />
 
-          {/* path to be changed into /profile/designer/:id */}
           <Route
             path="/profile"
             render={props => {
+              // this is just so we wait for LOGGED IN users until the user object was returned from the BE
+              // this is not to redirect loggedout users (bc then it will not work for logged in users anymore)
+              if (!this.state.loggedInUser) {
+                return <h1>Loading...</h1>;
+              }
               return (
-                <Profile userInSession={this.state.loggedInUser} {...props} />
+                <Profile
+                  userInSession={this.state.loggedInUser}
+                  setUser={this.setTheUser}
+                />
               );
             }}
           />

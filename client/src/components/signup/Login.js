@@ -28,7 +28,7 @@ class Login extends Component {
           password: "",
           error: "no Error"
         });
-        // this.props.getUser(response);
+        this.props.setUser(response);
       })
       .catch(error => {
         console.log("native" + error);
@@ -54,8 +54,7 @@ class Login extends Component {
           {this.state.error === "no Error" ? (
             <Redirect
               to={{
-                pathname: "/profile",
-                userInSession: this.state.userInSession
+                pathname: "/profile"
               }}
             />
           ) : (
