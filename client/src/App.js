@@ -54,7 +54,13 @@ class App extends React.Component {
             exact
             path="/"
             render={props => (
-              <Home userInSession={this.state.loggedInUser} {...props} />
+              <Home
+                userInSession={this.state.loggedInUser}
+                {...props}
+                // key={
+                //   this.state.loggedInUser ? this.state.loggedInUser._id : "0"
+                // }
+              />
             )}
           />
           <Route
@@ -79,7 +85,6 @@ class App extends React.Component {
             )}
           />
           <Route path="/upload" render={props => <Uploads {...props} />} />
-
 
           <Route
             path="/login"

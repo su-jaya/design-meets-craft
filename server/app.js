@@ -17,7 +17,7 @@ const Designer = require("./models/Designer.js");
 const MongoStore = require("connect-mongo")(session);
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/server", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
   })
   .then(x => {

@@ -33,25 +33,23 @@ class Home extends Component {
   }
 
   render() {
-    // let theUser = this.props.userInSession;
-    // if (!theUser) {
-    //   return "Loading...";
-    // }
+    console.log(this.state.designers);
 
     let homeslidersection;
     if (this.props.userInSession) {
-      // if (this.props.userInSession.role === "designer") {
-      homeslidersection = (
-        <div className="homeSliderBackgroundLoggedIn">
-          <HomeLoggedInContainer designer />
-        </div>
-      );
-      // } else if (this.props.userInSession.role === "artisan") {
-      //   homeslidersection = (
-      //     <div className="homeSliderBackgroundLoggedIn">
-      //       <HomeLoggedInContainer artisan />
-      //     </div>
-      //   );
+      if (this.props.userInSession.role === "designer") {
+        homeslidersection = (
+          <div className="homeSliderBackgroundLoggedIn">
+            <HomeLoggedInContainer designer />
+          </div>
+        );
+      } else if (this.props.userInSession.role === "artisan") {
+        homeslidersection = (
+          <div className="homeSliderBackgroundLoggedIn">
+            <HomeLoggedInContainer artisan />
+          </div>
+        );
+      }
     } else {
       homeslidersection = (
         <div className="homeSliderBackground">
