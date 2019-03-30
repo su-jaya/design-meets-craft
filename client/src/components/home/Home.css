@@ -11,6 +11,50 @@
   color: white;
 }
 
+.homeSliderBackgroundLoggedIn {
+  background-image: url("/images/DmC_loggedinslider.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 34.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.homeLoggedInContainer {
+  background-image: url("/images/DmC_homeslidercont.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 22em;
+  width: 42em;
+  margin-left: 3em;
+  text-align: left;
+  padding: 1em 3em;
+}
+
+.homeLoggedInContainer h2 {
+  font-family: "Olympic Branding";
+  font-size: 6em;
+  margin-bottom: 0;
+  color: black;
+}
+
+.homeLoggedInContainer p {
+  color: black;
+  padding: 1em 0;
+}
+
+.homeLoggedInContainer button {
+  background: black;
+  color: white;
+  font-size: 1em;
+  margin: 0.5em;
+  padding: 0.5em;
+  cursor: pointer;
+  border: none;
+}
+
 .homeSliderBackground h1 {
   font-size: 3em;
   font-weight: normal;
