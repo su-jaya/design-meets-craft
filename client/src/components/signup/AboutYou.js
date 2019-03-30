@@ -50,7 +50,11 @@ class AboutYou1 extends Component {
   submitHandler = event => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/auth/signup/designer/aboutyou", this.state)
+      .post(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          "/auth/signup/designer/aboutyou",
+        this.state
+      )
       .then(response => {
         this.setState({
           youinasentence: "",
@@ -94,7 +98,7 @@ class AboutYou1 extends Component {
 
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header button="none" />
 
         {this.state.successMessage === "no Error" ? (
           <Redirect push to="/needs" />

@@ -102,9 +102,14 @@ class Needs extends Component {
     };
 
     axios
-      .post("http://localhost:5000/auth/signup/designer/needs", object, {
-        withCredentials: true
-      })
+      .post(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          "/auth/signup/designer/needs",
+        object,
+        {
+          withCredentials: true
+        }
+      )
       .then(() => this.setState({ redirect: true }))
       .catch(err => console.log(err));
   };
@@ -112,7 +117,7 @@ class Needs extends Component {
   render() {
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header button="none" />
         {/*Process Bar */}
         <div>
           <h1 className="registrationHeading">3/4: Specify your Needs</h1>

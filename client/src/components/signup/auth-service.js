@@ -3,7 +3,7 @@ import axios from "axios";
 class AuthService {
   constructor() {
     let service = axios.create({
-      baseURL: "http://localhost:5000/auth",
+      baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000",
       withCredentials: true
     });
     this.service = service;
@@ -11,7 +11,7 @@ class AuthService {
 
   signup = (firstName, lastName, email, password, passwordConfirm, role) => {
     return this.service
-      .post("/signup", {
+      .post("/auth/signup", {
         firstName,
         lastName,
         email,
@@ -23,17 +23,19 @@ class AuthService {
   };
 
   loggedin = () => {
-    return this.service.get("/loggedin").then(response => response.data);
+    return this.service.get("/auth/loggedin").then(response => response.data);
   };
 
   login = (email, password) => {
     return this.service
-      .post("/login/designer", { email, password })
+      .post("/auth/login/designer", { email, password })
       .then(response => response.data);
   };
 
   logout = () => {
-    return this.service.post("/logout", {}).then(response => response.data);
+    return this.service
+      .post("/auth/logout", {})
+      .then(response => response.data);
   };
 }
 
