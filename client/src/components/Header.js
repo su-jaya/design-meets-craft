@@ -6,7 +6,6 @@ import "./Header.css";
 class Header extends Component {
   render() {
     let authButtonStatus;
-    // console.log(this.props.loggedIn);
     if (this.props.loggedIn) {
       authButtonStatus = "loggedIn";
     } else if (this.props.button === "cancel") {
