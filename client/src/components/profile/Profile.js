@@ -12,6 +12,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Footer from "../Footer";
 import TagsInput from "react-tagsinput";
+import { withRouter } from "react-router";
 
 class Profile extends Component {
   state = {
@@ -21,10 +22,6 @@ class Profile extends Component {
 
   render() {
     let theUser = this.props.userInSession;
-
-    if (!theUser) {
-      return <h1>Loading...</h1>;
-    }
 
     return (
       <div>
@@ -222,4 +219,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);
