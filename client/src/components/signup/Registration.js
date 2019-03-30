@@ -94,44 +94,57 @@ class Registration extends Component {
               <Container className="registrationProfession">
                 <Link
                   to="/signup?role=designer"
-                  style={{ textDecoration: "none" }}
+                  className="registrationProfessionLink"
+                  style={
+                    Object.values(
+                      queryString.parse(this.props.location.search)
+                    )[0] === "designer"
+                      ? { backgroundColor: "#d4b5aa" }
+                      : { backgroundColor: "white" }
+                  }
                 >
-                  <Col
-                    md={6}
-                    style={
-                      Object.values(
-                        queryString.parse(this.props.location.search)
-                      )[0] === "designer"
-                        ? { backgroundColor: "#d4b5aa" }
-                        : { backgroundColor: "white" }
-                    }
-                    className="registrationProfessionBox designer"
-                  >
-                    <h3 className="registrationProfessionHeadline">Designer</h3>
-                    <p className="registrationSmallText">
+                  <Col className="registrationProfessionBox designer">
+                    <h3
+                      className="registrationProfessionHeadline"
+                      style={
+                        Object.values(
+                          queryString.parse(this.props.location.search)
+                        )[0] === "designer"
+                          ? { color: "white" }
+                          : { backgroundColor: "white" }
+                      }
+                    >
+                      Designer
+                    </h3>
+                    <p
+                      className="registrationSmallText"
+                      style={
+                        Object.values(
+                          queryString.parse(this.props.location.search)
+                        )[0] === "designer"
+                          ? { color: "white" }
+                          : { backgroundColor: "white" }
+                      }
+                    >
                       Fashion ipsum dolor sit amet, consetetur
                     </p>
                   </Col>
                 </Link>
-                ´{" "}
                 <Col className="registrationOr">
                   <p>or</p>
                 </Col>
                 <Link
                   to="/signup?role=artisan"
-                  style={{ textDecoration: "none" }}
+                  className="registrationProfessionLink"
+                  style={
+                    Object.values(
+                      queryString.parse(this.props.location.search)
+                    )[0] === "artisan"
+                      ? { backgroundColor: "#edeeca" }
+                      : { backgroundColor: "white" }
+                  }
                 >
-                  <Col
-                    md={6}
-                    style={
-                      Object.values(
-                        queryString.parse(this.props.location.search)
-                      )[0] === "artisan"
-                        ? { backgroundColor: "#edeeca" }
-                        : { backgroundColor: "white" }
-                    }
-                    className="registrationProfessionBox artisan"
-                  >
+                  <Col className="registrationProfessionBox artisan">
                     <h3 className="registrationProfessionHeadline">Artisan</h3>
                     <p className="registrationSmallText">
                       Fashion ipsum dolor sit amet, consetetur

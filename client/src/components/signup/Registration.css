@@ -69,6 +69,10 @@
   padding: 1.2em 1.2em;
 }
 
+.registrationProfessionLink:hover {
+  text-decoration: none;
+}
+
 .registrationProfessionBox.designer {
   border: 2px solid #d4b5aa;
 }
@@ -79,6 +83,7 @@
 
 .registrationProfessionHeadline {
   font-weight: 300;
+  color: black;
 }
 
 .registrationSmallText {
