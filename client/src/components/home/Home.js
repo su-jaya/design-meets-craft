@@ -9,16 +9,28 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import CardD from "../CardD";
+import axios from "axios";
 import HomeLoggedInContainer from "./HomeLoggedInContainer";
-// import axios from "axios";
 
 class Home extends Component {
-  // componentDidMount() {
-  //   axios
-  //     .get("http://localhost:5000/getDesigners")
-  //     .then(users => console.log(users))
-  //     .catch(err => console.log(err));
-  // }
+  state = {
+    designers: [],
+    artisans: []
+  };
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/get/designer")
+      .then(designers => this.setState({ designers: designers.data }))
+      .catch(err => console.log(err));
+
+    axios
+      .get("http://localhost:5000/get/artisan")
+      .then(artisan => {
+        return this.setState({ artisans: artisan.data });
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
     // let theUser = this.props.userInSession;
@@ -121,18 +133,13 @@ class Home extends Component {
           </div>
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineDesigner" />
-              </Col>
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineDesigner" />
-              </Col>
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineDesigner" />
-              </Col>
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineDesigner" />
-              </Col>
+              {this.state.designers.map((e, idx) => {
+                return (
+                  <Col key={idx} className="homeDesignersColumn mx-auto">
+                    <CardD theUser={e} class="cardHeadlineDesigner" />
+                  </Col>
+                );
+              })}
             </Row>
           </Container>
         </div>
@@ -146,18 +153,13 @@ class Home extends Component {
           </div>
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineArtisan" />
-              </Col>
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineArtisan" />
-              </Col>
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineArtisan" />
-              </Col>
-              <Col className="homeDesignersColumn mx-auto">
-                <CardD class="cardHeadlineArtisan" />
-              </Col>
+              {this.state.artisans.map((e, idx) => {
+                return (
+                  <Col key={idx} className="homeDesignersColumn mx-auto">
+                    <CardD theUser={e} class="cardHeadlineArtisan" />
+                  </Col>
+                );
+              })}
             </Row>
           </Container>
         </div>

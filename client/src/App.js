@@ -69,7 +69,9 @@ class App extends React.Component {
               <AboutYou userInSession={this.state.loggedInUser} {...props} />
             )}
           />
+
           <Route path="/needs" render={props => <Needs {...props} />} />
+
           <Route
             path="/aboutus"
             render={props => (
@@ -77,6 +79,7 @@ class App extends React.Component {
             )}
           />
           <Route path="/upload" render={props => <Uploads {...props} />} />
+
 
           <Route
             path="/login"

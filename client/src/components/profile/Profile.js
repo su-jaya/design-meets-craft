@@ -15,11 +15,6 @@ import TagsInput from "react-tagsinput";
 import { withRouter } from "react-router";
 
 class Profile extends Component {
-  state = {
-    titleImage: "/images/default_title_imagine.jpg",
-    gallery: []
-  };
-
   render() {
     let theUser = this.props.userInSession;
 
@@ -34,11 +29,7 @@ class Profile extends Component {
         {/* Banner */}
         <div className="profileBanner">
           <Image
-            src={
-              theUser.titleImage === undefined
-                ? this.state.titleImage
-                : theUser.titleImage
-            }
+            src={theUser.titleImage}
             alt="profile banner"
             className="w-100 center-block"
             height="400em"
@@ -205,7 +196,7 @@ class Profile extends Component {
                     Edit
                   </button>
                 </div>
-                {this.state.gallery.map((e, idx) => (
+                {theUser.gallery.map((e, idx) => (
                   <img src={e} alt={idx} />
                 ))}
               </div>
