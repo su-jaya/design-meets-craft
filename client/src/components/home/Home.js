@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import CardD from "../CardD";
+import HomeLoggedInContainer from "./HomeLoggedInContainer";
 // import axios from "axios";
 
 class Home extends Component {
@@ -20,13 +21,27 @@ class Home extends Component {
   // }
 
   render() {
-    return (
-      <div>
-        <Header loggedIn={this.props.userInSession} />
-        <NavBar />
+    // let theUser = this.props.userInSession;
+    // if (!theUser) {
+    //   return "Loading...";
+    // }
 
-        {/* Home Slider Section */}
-
+    let homeslidersection;
+    if (this.props.userInSession) {
+      // if (this.props.userInSession.role === "designer") {
+      homeslidersection = (
+        <div className="homeSliderBackgroundLoggedIn">
+          <HomeLoggedInContainer designer />
+        </div>
+      );
+      // } else if (this.props.userInSession.role === "artisan") {
+      //   homeslidersection = (
+      //     <div className="homeSliderBackgroundLoggedIn">
+      //       <HomeLoggedInContainer artisan />
+      //     </div>
+      //   );
+    } else {
+      homeslidersection = (
         <div className="homeSliderBackground">
           <h1>Using design to inspire change.</h1>
           <h2>
@@ -44,6 +59,17 @@ class Home extends Component {
             </Link>
           </div>
         </div>
+      );
+    }
+
+    return (
+      <div>
+        <Header loggedIn={this.props.userInSession} />
+        <NavBar />
+
+        {/* Home Slider Section */}
+
+        {homeslidersection}
 
         {/* Home About Section */}
 
