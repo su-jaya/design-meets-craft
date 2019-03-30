@@ -12,7 +12,7 @@ class Artisans extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header loggedIn={this.props.userInSession} />
         <Navbar />
 
         {/* Search Container */}

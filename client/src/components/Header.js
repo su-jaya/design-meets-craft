@@ -9,12 +9,10 @@ class Header extends Component {
     // console.log(this.props.loggedIn);
     if (this.props.loggedIn) {
       authButtonStatus = "loggedIn";
-    } else if (
-      this.props.url === "/signup" ||
-      this.props.url === "/aboutyou" ||
-      this.props.url === "/needs"
-    ) {
+    } else if (this.props.url === "/signup") {
       authButtonStatus = "cancel";
+    } else if (this.props.button === "none") {
+      authButtonStatus = "none";
     } else {
       authButtonStatus = "signup";
     }

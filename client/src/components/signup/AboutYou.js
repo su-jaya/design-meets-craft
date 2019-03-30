@@ -94,7 +94,7 @@ class AboutYou1 extends Component {
 
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header button="none" />
 
         {this.state.successMessage === "no Error" ? (
           <Redirect push to="/needs" />
