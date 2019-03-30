@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Designer = require("../models/Designer");
+const _ = require("lodash");
 
 // GET RANDOM DESIGNER FOR HOME PAGE
 router.get("/get/:role", (req, res) => {
@@ -9,14 +10,7 @@ router.get("/get/:role", (req, res) => {
     "firstName lastName titleImage brandLogo youinasentence tagsCategory position"
   )
     .then(result => {
-      let randomArr = [];
-      for (let i = 0; randomArr.length < 4; i++) {
-        let getRandom = result[Math.floor(Math.random() * result.length)];
-        if (randomArr.includes(getRandom) === false) {
-          randomArr.push(getRandom);
-        }
-      }
-      res.status(200).json(randomArr);
+      res.status(200).json(_.sampleSize(result, 4));
     })
     .catch(err => res.status(500).json({ message: "finding user went wrong" }));
 });
