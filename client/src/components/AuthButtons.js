@@ -39,7 +39,7 @@ class AuthButtons extends Component {
           </Link>
         </div>
       );
-    } else {
+    } else if (this.props.authButtonStatus === "cancel") {
       dynamicbutton = (
         <div className="authButtons">
           <Link to="/login">
@@ -50,6 +50,8 @@ class AuthButtons extends Component {
           </Link>
         </div>
       );
+    } else {
+      dynamicbutton = <div className="headerEmptyDiv" />;
     }
     return <div>{dynamicbutton}</div>;
   }

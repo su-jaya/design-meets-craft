@@ -6,15 +6,12 @@ import "./Header.css";
 class Header extends Component {
   render() {
     let authButtonStatus;
-    // console.log(this.props.loggedIn);
     if (this.props.loggedIn) {
       authButtonStatus = "loggedIn";
-    } else if (
-      this.props.url === "/signup" ||
-      this.props.url === "/aboutyou" ||
-      this.props.url === "/needs"
-    ) {
+    } else if (this.props.button === "cancel") {
       authButtonStatus = "cancel";
+    } else if (this.props.button === "none") {
+      authButtonStatus = "none";
     } else {
       authButtonStatus = "signup";
     }

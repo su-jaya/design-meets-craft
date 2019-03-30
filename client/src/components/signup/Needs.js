@@ -117,7 +117,7 @@ class Needs extends Component {
   render() {
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header button="none" />
         {/*Process Bar */}
         <div>
           <h1 className="registrationHeading">3/4: Specify your Needs</h1>

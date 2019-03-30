@@ -68,7 +68,7 @@ class Registration extends Component {
   render() {
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header button="cancel" />
 
         {/*Process Bar */}
         <div>

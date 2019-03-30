@@ -49,7 +49,7 @@ class Uploads extends Component {
   render() {
     return (
       <div>
-        <Header url={this.props.match.url} />
+        <Header button="none" />
 
         {/*Process Bar */}
         <div>
