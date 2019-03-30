@@ -102,9 +102,14 @@ class Needs extends Component {
     };
 
     axios
-      .post("http://localhost:5000/auth/signup/designer/needs", object, {
-        withCredentials: true
-      })
+      .post(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000/") +
+          "auth/signup/designer/needs",
+        object,
+        {
+          withCredentials: true
+        }
+      )
       .then(() => this.setState({ redirect: true }))
       .catch(err => console.log(err));
   };

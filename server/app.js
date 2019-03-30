@@ -17,7 +17,9 @@ const Designer = require("./models/Designer.js");
 const MongoStore = require("connect-mongo")(session);
 
 mongoose
-  .connect("mongodb://localhost/server", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/server", {
+    useNewUrlParser: true
+  })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -120,5 +122,10 @@ app.use("/", index);
 
 const authRoutes = require("./routes/auth-routes");
 app.use("/auth", authRoutes);
+
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 module.exports = app;
