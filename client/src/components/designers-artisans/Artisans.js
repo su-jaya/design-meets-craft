@@ -20,36 +20,58 @@ class Artisans extends Component {
         <div className="artisansSearchContainer">
           <Container fluid>
             <Row>
-              <Col>
-                <select>
-                  <option value="category-fashion-men">
-                    Category: Fashion Men
-                  </option>
-                  <option value="bla">bla</option>
-                </select>
-                <select>
-                  <option value="category-fashion-men">
-                    Category: Fashion Men
-                  </option>
-                  <option value="bla">bla</option>
-                </select>
-                <button>+ Category</button>
+              <Col className="artisansSearchColumn">
+                <div>
+                  <select>
+                    <option value="category-fashion-men">
+                      Category: Fashion Men
+                    </option>
+                    <option value="bla">bla</option>
+                  </select>
+                </div>
+
+                <button>
+                  <img
+                    src="/images/DmC_plusicon.png"
+                    alt="plus icon"
+                    width="20px"
+                  />
+                  Category
+                </button>
               </Col>
-              <Col>
-                <select>
-                  <option value="material-all">Material: All</option>
-                  <option value="bla">bla</option>
-                </select>
-                <button>+ Material</button>
+              <Col className="artisansSearchColumn">
+                <div>
+                  <select>
+                    <option value="material-all">Material: All</option>
+                    <option value="bla">bla</option>
+                  </select>
+                </div>
+                <button>
+                  <img
+                    src="/images/DmC_plusicon.png"
+                    alt="plus icon"
+                    width="20px"
+                  />
+                  Material
+                </button>
               </Col>
-              <Col>
-                <select>
-                  <option value="destination-france">
-                    Destination: France
-                  </option>
-                  <option value="bla">bla</option>
-                </select>
-                <button>+ Destination</button>
+              <Col className="artisansSearchColumn">
+                <div>
+                  <select>
+                    <option value="destination-france">
+                      Destination: France
+                    </option>
+                    <option value="bla">bla</option>
+                  </select>
+                </div>
+                <button>
+                  <img
+                    src="/images/DmC_plusicon.png"
+                    alt="plus icon"
+                    width="20px"
+                  />
+                  Destination
+                </button>
               </Col>
             </Row>
           </Container>
@@ -62,7 +84,14 @@ class Artisans extends Component {
             <option value="by-name">Sort by name</option>
             <option value="best-matches">Best matches</option>
           </select>
-          <button>X Reset to default</button>
+          <button>
+            <img
+              src="/images/DmC_cancelicon.png"
+              alt="cancel icon"
+              width="20px"
+            />
+            Reset to default
+          </button>
         </div>
 
         <Container className="homeDesignersContainer" fluid={true}>
@@ -81,7 +110,7 @@ class Artisans extends Component {
             </Col>
           </Row>
         </Container>
-        <button>Load more</button>
+        <button className="artisansMoreButton">LOAD MORE</button>
 
         <Footer />
       </div>
