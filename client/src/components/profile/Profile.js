@@ -6,15 +6,38 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import ProfileCard from "./ProfileCard";
-import Card from "../CardD";
+import CardD from "../CardD";
+import CardA from "../CardA";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Footer from "../Footer";
 import TagsInput from "react-tagsinput";
 import { withRouter } from "react-router";
+import _ from "lodash";
+import axios from "axios";
 
 class Profile extends Component {
+  state = {
+    top4matches: []
+  };
+
+  componentDidMount() {
+    axios({
+      method: "GET",
+      url:
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+        `/match/${this.props.userInSession.role}`,
+      withCredentials: true
+    })
+      .then(top =>
+        this.setState({
+          top4matches: top.data
+        })
+      )
+      .catch(err => console.log(err));
+  }
+
   render() {
     let theUser = this.props.userInSession;
 
@@ -65,24 +88,39 @@ class Profile extends Component {
           <TagsInput
             className="suggestedTags viewTagsOnly"
             id="profession"
-            value={theUser.tagsCategory}
+            value={_.sampleSize(
+              [...theUser.tagsCategory, ...theUser.tagsMaterial],
+              15
+            )}
           />
         </div>
 
+        {/* theUser */}
         <Container className="homeDesignersContainer" fluid={true}>
           <Row className="homeDesignersRow">
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
+            {theUser.role === "designer"
+              ? this.state.top4matches.map((e, idx) => {
+                  return (
+                    <Col key={idx} className="homeDesignersColumn mx-auto">
+                      <CardA
+                        key={idx}
+                        theUser={e}
+                        class="cardHeadlineArtisan"
+                      />
+                    </Col>
+                  );
+                })
+              : this.state.top4matches.map((e, idx) => {
+                  return (
+                    <Col key={idx} className="homeDesignersColumn mx-auto">
+                      <CardD
+                        key={idx}
+                        theUser={e}
+                        class="cardHeadlineArtisan"
+                      />
+                    </Col>
+                  );
+                })}
           </Row>
         </Container>
         <div className="homeDivider" />

@@ -12,7 +12,7 @@ const schema = mongoose.Schema({
   website: String,
   adress: String,
   city: String,
-  zip: Number,
+  zip: String,
   country: String,
   telephone: Number,
   language: Array,
@@ -24,7 +24,8 @@ const schema = mongoose.Schema({
   brandLogo: String,
   titleImage: String,
   gallery: Array,
-  role: String
+  role: String,
+  matches: Number
 });
 
 module.exports = mongoose.model("Designer", schema);

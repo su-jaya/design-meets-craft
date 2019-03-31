@@ -20,24 +20,23 @@ class AboutYou1 extends Component {
     adress: "",
     city: "",
     zip: "",
-    country: "",
+    country: "Afghanistan",
     telephone: "",
     languageDropdown: [1],
-    language: [],
+    language: { language0: "Afrikaans" },
     successMessage: "",
     loggedInUser: null
   };
 
   // On Change
-  changeHandler = event => {
-    if (
-      Languages.includes(event.target.value) &&
-      !this.state.language.includes(event.target.value)
-    ) {
-      let langarray = this.state.language;
-      langarray.push(event.target.value);
+  changeHandler = (event, idx) => {
+    let langobj = this.state.language;
+
+    if (Languages.includes(event.target.value)) {
+      langobj[event.target.id] = event.target.value;
+
       this.setState({
-        language: langarray
+        language: langobj
       });
     } else {
       this.setState({
@@ -140,15 +139,18 @@ class AboutYou1 extends Component {
                 onSubmit={event => this.submitHandler(event)}
               >
                 <label htmlFor="youinasentence">
-                  You in a sentence (max 200 characters)
+                  You in a sentence (max 200 characters){" "}
+                  <span style={{ color: "red" }}>*</span>
                 </label>
                 <textarea
                   id="youinasentence"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.youinasentence}
+                  maxLength="200"
+                  required
                 />
 
-                <label htmlFor="position">Position (optional)</label>
+                <label htmlFor="position">Position</label>
                 <input
                   type="text"
                   id="position"
@@ -156,7 +158,9 @@ class AboutYou1 extends Component {
                   value={this.state.position}
                 />
 
-                <label htmlFor="brand">Brand</label>
+                <label htmlFor="brand">
+                  Brand <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   id="brand"
@@ -165,15 +169,20 @@ class AboutYou1 extends Component {
                   required
                 />
 
-                <label htmlFor="website">Website</label>
+                <label htmlFor="website">
+                  Website <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   id="website"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.website}
+                  required
                 />
 
-                <label htmlFor="adress">Adress</label>
+                <label htmlFor="adress">
+                  Address <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   id="adress"
@@ -188,22 +197,27 @@ class AboutYou1 extends Component {
                   id="city"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.city}
-                  required
                 />
 
-                <label htmlFor="zip">ZIP</label>
+                <label htmlFor="zip">
+                  ZIP <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   id="zip"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.zip}
+                  required
                 />
 
-                <label htmlFor="county">Country</label>
+                <label htmlFor="county">
+                  Country <span style={{ color: "red" }}>*</span>
+                </label>
                 <select
                   id="country"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.country}
+                  required
                 >
                   <option value="Afghanistan">Afghanistan</option>
                   <option value="Albania">Albania</option>
@@ -513,14 +527,16 @@ class AboutYou1 extends Component {
                 />
                 <div className="registrationFormLanguage">
                   <div className="registrationFormLanguageComponent">
-                    <label htmlFor="language">Languages spoken</label>
+                    <label htmlFor="language">
+                      Languages spoken <span style={{ color: "red" }}>*</span>
+                    </label>
 
                     {this.state.languageDropdown.map((e, idx) => {
                       return (
                         <select
                           key={idx}
                           id={`language${idx}`}
-                          onChange={event => this.changeHandler(event)}
+                          onChange={event => this.changeHandler(event, idx)}
                         >
                           {languageDropdown}
                         </select>

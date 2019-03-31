@@ -171,7 +171,9 @@ class Registration extends Component {
               >
                 <div className="registrationFormName">
                   <div className="registrationFormNameComponent">
-                    <label htmlFor="firstName">First Name</label>
+                    <label htmlFor="firstName">
+                      First Name <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                       type="text"
                       id="firstName"
@@ -182,7 +184,9 @@ class Registration extends Component {
                   </div>
 
                   <div className="registrationFormNameComponent">
-                    <label htmlFor="lastName">Last Name</label>
+                    <label htmlFor="lastName">
+                      Last Name <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                       type="text"
                       id="lastName"
@@ -193,7 +197,9 @@ class Registration extends Component {
                   </div>
                 </div>
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">
+                  Email <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -202,7 +208,9 @@ class Registration extends Component {
                   onChange={e => this.changeHandler(e)}
                 />
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">
+                  Password <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="password"
                   id="password"
@@ -212,7 +220,9 @@ class Registration extends Component {
                   onChange={e => this.changeHandler(e)}
                 />
 
-                <label htmlFor="passwordConfirm">Confirm Password</label>
+                <label htmlFor="passwordConfirm">
+                  Confirm Password <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="password"
                   id="passwordConfirm"

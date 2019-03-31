@@ -4,7 +4,7 @@ class EditProfile extends Component {
   render() {
     console.log(this.props.userInSession);
 
-    return "Hi";
+    return <h1>HI</h1>;
   }
 }
 
