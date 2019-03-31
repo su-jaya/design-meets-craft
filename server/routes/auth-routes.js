@@ -40,7 +40,9 @@ authRoutes.post("/signup", (req, res, next) => {
       lastName: lastName,
       email: email,
       password: hashPass,
-      role: role
+      role: role,
+      titleImage: "/images/default_title_imagine.jpg",
+      brandLogo: "images/default_brandLogo.jpg"
     });
 
     aNewUser.save(err => {
@@ -123,9 +125,7 @@ authRoutes.post("/signup/designer/aboutyou", (req, res) => {
     zip: req.body.zip,
     country: req.body.country,
     telephone: req.body.telephone,
-    language: req.body.language,
-    titleImage: "/images/default_title_imagine.jpg",
-    brandLogo: "images/default_brandLogo.jpg"
+    language: Object.values(req.body.language)
   };
   Designer.findByIdAndUpdate(userId, aboutYou)
     .then(user => console.log(user))

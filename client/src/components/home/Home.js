@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import CardD from "../CardD";
+import CardA from "../CardA";
 import axios from "axios";
 import HomeLoggedInContainer from "./HomeLoggedInContainer";
 
@@ -20,12 +21,18 @@ class Home extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/get/designer")
+      .get(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          "/get/designer"
+      )
       .then(designers => this.setState({ designers: designers.data }))
       .catch(err => console.log(err));
 
     axios
-      .get("http://localhost:5000/get/artisan")
+      .get(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          "/get/artisan"
+      )
       .then(artisan => {
         return this.setState({ artisans: artisan.data });
       })
@@ -33,8 +40,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.designers);
-
     let homeslidersection;
     if (this.props.userInSession) {
       if (this.props.userInSession.role === "designer") {
@@ -134,7 +139,7 @@ class Home extends Component {
               {this.state.designers.map((e, idx) => {
                 return (
                   <Col key={idx} className="homeDesignersColumn mx-auto">
-                    <CardD theUser={e} class="cardHeadlineDesigner" />
+                    <CardD key={idx} theUser={e} class="cardHeadlineDesigner" />
                   </Col>
                 );
               })}
@@ -154,7 +159,7 @@ class Home extends Component {
               {this.state.artisans.map((e, idx) => {
                 return (
                   <Col key={idx} className="homeDesignersColumn mx-auto">
-                    <CardD theUser={e} class="cardHeadlineArtisan" />
+                    <CardA key={idx} theUser={e} class="cardHeadlineArtisan" />
                   </Col>
                 );
               })}

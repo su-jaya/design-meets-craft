@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./Card.css";
 
-class CardD extends Component {
+class CardA extends Component {
   render() {
     let theUser = this.props.theUser;
     if (!theUser) {
       return "Loading...";
     }
+    console.log(theUser);
 
     return (
       <div className="cardContainer mx-auto">
@@ -20,10 +21,10 @@ class CardD extends Component {
         </div>
         <img className="cardAvatar" src={theUser.brandLogo} alt="card avatar" />
         <div className="cardText">
-          <h3 className={this.props.class}>{`${theUser.firstName} ${
-            theUser.lastName
-          }`}</h3>
-          <p className="cardSubtitle">{theUser.position}</p>
+          <h3 className={this.props.class}> {theUser.brand}</h3>
+          <p className="cardSubtitle">{`${theUser.city}, ${
+            theUser.country
+          }`}</p>
           <p className="cardDescription">{theUser.youinasentence}</p>
           <div className="cardDivider" />
           <div className="cardTags">
@@ -39,4 +40,4 @@ class CardD extends Component {
   }
 }
 
-export default CardD;
+export default CardA;

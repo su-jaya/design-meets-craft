@@ -1,8 +1,23 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./AuthButtons.css";
+// import AuthService from "./signup/auth-service";
 
 class AuthButtons extends Component {
+  // state = {
+  //   loggedInUser: ""
+  // };
+
+  // service = new AuthService();
+
+  // handleLogOut = () => {
+  //   this.service.logout().then(() => {
+  //     console.log("ok!");
+  //     this.setState({ loggedInUser: null });
+  //     // this.props.getUser(null);
+  //   });
+  // };
+
   render() {
     let dynamicbutton;
     if (this.props.authButtonStatus === "loggedIn") {
@@ -26,6 +41,7 @@ class AuthButtons extends Component {
               width="15em"
             />
           </Link>
+          <button onClick={this.handleLogOut}>log out</button>
         </div>
       );
     } else if (this.props.authButtonStatus === "signup") {
@@ -53,7 +69,12 @@ class AuthButtons extends Component {
     } else {
       dynamicbutton = <div className="headerEmptyDiv" />;
     }
-    return <div>{dynamicbutton}</div>;
+    return (
+      <div>
+        {/* {this.state.loggedInUser === null ? <Redirect push to="/" /> : ""} */}
+        {dynamicbutton}
+      </div>
+    );
   }
 }
 
