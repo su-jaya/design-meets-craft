@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import "./Card.css";
+import _ from "lodash";
 
 class CardD extends Component {
   render() {
     let theUser = this.props.theUser;
+
     if (!theUser) {
       return "Loading...";
     }
+
+    let usertags = [...theUser.tagsCategory, ...theUser.tagsMaterial];
 
     return (
       <div className="cardContainer mx-auto">
@@ -27,11 +31,9 @@ class CardD extends Component {
           <p className="cardDescription">{theUser.youinasentence}</p>
           <div className="cardDivider" />
           <div className="cardTags">
-            {theUser.tagsCategory
-              .map((e, idx) => {
-                return <p key={idx}>{e}</p>;
-              })
-              .slice(0, 6)}
+            {_.sampleSize(usertags, 7).map((e, idx) => {
+              return <p key={idx}>{e}</p>;
+            })}
           </div>
         </div>
       </div>

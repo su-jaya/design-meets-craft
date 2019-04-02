@@ -159,14 +159,15 @@ authRoutes.post(
   (req, res, next) => {
     let userId = req.user._id;
     Designer.findByIdAndUpdate(userId, { brandLogo: req.file.url })
-      .then(user => console.log(user))
+      .then(user => {
+        res.json({ secure_url: req.file.secure_url, theUser: user });
+      })
       .catch(err => console.log(err));
 
     if (!req.file) {
       next(new Error("No file uploaded!"));
       return;
     }
-    res.json({ secure_url: req.file.secure_url });
   }
 );
 
@@ -177,15 +178,18 @@ authRoutes.post(
   uploader.single("titleImage"),
   (req, res, next) => {
     let userId = req.user._id;
+
     Designer.findByIdAndUpdate(userId, { titleImage: req.file.url })
-      .then(user => console.log(user))
+      .then(user => {
+        console.log(user);
+        res.json({ secure_url: req.file.secure_url });
+      })
       .catch(err => console.log(err));
 
     if (!req.file) {
       next(new Error("No file uploaded!"));
       return;
     }
-    res.json({ secure_url: req.file.secure_url });
   }
 );
 

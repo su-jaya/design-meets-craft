@@ -215,7 +215,7 @@ class Registration extends Component {
                   type="password"
                   id="password"
                   value={this.state.password}
-                  // minLength="8"
+                  minLength="8"
                   required
                   onChange={e => this.changeHandler(e)}
                 />
