@@ -41,8 +41,8 @@ authRoutes.post("/signup", (req, res, next) => {
       email: email,
       password: hashPass,
       role: role,
-      titleImage: "/images/default_title_imagine.jpg",
-      brandLogo: "images/default_brandLogo.jpg"
+      public_id_ti: "thing-gallery/default_title_imagine.jpg",
+      public_id_bl: "thing-gallery/default_brandLogo.jpg"
     });
 
     aNewUser.save(err => {
@@ -158,9 +158,17 @@ authRoutes.post(
   uploader.single("brandLogo"),
   (req, res, next) => {
     let userId = req.user._id;
-    Designer.findByIdAndUpdate(userId, { brandLogo: req.file.url })
+
+    Designer.findByIdAndUpdate(
+      userId,
+      { brandLogo: req.file.url, public_id_bl: req.file.public_id },
+      { new: true }
+    )
       .then(user => {
-        res.json({ secure_url: req.file.secure_url, theUser: user });
+        res.json({
+          secure_url: req.file.secure_url,
+          theUser: user
+        });
       })
       .catch(err => console.log(err));
 
@@ -171,18 +179,19 @@ authRoutes.post(
   }
 );
 
-// upload/w_300,h_300,c_thumb,g_face
-
 authRoutes.post(
   "/signup/designer/upload/titleImage",
   uploader.single("titleImage"),
   (req, res, next) => {
     let userId = req.user._id;
 
-    Designer.findByIdAndUpdate(userId, { titleImage: req.file.url })
+    Designer.findByIdAndUpdate(
+      userId,
+      { titleImage: req.file.url, public_id_ti: req.file.public_id },
+      { new: true }
+    )
       .then(user => {
-        console.log(user);
-        res.json({ secure_url: req.file.secure_url });
+        res.json({ secure_url: req.file.secure_url, theUser: user });
       })
       .catch(err => console.log(err));
 

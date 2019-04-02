@@ -15,8 +15,7 @@ class Uploads extends Component {
     titleImage: "",
     gallery: "",
     errorMessage: "",
-    spinner: false,
-    theUser: ""
+    spinner: false
   };
 
   handleFileUpload = (e, typeOfPicture) => {
@@ -36,11 +35,9 @@ class Uploads extends Component {
       .then(response => {
         this.setState({
           [typeOfPicture]: response.secure_url,
-          spinner: false,
-          theUser: response.theUser
+          spinner: false
         });
-        console.log(this.state.theUser);
-        this.props.setUser(this.state.theUser);
+        this.props.setUser(response.theUser);
       })
       .catch(err => {
         this.setState({

@@ -22,7 +22,9 @@ const schema = mongoose.Schema({
   capacity: String,
   lookingfor: String,
   brandLogo: String,
+  public_id_bl: String,
   titleImage: String,
+  public_id_ti: String,
   gallery: Array,
   role: String,
   matches: Number
