@@ -131,7 +131,7 @@ class AboutYou1 extends Component {
               <p className="registrationSubtitle">
                 Tell us some details about you so that the others can get to
                 know you and your work better. You can always change your
-                information later in your profile
+                information later in your profile.
               </p>
 
               <form
@@ -139,7 +139,11 @@ class AboutYou1 extends Component {
                 onSubmit={event => this.submitHandler(event)}
               >
                 <label htmlFor="youinasentence">
-                  You in a sentence (max 200 characters){" "}
+                  {this.props.userInSession &&
+                  this.props.userInSession.role === "designer"
+                    ? "You in a sentence (max 200 characters)"
+                    : "Your community in a sentence (max 200 characters)"}
+
                   <span style={{ color: "red" }}>*</span>
                 </label>
                 <textarea
@@ -159,7 +163,11 @@ class AboutYou1 extends Component {
                 />
 
                 <label htmlFor="brand">
-                  Brand <span style={{ color: "red" }}>*</span>
+                  {this.props.userInSession &&
+                  this.props.userInSession.role === "designer"
+                    ? "Brand"
+                    : "Community name"}
+                  <span style={{ color: "red" }}>*</span>
                 </label>
                 <input
                   type="text"

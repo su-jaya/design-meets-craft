@@ -145,7 +145,7 @@ class Needs extends Component {
                 {/* CATEGORY */}
                 <div className="parentTag">
                   <label htmlFor="category">
-                    What category are you working in?
+                    What product category are you working in?
                   </label>
                   <div className="inputField">
                     <TagsInput
@@ -182,7 +182,10 @@ class Needs extends Component {
 
                 <div className="parentTag">
                   <label htmlFor="materials">
-                    The materials you like to work with?
+                    {this.props.userInSession &&
+                    this.props.userInSession.role === "designer"
+                      ? "What materials would you like to work with?"
+                      : "What materials do you work with?"}
                   </label>
                   <div className="inputField">
                     <TagsInput
@@ -213,51 +216,58 @@ class Needs extends Component {
 
                 {/* DESTINATION */}
 
-                <div className="parentTag">
-                  <label htmlFor="destination">Destination</label>
-                  <div className="inputField">
-                    <TagsInput
-                      id="destination"
-                      value={this.state.tagsDestination}
-                      onChange={(tags, changed, changedIdx) =>
-                        this.handleChange(
-                          tags,
-                          changed,
-                          changedIdx,
-                          "Destination"
-                        )
-                      }
-                      inputValue={this.state.tagDestination}
-                      onChangeInput={(tag, toChange) =>
-                        this.onChangeInput(tag, "Destination")
-                      }
+                {this.props.userInSession &&
+                this.props.userInSession.role === "designer" ? (
+                  <div className="registrationForm">
+                    <div className="parentTag">
+                      <label htmlFor="destination">Destination</label>
+                      <div className="inputField">
+                        <TagsInput
+                          id="destination"
+                          value={this.state.tagsDestination}
+                          onChange={(tags, changed, changedIdx) =>
+                            this.handleChange(
+                              tags,
+                              changed,
+                              changedIdx,
+                              "Destination"
+                            )
+                          }
+                          inputValue={this.state.tagDestination}
+                          onChangeInput={(tag, toChange) =>
+                            this.onChangeInput(tag, "Destination")
+                          }
+                        />
+                      </div>
+                      <TagsInput
+                        className="suggestedTags"
+                        value={this.state.suggestedTagsDestination}
+                        onChange={(event, change, toChange) =>
+                          this.addNewOne(
+                            event,
+                            change,
+                            this.state.tagsDestination,
+                            "tagsDestination"
+                          )
+                        }
+                      />
+                    </div>
+
+                    <label htmlFor="capacity">Production capacity</label>
+                    <textarea
+                      id="capacity"
+                      onChange={event => this.changeHandler(event)}
+                    />
+
+                    <label htmlFor="lookingfor">You are looking for</label>
+                    <textarea
+                      id="lookingfor"
+                      onChange={event => this.changeHandler(event)}
                     />
                   </div>
-                  <TagsInput
-                    className="suggestedTags"
-                    value={this.state.suggestedTagsDestination}
-                    onChange={(event, change, toChange) =>
-                      this.addNewOne(
-                        event,
-                        change,
-                        this.state.tagsDestination,
-                        "tagsDestination"
-                      )
-                    }
-                  />
-                </div>
-
-                <label htmlFor="capacity">Production capacity</label>
-                <textarea
-                  id="capacity"
-                  onChange={event => this.changeHandler(event)}
-                />
-
-                <label htmlFor="lookingfor">You are looking for</label>
-                <textarea
-                  id="lookingfor"
-                  onChange={event => this.changeHandler(event)}
-                />
+                ) : (
+                  <div />
+                )}
                 {this.state.redirect ? <Redirect to="/upload" /> : ""}
                 <div className="registrationNeedsButtons">
                   <Link to="/aboutyou">

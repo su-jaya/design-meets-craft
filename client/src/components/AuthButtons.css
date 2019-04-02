@@ -23,3 +23,43 @@
   border-radius: 50%;
   margin: 0 0.5em 0 1em;
 }
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  background: none;
+}
+
+.btn:not(:disabled):not(.disabled):hover {
+  background: none;
+  border: none;
+}
+
+.btn-primary.focus,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.dropdown-item a {
+  color: black;
+}
+
+.dropdown-item a:hover {
+  text-decoration: none;
+}
+
+.dropdown-item:active {
+  background: #d4b5aa;
+}
+
+.dropdown-item button {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
