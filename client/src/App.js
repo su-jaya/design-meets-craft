@@ -80,7 +80,12 @@ class App extends React.Component {
           />
           <Route
             path="/upload"
-            render={props => <Uploads setUser={this.setTheUser} {...props} />}
+            render={props => (
+              <Uploads
+                setUser={userobj => this.setTheUser(userobj)}
+                userInSession={this.state.loggedInUser}
+              />
+            )}
           />
 
           <Route
@@ -114,7 +119,10 @@ class App extends React.Component {
           <Route
             path="/designers"
             render={props => (
-              <Designers userInSession={this.state.loggedInUser} {...props} />
+              <Designers
+                userInSession={this.state.loggedInUser}
+                setUser={this.setTheUser}
+              />
             )}
           />
 

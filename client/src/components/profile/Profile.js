@@ -27,7 +27,7 @@ class Profile extends Component {
       method: "GET",
       url:
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-        `/match/${this.props.userInSession.role}`,
+        `/match/${this.props.userInSession.role}/4`,
       withCredentials: true
     })
       .then(top =>
@@ -40,7 +40,6 @@ class Profile extends Component {
 
   render() {
     let theUser = this.props.userInSession;
-
     return (
       <div>
         <Header

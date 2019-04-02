@@ -7,7 +7,7 @@ const _ = require("lodash");
 router.get("/get/:role", (req, res) => {
   Designer.find(
     { role: req.params.role },
-    "firstName lastName titleImage brandLogo youinasentence tagsCategory position city country brand"
+    "firstName lastName titleImage brandLogo youinasentence tagsCategory tagsMaterial position city country brand"
   )
     .then(result => {
       res.status(200).json(_.sampleSize(result, 4));
@@ -15,21 +15,33 @@ router.get("/get/:role", (req, res) => {
     .catch(err => res.status(500).json({ message: "finding user went wrong" }));
 });
 
-// MATCH A DESIGNER WITH ARTISANS
+// MATCH DESIGNER <-> ARTISANS and ARTISAN <-> DESIGNERS
+router.get("/match/:role/:slice", (req, res) => {
+  let theRole, dest_req, dest_res;
 
-router.get("/match/:role", (req, res) => {
+  req.params.role === "designer"
+    ? ((theRole = "artisan"), (dest_req = req.user.tagsDestination))
+    : ((theRole = "designer"), (dest_req = [req.user.city]));
+
+  // current designer category + material
+  let currentUser = [
+    ...req.user.tagsCategory,
+    ...req.user.tagsMaterial,
+    ...dest_req
+  ];
+
   Designer.find(
-    { role: req.params.role },
-    "firstName lastName titleImage brandLogo youinasentence tagsCategory tagsMaterial position city country brand"
+    { role: theRole },
+    "firstName lastName titleImage brandLogo youinasentence tagsCategory tagsMaterial tagsDestination position city country brand"
   ).then(result => {
-    // current designer category + material
-    let currentUser = [...req.user.tagsCategory, ...req.user.tagsMaterial];
-
     // how many matches?
     let countMatches = result.map(e => {
-      // one artisan category + material
+      req.params.role === "designer"
+        ? (dest_res = [e.city])
+        : (dest_res = e.tagsDestination);
 
-      oppositeRole = [...e.tagsCategory, ...e.tagsMaterial];
+      // one artisan category + material
+      oppositeRole = [...e.tagsCategory, ...e.tagsMaterial, ...dest_res];
       let matches = 0;
 
       for (let i = 0; i < currentUser.length; i++) {
@@ -37,7 +49,7 @@ router.get("/match/:role", (req, res) => {
           matches += 1;
         }
       }
-
+      // each document gets a field with the amount of matches
       e.matches = matches;
       return e;
     });
@@ -49,7 +61,9 @@ router.get("/match/:role", (req, res) => {
       return b - a;
     });
 
+    // req.params.slice === "4" ?
     res.status(200).json(countMatches.slice(0, 4));
+    // : res.status(200).json(countMatches);
   });
 });
 

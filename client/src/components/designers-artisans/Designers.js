@@ -6,9 +6,33 @@ import "./Designers-Artisans.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "../CardD";
+// import Card from "../CardD";
+import axios from "axios";
 
 class Designers extends Component {
+  state = {
+    cards: [],
+    tagsCategory: "",
+    tagsMaterial: "",
+    tagsDestination: ""
+  };
+
+  componentDidMount() {
+    axios({
+      method: "GET",
+      url:
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+        `/match/artisan/all`,
+      withCredentials: true
+    })
+      .then(all =>
+        this.setState({
+          cards: all.data
+        })
+      )
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div>
@@ -80,9 +104,9 @@ class Designers extends Component {
         {/* Filter Dropdown */}
         <div className="artisansFilterDropdown">
           <select>
+            <option value="best-matches">Best matches</option>
             <option value="newest">Newest first</option>
             <option value="by-name">Sort by name</option>
-            <option value="best-matches">Best matches</option>
           </select>
           <button>
             <img
@@ -96,18 +120,17 @@ class Designers extends Component {
 
         <Container className="homeDesignersContainer" fluid={true}>
           <Row className="homeDesignersRow">
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
-            <Col className="homeDesignersColumn mx-auto">
-              <Card class="cardHeadlineArtisan" />
-            </Col>
+            {/* {this.state.cards.map((e, idx) => {
+              return (
+                <Col
+                  key={idx}
+                  theUser={e}
+                  className="homeDesignersColumn mx-auto"
+                >
+                  <Card key={idx} theUser={e} class="cardHeadlineArtisan" />
+                </Col>
+              );
+            })} */}
           </Row>
         </Container>
         <button className="artisansMoreButton">LOAD MORE</button>

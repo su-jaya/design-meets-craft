@@ -1,24 +1,31 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./AuthButtons.css";
-// import AuthService from "./signup/auth-service";
+import AuthService from "./signup/auth-service";
 
 class AuthButtons extends Component {
-  // state = {
-  //   loggedInUser: ""
-  // };
+  state = {
+    loggedInUser: ""
+  };
 
-  // service = new AuthService();
+  service = new AuthService();
 
-  // handleLogOut = () => {
-  //   this.service.logout().then(() => {
-  //     console.log("ok!");
-  //     this.setState({ loggedInUser: null });
-  //     // this.props.getUser(null);
-  //   });
-  // };
+  handleLogOut = () => {
+    this.service.logout().then(() => {
+      console.log("ok!");
+
+      this.setState({ loggedInUser: null });
+      // this.props.getUser(null);
+    });
+  };
 
   render() {
+    let avatar;
+
+    if (this.props.loggedIn) {
+      avatar = this.props.loggedIn.brandLogo;
+    }
+
     let dynamicbutton;
     if (this.props.authButtonStatus === "loggedIn") {
       dynamicbutton = (
@@ -31,7 +38,7 @@ class AuthButtons extends Component {
             />
             <img
               className="authButtonsAvatar"
-              src="/images/avatar_test.jpg"
+              src={avatar}
               alt="avatar"
               width="45em"
             />
@@ -71,7 +78,7 @@ class AuthButtons extends Component {
     }
     return (
       <div>
-        {/* {this.state.loggedInUser === null ? <Redirect push to="/" /> : ""} */}
+        {this.state.loggedInUser === null ? <Redirect push to="/" /> : ""}
         {dynamicbutton}
       </div>
     );

@@ -258,7 +258,7 @@ class Needs extends Component {
                   id="lookingfor"
                   onChange={event => this.changeHandler(event)}
                 />
-                {this.state.redirect ? <Redirect push to="/upload" /> : ""}
+                {this.state.redirect ? <Redirect to="/upload" /> : ""}
                 <div className="registrationNeedsButtons">
                   <Link to="/aboutyou">
                     <button className="registrationBackButton" type="button">

@@ -16,7 +16,10 @@ export default {
   handleUpload(theFile, typeOfPicture) {
     return service
       .post(`/auth/signup/designer/upload/${typeOfPicture}`, theFile)
-      .then(res => res.data)
+      .then(res => {
+        return { secure_url: res.data.secure_url, theUser: res.data.theUser };
+      })
       .catch(errorHandler);
   }
 };
+//
