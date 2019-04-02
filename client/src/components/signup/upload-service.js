@@ -17,9 +17,11 @@ export default {
     return service
       .post(`/auth/signup/designer/upload/${typeOfPicture}`, theFile)
       .then(res => {
-        return { secure_url: res.data.secure_url, theUser: res.data.theUser };
+        return {
+          secure_url: res.data.secure_url,
+          theUser: res.data.theUser
+        };
       })
       .catch(errorHandler);
   }
 };
-//

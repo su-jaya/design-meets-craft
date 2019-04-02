@@ -4,6 +4,7 @@ import "./AuthButtons.css";
 import AuthService from "./signup/auth-service";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import { Image, Transformation } from "cloudinary-react";
 
 class AuthButtons extends Component {
   state = {
@@ -17,16 +18,16 @@ class AuthButtons extends Component {
       console.log("ok!");
 
       this.setState({ loggedInUser: null });
-      // this.props.getUser(null);
+      this.props.setUser(null);
     });
   };
 
   render() {
-    let avatar;
+    // let avatar;
 
-    if (this.props.loggedIn) {
-      avatar = this.props.loggedIn.brandLogo;
-    }
+    // if (this.props.loggedIn) {
+    //   avatar = this.props.loggedIn.public_id_bl;
+    // }
 
     let dynamicbutton;
     if (this.props.authButtonStatus === "loggedIn") {
@@ -41,12 +42,13 @@ class AuthButtons extends Component {
                   alt="alarm icon"
                   width="25em"
                 />
-                <img
-                  className="authButtonsAvatar"
-                  src={avatar}
-                  alt="avatar"
-                  width="45em"
-                />
+                <Image
+              cloudName="dfksfwvex"
+              publicId={this.props.loggedIn.public_id_bl + ".jpg"}
+              className="authButtonsAvatar"
+            >
+              <Transformation crop="thumb" width="45" height="45" />
+            </Image>
                 <img
                   src="/images/DmC_arrowicon.png"
                   alt="alarm icon"

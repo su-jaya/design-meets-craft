@@ -4,7 +4,7 @@ import Header from "../Header";
 import NavBar from "../NavBar";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import ProfileCard from "./ProfileCard";
 import CardD from "../CardD";
 import CardA from "../CardA";
@@ -16,6 +16,7 @@ import TagsInput from "react-tagsinput";
 import { withRouter } from "react-router";
 import _ from "lodash";
 import axios from "axios";
+import { Image, Transformation } from "cloudinary-react";
 
 class Profile extends Component {
   state = {
@@ -40,6 +41,7 @@ class Profile extends Component {
 
   render() {
     let theUser = this.props.userInSession;
+
     return (
       <div>
         <Header
@@ -50,12 +52,9 @@ class Profile extends Component {
 
         {/* Banner */}
         <div className="profileBanner">
-          <Image
-            src={theUser.titleImage}
-            alt="profile banner"
-            className="w-100 center-block"
-            height="400em"
-          />
+          <Image cloudName="dfksfwvex" publicId={theUser.public_id_ti + ".jpg"}>
+            <Transformation width="1500" height="400" crop="fill" />
+          </Image>
         </div>
 
         {/* Profile Box */}
