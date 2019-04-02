@@ -53,9 +53,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={props => (
-              <Home userInSession={this.state.loggedInUser} {...props} />
-            )}
+            render={() => <Home userInSession={this.state.loggedInUser} />}
           />
           <Route
             path="/signup"
@@ -65,22 +63,21 @@ class App extends React.Component {
           />
           <Route
             path="/aboutyou"
-            render={props => (
-              <AboutYou userInSession={this.state.loggedInUser} {...props} />
-            )}
+            render={() => <AboutYou userInSession={this.state.loggedInUser} />}
           />
 
-          <Route path="/needs" render={props => <Needs {...props} />} />
+          <Route
+            path="/needs"
+            render={() => <Needs userInSession={this.state.loggedInUser} />}
+          />
 
           <Route
             path="/aboutus"
-            render={props => (
-              <AboutUs userInSession={this.state.loggedInUser} {...props} />
-            )}
+            render={() => <AboutUs userInSession={this.state.loggedInUser} />}
           />
           <Route
             path="/upload"
-            render={props => (
+            render={() => (
               <Uploads
                 setUser={userobj => this.setTheUser(userobj)}
                 userInSession={this.state.loggedInUser}
@@ -90,18 +87,18 @@ class App extends React.Component {
 
           <Route
             path="/login"
-            render={props => <Login setUser={this.setTheUser} />}
+            render={() => <Login setUser={this.setTheUser} />}
           />
           <Route
             path="/editprofile"
-            render={props => (
-              <EditProfile userInSession={this.state.loggedInUser} {...props} />
+            render={() => (
+              <EditProfile userInSession={this.state.loggedInUser} />
             )}
           />
 
           <Route
             path="/profile"
-            render={props => {
+            render={() => {
               // this is just so we wait for LOGGED IN users until the user object was returned from the BE
               // this is not to redirect loggedout users (bc then it will not work for logged in users anymore)
               if (!this.state.loggedInUser) {
@@ -118,7 +115,7 @@ class App extends React.Component {
 
           <Route
             path="/designers"
-            render={props => (
+            render={() => (
               <Designers
                 userInSession={this.state.loggedInUser}
                 setUser={this.setTheUser}
@@ -128,9 +125,7 @@ class App extends React.Component {
 
           <Route
             path="/artisans"
-            render={props => (
-              <Artisans userInSession={this.state.loggedInUser} {...props} />
-            )}
+            render={() => <Artisans userInSession={this.state.loggedInUser} />}
           />
         </Switch>
       </div>

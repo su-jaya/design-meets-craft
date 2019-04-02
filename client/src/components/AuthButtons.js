@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./AuthButtons.css";
 import AuthService from "./signup/auth-service";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 class AuthButtons extends Component {
   state = {
@@ -30,25 +32,39 @@ class AuthButtons extends Component {
     if (this.props.authButtonStatus === "loggedIn") {
       dynamicbutton = (
         <div className="authButtons">
-          <Link to="/profile">
-            <img
-              src="/images/DmC_alarmicon.png"
-              alt="alarm icon"
-              width="25em"
-            />
-            <img
-              className="authButtonsAvatar"
-              src={avatar}
-              alt="avatar"
-              width="45em"
-            />
-            <img
-              src="/images/DmC_arrowicon.png"
-              alt="alarm icon"
-              width="15em"
-            />
-          </Link>
-          <button onClick={this.handleLogOut}>log out</button>
+          <DropdownButton
+            alignRight
+            title={
+              <div>
+                <img
+                  src="/images/DmC_alarmicon.png"
+                  alt="alarm icon"
+                  width="25em"
+                />
+                <img
+                  className="authButtonsAvatar"
+                  src={avatar}
+                  alt="avatar"
+                  width="45em"
+                />
+                <img
+                  src="/images/DmC_arrowicon.png"
+                  alt="alarm icon"
+                  width="15em"
+                />
+              </div>
+            }
+          >
+            <Dropdown.Item as="li" eventKey="1">
+              <Link to="profile">My Profile</Link>
+            </Dropdown.Item>
+            <Dropdown.Item as="li" eventKey="2">
+              <Link to="/editprofile">Settings</Link>
+            </Dropdown.Item>
+            <Dropdown.Item as="li" eventKey="3">
+              <button onClick={this.handleLogOut}>Log out</button>
+            </Dropdown.Item>
+          </DropdownButton>
         </div>
       );
     } else if (this.props.authButtonStatus === "signup") {
