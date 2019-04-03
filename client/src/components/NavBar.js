@@ -8,21 +8,27 @@ import { Link } from "react-router-dom";
 class NavBar extends Component {
   render() {
     return (
-      <Navbar expand="lg" className="justify-content-center">
-        <Nav>
-          <Nav.Item as="li">
-            <Link to="/">Discover</Link>
-          </Nav.Item>
-          <Nav.Item as="li">
-            <Link to="/designers">Designers</Link>
-          </Nav.Item>
-          <Nav.Item as="li">
-            <Link to="/artisans">Artisans</Link>
-          </Nav.Item>
-          <Nav.Item as="li">
-            <Link to="/aboutus">About us</Link>
-          </Nav.Item>
-          {/* <NavDropdown title="About us" id="collasible-nav-dropdown">
+      <Navbar expand="lg">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-center"
+        >
+          <Nav>
+            <Nav.Item as="li">
+              <Link to="/">Discover</Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Link to="/designers">Designers</Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Link to="/artisans">Artisans</Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Link to="/aboutus">About us</Link>
+            </Nav.Item>
+            {/* <NavDropdown title="About us" id="collasible-nav-dropdown">
             <NavDropdown.Item as="li">
               <Link to="/aboutus">About Design Meets Craft</Link>
             </NavDropdown.Item>
@@ -39,16 +45,17 @@ class NavBar extends Component {
               <Link to="/aboutus">Membership</Link>
             </NavDropdown.Item>
           </NavDropdown> */}
-          <Nav.Item as="li">
-            <Link to="#">Design for Good</Link>
-          </Nav.Item>
-          <Nav.Item as="li">
-            <Link to="#">Shop</Link>
-          </Nav.Item>
-          <Nav.Item as="li">
-            <Link to="#">Journal</Link>
-          </Nav.Item>
-        </Nav>
+            <Nav.Item as="li">
+              <Link to="#">Design for Good</Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Link to="#">Shop</Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Link to="#">Journal</Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     );
   }

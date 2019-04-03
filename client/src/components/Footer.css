@@ -2,7 +2,7 @@
   background-color: #f3f3f3;
   padding-top: 2em;
   padding-bottom: 2em;
-  height: 24em;
+  /* height: 24em; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +10,10 @@
 
 .footerContainer {
   padding: 2em 7em 2em 3.2em;
+}
+
+.footerColumn {
+  margin-bottom: 2em;
 }
 
 .footerHeadline {
@@ -30,10 +34,14 @@
 }
 
 .footerSocialMedia {
-  margin: 0.4em 0.7em;
+  margin: 0.4em 0.4em;
 }
 
 .footerCopyright {
+  padding: 0 7em 1em 3.2em;
+}
+
+.footerCopyright div {
   font-size: 0.7em;
   text-align: left;
 }
