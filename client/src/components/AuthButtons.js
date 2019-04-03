@@ -15,20 +15,12 @@ class AuthButtons extends Component {
 
   handleLogOut = () => {
     this.service.logout().then(() => {
-      console.log("ok!");
-
       this.setState({ loggedInUser: null });
       this.props.setUser(null);
     });
   };
 
   render() {
-    // let avatar;
-
-    // if (this.props.loggedIn) {
-    //   avatar = this.props.loggedIn.public_id_bl;
-    // }
-
     let dynamicbutton;
     if (this.props.authButtonStatus === "loggedIn") {
       dynamicbutton = (
@@ -43,12 +35,17 @@ class AuthButtons extends Component {
                   width="25em"
                 />
                 <Image
-              cloudName="dfksfwvex"
-              publicId={this.props.loggedIn.public_id_bl + ".jpg"}
-              className="authButtonsAvatar"
-            >
-              <Transformation crop="thumb" width="45" height="45" />
-            </Image>
+                  cloudName="dfksfwvex"
+                  publicId={this.props.loggedIn.public_id_bl + ".jpg"}
+                  className="authButtonsAvatar"
+                >
+                  <Transformation
+                    crop="thumb"
+                    width="45"
+                    height="45"
+                    gravity="face"
+                  />
+                </Image>
                 <img
                   src="/images/DmC_arrowicon.png"
                   alt="alarm icon"

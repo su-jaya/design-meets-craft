@@ -53,7 +53,12 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Home userInSession={this.state.loggedInUser} />}
+            render={() => (
+              <Home
+                setUser={this.setTheUser}
+                userInSession={this.state.loggedInUser}
+              />
+            )}
           />
           <Route
             path="/signup"

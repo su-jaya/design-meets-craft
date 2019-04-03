@@ -47,6 +47,7 @@ class Profile extends Component {
         <Header
           url={this.props.match.url}
           loggedIn={this.props.userInSession}
+          setUser={this.props.setUser}
         />
         <NavBar />
 

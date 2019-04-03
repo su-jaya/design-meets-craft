@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Card.css";
 import _ from "lodash";
+import { Image, Transformation } from "cloudinary-react";
 
 class CardA extends Component {
   render() {
@@ -14,14 +15,22 @@ class CardA extends Component {
     return (
       <div className="cardContainer mx-auto">
         <div className="cardBanner">
-          <img
-            src={theUser.titleImage}
-            alt="designer banner"
-            width="306px"
-            height="175px"
-          />
+          <Image cloudName="dfksfwvex" publicId={theUser.public_id_ti + ".jpg"}>
+            <Transformation width="306" height="175" crop="fill" />
+          </Image>
         </div>
-        <img className="cardAvatar" src={theUser.brandLogo} alt="card avatar" />
+        <Image
+          cloudName="dfksfwvex"
+          publicId={theUser.public_id_bl + ".jpg"}
+          className="cardAvatar"
+        >
+          <Transformation
+            crop="thumb"
+            width="150"
+            height="150"
+            gravity="face"
+          />
+        </Image>
         <div className="cardText">
           <h3 className={this.props.class}> {theUser.brand}</h3>
           <p className="cardSubtitle">{`${theUser.city}, ${
