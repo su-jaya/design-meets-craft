@@ -1,0 +1,12 @@
+.underConstruction {
+  font-family: "Olympic Branding";
+  font-size: 3em;
+  background-image: url("/images/DmC_slider.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
