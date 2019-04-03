@@ -219,7 +219,10 @@ class Profile extends Component {
                 </div>
                 <p className="profileEditText">{theUser.lookingfor}</p>
               </div>
-              <div className="homeDivider" />
+
+              {/* GALLERY SECTION  */}
+
+              {/* <div className="homeDivider" />
               <div>
                 <div className="profileEditHeadline">
                   <h1>Gallery</h1>
@@ -236,7 +239,7 @@ class Profile extends Component {
                 {theUser.gallery.map((e, idx) => (
                   <img src={e} alt={idx} />
                 ))}
-              </div>
+              </div> */}
             </Col>
             <Col />
           </Row>

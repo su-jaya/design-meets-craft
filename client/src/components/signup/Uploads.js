@@ -135,7 +135,7 @@ class Uploads extends Component {
                 </div>
 
                 {/* GALLERY */}
-                <div className="uploadContainer">
+                {/* <div className="uploadContainer">
                   {this.state.spinner === "gallery" ? (
                     <img src="/images/spinner.gif" alt="spinner" id="spinner" />
                   ) : (
@@ -173,7 +173,7 @@ class Uploads extends Component {
                       onChange={e => this.handleFileUpload(e, "gallery")}
                     />
                   </div>
-                </div>
+                </div> */}
               </form>
               <div className="registrationNeedsButtons">
                 <Link to="/needs">
