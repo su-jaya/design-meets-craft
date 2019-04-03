@@ -31,6 +31,7 @@ class Header extends Component {
         <AuthButtons
           authButtonStatus={authButtonStatus}
           loggedIn={this.props.loggedIn}
+          setUser={this.props.setUser}
         />
       </div>
     );

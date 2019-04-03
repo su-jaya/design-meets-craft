@@ -79,7 +79,10 @@ class Home extends Component {
 
     return (
       <div>
-        <Header loggedIn={this.props.userInSession} />
+        <Header
+          loggedIn={this.props.userInSession}
+          setUser={this.props.setUser}
+        />
         <NavBar />
 
         {/* Home Slider Section */}

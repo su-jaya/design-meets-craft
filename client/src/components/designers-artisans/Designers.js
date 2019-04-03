@@ -36,7 +36,10 @@ class Designers extends Component {
   render() {
     return (
       <div>
-        <Header loggedIn={this.props.userInSession} />
+        <Header
+          loggedIn={this.props.userInSession}
+          setUser={this.props.setUser}
+        />
         <Navbar />
 
         {/* Search Container */}

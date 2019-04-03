@@ -48,7 +48,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Header button="none" />
+        <Header button="none" setUser={this.props.setUser} />
         <Navbar />
         <Container className="login">
           {this.state.error === "no Error" ? (
