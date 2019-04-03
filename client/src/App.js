@@ -87,7 +87,12 @@ class App extends React.Component {
           />
           <Route
             path="/upload"
-            render={() => <Uploads userInSession={this.state.loggedInUser} />}
+            render={() => (
+              <Uploads
+                setUser={userobj => this.setTheUser(userobj)}
+                userInSession={this.state.loggedInUser}
+              />
+            )}
           />
 
           <Route
