@@ -53,7 +53,12 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Home userInSession={this.state.loggedInUser} />}
+            render={() => (
+              <Home
+                setUser={this.setTheUser}
+                userInSession={this.state.loggedInUser}
+              />
+            )}
           />
           <Route
             path="/signup"
@@ -73,16 +78,16 @@ class App extends React.Component {
 
           <Route
             path="/aboutus"
-            render={() => <AboutUs userInSession={this.state.loggedInUser} />}
-          />
-          <Route
-            path="/upload"
             render={() => (
-              <Uploads
-                setUser={userobj => this.setTheUser(userobj)}
+              <AboutUs
+                setUser={this.setTheUser}
                 userInSession={this.state.loggedInUser}
               />
             )}
+          />
+          <Route
+            path="/upload"
+            render={() => <Uploads userInSession={this.state.loggedInUser} />}
           />
 
           <Route
@@ -92,7 +97,10 @@ class App extends React.Component {
           <Route
             path="/editprofile"
             render={() => (
-              <EditProfile userInSession={this.state.loggedInUser} />
+              <EditProfile
+                setUser={this.setTheUser}
+                userInSession={this.state.loggedInUser}
+              />
             )}
           />
 
@@ -125,7 +133,12 @@ class App extends React.Component {
 
           <Route
             path="/artisans"
-            render={() => <Artisans userInSession={this.state.loggedInUser} />}
+            render={() => (
+              <Artisans
+                setUser={this.setTheUser}
+                userInSession={this.state.loggedInUser}
+              />
+            )}
           />
         </Switch>
       </div>
