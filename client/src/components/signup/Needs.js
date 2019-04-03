@@ -19,35 +19,35 @@ class Needs extends Component {
     suggestedTagsCategory: [
       "men",
       "women",
-      "stone",
-      "lether",
-      "denim",
-      "plastic",
-      "coffee"
+      "accessories",
+      "apparel",
+      "shoes",
+      "jewellery",
+      "interior"
     ],
     // Tagging for Material
     tagsMaterial: [],
     tagMaterial: "",
     suggestedTagsMaterial: [
-      "men",
-      "women",
+      "wool",
+      "leather",
       "stone",
-      "lether",
+      "cotton",
       "denim",
-      "plastic",
-      "coffee"
+      "satin",
+      "wood"
     ],
     // Tagging for Destination
     tagsDestination: [],
     tagDestination: "",
     suggestedTagsDestination: [
-      "men",
-      "women",
-      "stone",
-      "lether",
-      "denim",
-      "plastic",
-      "coffee"
+      "Morocco",
+      "Ecuador",
+      "Chile",
+      "Tanzania",
+      "India",
+      "Romania",
+      "France"
     ],
     capacity: "",
     lookingfor: "",
@@ -120,7 +120,12 @@ class Needs extends Component {
         <Header button="none" />
         {/*Process Bar */}
         <div>
-          <h1 className="registrationHeading">3/4: Specify your Needs</h1>
+          <h1 className="registrationHeading">
+            {this.props.userInSession &&
+            this.props.userInSession.role === "designer"
+              ? "3/4: Specify your Needs"
+              : "3/4: Specify your Skills"}
+          </h1>
           <div className="registrationBarContainer">
             <div className="registrationBarComponent registrationBarInactive registrationBarMiddle" />
             <div className="registrationBarComponent registrationBarInactive registrationBarMiddle" />
@@ -132,11 +137,17 @@ class Needs extends Component {
         <Container className="registrationContainerAndNote">
           <Row>
             <Col xs lg="7" className="registrationContainer">
-              <h2 className="registrationHeadline">Specify your needs</h2>
+              <h2 className="registrationHeadline">
+                {this.props.userInSession &&
+                this.props.userInSession.role === "designer"
+                  ? "Specify your needs"
+                  : "Specify your skills"}
+              </h2>
               <p className="registrationSubtitle">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua.
+                {this.props.userInSession &&
+                this.props.userInSession.role === "designer"
+                  ? "Tell us about your needs so we can match you with the right artisan communities. You can always change your information later in your profile."
+                  : "Tell us about your skills so we can match you with the right designers. You can always change your information later in your profile."}
               </p>
               <form
                 onSubmit={event => this.submitHandler(event)}
@@ -272,11 +283,11 @@ class Needs extends Component {
                 <div className="registrationNeedsButtons">
                   <Link to="/aboutyou">
                     <button className="registrationBackButton" type="button">
-                      Back
+                      BACK
                     </button>
                   </Link>
                   <button className="registrationNextButton" type="submit">
-                    Next
+                    NEXT
                   </button>
                 </div>
               </form>

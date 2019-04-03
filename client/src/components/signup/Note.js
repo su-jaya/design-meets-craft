@@ -15,8 +15,9 @@ class Note extends Component {
           <h3>Note</h3>
         </div>
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+          The more information you provide throughout the sign up process the
+          higher the chances to find a community that matches your needs. You
+          also have the option to edit your information later.
         </p>
       </div>
     );

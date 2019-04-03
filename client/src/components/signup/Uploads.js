@@ -72,8 +72,8 @@ class Uploads extends Component {
               <h2 className="registrationHeadline">Let's get started!</h2>
               <p className="registrationSubtitle">
                 You can create your personal showroom now. This will be your
-                window and gallery towards the artisans and designers you might
-                be working with in the future.
+                window and gallery for the artisans and designers you might be
+                working with in the future.
               </p>
 
               <form onSubmit={e => this.handleSubmit(e)}>
@@ -91,10 +91,10 @@ class Uploads extends Component {
                   )}
                   <div className="uploadContainerText">
                     <label htmlFor="brandLogo">
-                      <h3>Profil / Brand Logo</h3>
+                      <h3>Profile Picture / Brand Logo</h3>
                       <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore
+                        Please upload a profile picture showing you or your
+                        brand logo. The photo should not be bigger than 10 MB.
                       </p>
                     </label>
                     <input
@@ -120,10 +120,10 @@ class Uploads extends Component {
                   )}
                   <div className="uploadContainerText">
                     <label htmlFor="titleImage">
-                      <h3>Title Image</h3>
+                      <h3>Profile Banner</h3>
                       <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore
+                        Please upload a profile banner, which will be your title
+                        image. The photo should not be bigger than 10 MB.
                       </p>
                     </label>
                     <input

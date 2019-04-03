@@ -121,11 +121,10 @@ class AboutYou1 extends Component {
             <Col xs lg="7" className="registrationContainer">
               <h2 className="registrationHeadline">
                 Hello 
-                {!this.state.loggedInUser ? (
-                  <p>Loading..</p>
-                ) : (
-                  this.state.loggedInUser.firstName
-                )}
+                {!this.state.loggedInUser
+                  ? "you"
+                  : this.state.loggedInUser.firstName}
+                !
               </h2>
 
               <p className="registrationSubtitle">
