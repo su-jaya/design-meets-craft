@@ -7,7 +7,7 @@ const _ = require("lodash");
 router.get("/get/:role", (req, res) => {
   Designer.find(
     { role: req.params.role },
-    "firstName lastName titleImage brandLogo youinasentence tagsCategory tagsMaterial position city country brand"
+    "firstName lastName titleImage brandLogo youinasentence public_id_ti public_id_bl tagsCategory tagsMaterial position city country brand"
   )
     .then(result => {
       res.status(200).json(_.sampleSize(result, 4));
@@ -18,6 +18,8 @@ router.get("/get/:role", (req, res) => {
 // MATCH DESIGNER <-> ARTISANS and ARTISAN <-> DESIGNERS
 router.get("/match/:role/:slice", (req, res) => {
   let theRole, dest_req, dest_res;
+
+  console.log(req.user);
 
   req.params.role === "designer"
     ? ((theRole = "artisan"), (dest_req = req.user.tagsDestination))
@@ -32,7 +34,7 @@ router.get("/match/:role/:slice", (req, res) => {
 
   Designer.find(
     { role: theRole },
-    "firstName lastName titleImage brandLogo youinasentence tagsCategory tagsMaterial tagsDestination position city country brand"
+    "firstName lastName titleImage brandLogo youinasentence public_id_ti public_id_bl tagsCategory tagsMaterial tagsDestination position city country brand"
   ).then(result => {
     // how many matches?
     let countMatches = result.map(e => {
@@ -61,9 +63,9 @@ router.get("/match/:role/:slice", (req, res) => {
       return b - a;
     });
 
-    // req.params.slice === "4" ?
-    res.status(200).json(countMatches.slice(0, 4));
-    // : res.status(200).json(countMatches);
+    req.params.slice === "4"
+      ? res.status(200).json(countMatches.slice(0, 4))
+      : res.status(200).json(countMatches);
   });
 });
 

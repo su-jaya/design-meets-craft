@@ -153,12 +153,15 @@ class AboutYou1 extends Component {
                   required
                 />
 
-                <label htmlFor="position">Position</label>
+                <label htmlFor="position">
+                  Position <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   id="position"
                   onChange={event => this.changeHandler(event)}
                   value={this.state.position}
+                  required
                 />
 
                 <label htmlFor="brand">
