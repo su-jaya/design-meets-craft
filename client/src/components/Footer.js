@@ -13,7 +13,7 @@ class Footer extends Component {
       <div className="footer">
         <Container className="footerContainer" fluid>
           <Row>
-            <Col>
+            <Col md className="footerColumn">
               <Nav className="flex-column align-items-start">
                 <Nav.Item as="li">
                   <div className="footerHeadline">ABOUT</div>
@@ -40,7 +40,7 @@ class Footer extends Component {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col>
+            <Col md className="footerColumn">
               <Nav className="flex-column align-items-start">
                 <Nav.Item as="li" className="footerHeadline">
                   NEWS
@@ -67,7 +67,7 @@ class Footer extends Component {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col>
+            <Col md className="footerColumn">
               <Nav className="flex-column align-items-start">
                 <Nav.Item className="footerHeadline">INFORMATION</Nav.Item>
                 <Nav.Item as="li">
@@ -92,9 +92,9 @@ class Footer extends Component {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col>
-              <Nav className="footerHeadline">SUBSCRIBE TO OUR NEWSLETTER:</Nav>
-              <br />
+            <Col xl={3} className="footerColumn">
+              {/* <Nav className="footerHeadline">SUBSCRIBE TO OUR NEWSLETTER:</Nav>
+              <br /> */}
               <Nav className="flex-column align-items-start footerHeadline">
                 CONNECT TO:
                 <SocialMedia />
@@ -103,10 +103,8 @@ class Footer extends Component {
           </Row>
         </Container>
 
-        <Container className="footerContainer" fluid>
-          <div className="footerCopyright">
-            © Copyright Design Meets Craft 2019
-          </div>
+        <Container className="footerCopyright" fluid>
+          <div>© Copyright Design Meets Craft 2019</div>
         </Container>
       </div>
     );

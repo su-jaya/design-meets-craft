@@ -1,9 +1,5 @@
-.headerContainer {
+.authbuttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-}
-
-.headerEmptyDiv {
-  width: 30em;
 }

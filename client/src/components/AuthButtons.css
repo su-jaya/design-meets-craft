@@ -1,10 +1,10 @@
-.authButtons {
+/* .authButtons {
   display: flex;
   width: 30em;
   justify-content: flex-end;
   margin-right: 1em;
   padding: 0.8em;
-}
+} */
 
 .authButtons button {
   margin: 0.5em;

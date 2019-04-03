@@ -135,7 +135,9 @@ class Home extends Component {
         <div>
           <div className="homeDesignerHeadline">
             <h1>Designers</h1>
-            <button className="homeDesignerButton">SEE ALL</button>
+            <Link to="/designers">
+              <button className="homeDesignerButton">SEE ALL</button>
+            </Link>
           </div>
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
@@ -155,7 +157,9 @@ class Home extends Component {
         <div>
           <div className="homeDesignerHeadline">
             <h1>Artisans</h1>
-            <button className="homeDesignerButton">SEE ALL</button>
+            <Link to="/artisans">
+              <button className="homeDesignerButton">SEE ALL</button>
+            </Link>
           </div>
           <Container className="homeDesignersContainer" fluid={true}>
             <Row className="homeDesignersRow">
