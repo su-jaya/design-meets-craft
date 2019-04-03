@@ -35,7 +35,7 @@ class Registration extends Component {
     )[0];
 
     if (role === undefined) {
-      this.setState({ message: "please select a profession" });
+      this.setState({ message: "PLEASE SELECT A PROFESSION" });
       return;
     }
 
@@ -159,12 +159,6 @@ class Registration extends Component {
                 After the first step you get an email with your access data
               </p>
 
-              {this.state.message === "no Error" ? (
-                <Redirect push to="/aboutyou" />
-              ) : (
-                this.state.message
-              )}
-
               <form
                 className="registrationForm"
                 onSubmit={event => this.submitHandler(event)}
@@ -238,6 +232,12 @@ class Registration extends Component {
 
                 <button className="registrationSignUpButton">Sign Up</button>
               </form>
+
+              {this.state.message === "no Error" ? (
+                <Redirect push to="/aboutyou" />
+              ) : (
+                <div className="errorMessage">{this.state.message}</div>
+              )}
             </Col>
             <Col xs lg="3">
               <Note />

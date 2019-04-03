@@ -51,20 +51,12 @@ class Login extends Component {
         <Header button="none" setUser={this.props.setUser} />
         <Navbar />
         <Container className="login">
-          {this.state.error === "no Error" ? (
-            <Redirect
-              to={{
-                pathname: "/profile"
-              }}
-            />
-          ) : (
-            this.state.error
-          )}
           <Row>
             <Col md={{ span: 4, offset: 4 }}>
               <form className="loginForm" onSubmit={this.handleFormSubmit}>
                 <label>Email:</label>
                 <input
+                  className="loginInput"
                   required
                   type="email"
                   name="email"
@@ -73,15 +65,25 @@ class Login extends Component {
                 />
                 <label>Password:</label>
                 <input
+                  className="loginInput"
                   name="password"
                   type="password"
                   value={this.state.password}
                   onChange={e => this.handleChange(e)}
                 />
 
-                <input className="loginButton" type="submit" value="Login" />
+                <input className="loginButton" type="submit" value="LOGIN" />
               </form>
-              <p>
+              {this.state.error === "no Error" ? (
+                <Redirect
+                  to={{
+                    pathname: "/profile"
+                  }}
+                />
+              ) : (
+                <div className="errorMessage">{this.state.error}</div>
+              )}
+              <p className="loginNoAccount">
                 Don't have an account yet?<span> </span>
                 <Link to={"/signup"} className="loginSignupButton">
                   Signup

@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 .loginForm label {
@@ -13,7 +15,7 @@
   font-size: 0.9em;
 }
 
-.loginForm input,
+.loginInput,
 .loginForm textarea {
   margin-top: 0;
   margin-bottom: 1em;
@@ -26,6 +28,7 @@
   background-color: #92b647;
   padding: 0.5em;
   border: none;
+  margin: 0;
 }
 
 .loginSignupButton {
@@ -36,4 +39,8 @@
 .loginSignupButton:hover {
   color: #bea192;
   text-decoration: none;
+}
+
+.loginNoAccount {
+  margin: 1em;
 }

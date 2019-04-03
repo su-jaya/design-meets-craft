@@ -19,7 +19,7 @@ authRoutes.post("/signup", (req, res, next) => {
 
   if (password != passwordConfirm) {
     res.status(400).json({
-      message: "Please type in correct password"
+      message: "PLEASE TYPE IN CORRECT PASSWORD."
     });
     return;
   }
@@ -27,7 +27,7 @@ authRoutes.post("/signup", (req, res, next) => {
   Designer.findOne({ email: email }).then(user => {
     if (user !== null) {
       res.status(400).json({
-        message: "Your e-mail is already assigned to an account. Please Log in"
+        message: "THIS EMAIL IS ALREADY ASSIGNED TO AN ACCOUNT. PLEASE LOG IN."
       });
       return;
     }
@@ -77,7 +77,7 @@ authRoutes.post("/login/designer", (req, res, next) => {
     }
 
     if (!theUser) {
-      res.status(401).json({ message: `wrong email or password` });
+      res.status(401).json({ message: `WRONG EMAIL OR PASSWORD` });
       return;
     }
 

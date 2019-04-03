@@ -260,3 +260,10 @@
   margin-left: 3.5em;
   margin-top: 3.5em;
 }
+
+.errorMessage {
+  color: white;
+  background-color: red;
+  margin: 0.2em 0;
+  border: none;
+}
