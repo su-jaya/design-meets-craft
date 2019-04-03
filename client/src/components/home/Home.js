@@ -99,16 +99,16 @@ class Home extends Component {
             <Col sm={6} className="homeAboutText">
               <h2>It's in your Hands</h2>
               <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat.
+                No matter if you are a big brand, independent designer or just
+                passionate about crafts - this platform makes it easy for you to
+                find your perfeect match! #itsinyourhands
               </p>
               <p>
-                At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua.
+                Design meets Craft matches brands and designers with traditional
+                craft businesses using modern design to inspire positive change
+                and preserve traditional crafts. Design meets Crafts is a
+                matchmaking platform creating unique, emotional, intercultural
+                experiences between individuals.
               </p>
               <Link to="/aboutus">
                 <button className="homeAboutButton">LEARN MORE ABOUT US</button>
@@ -179,17 +179,15 @@ class Home extends Component {
               <Col>
                 <h2>Vote for your Favourite Designer</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat.
+                  The ABURY Design Experience (ADEx) is the first international
+                  contest in search of emerging designers to create an accessory
+                  capsule collection using traditional crafts knowledge from
+                  different cultures. The winner will be receiving a travel,
+                  stay and production budget and will spend up to six weeks in
+                  Chile working with the artisans from Fundación de Artesanías
+                  de Chile.
                 </p>
-                <p>
-                  At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                  dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                  sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
+
                 <a
                   href="http://adex.abury.net/"
                   target="_blank"

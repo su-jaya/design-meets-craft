@@ -87,7 +87,7 @@ class Registration extends Component {
               {/*What's Your Profession */}
               <h2 className="registrationHeadline">What's your profession</h2>
               <p className="registrationSubtitle">
-                First, please tell us what your profession is
+                First, please tell us what your profession is.
               </p>
 
               {/*Profession Boxes*/}
@@ -126,7 +126,7 @@ class Registration extends Component {
                           : { backgroundColor: "white" }
                       }
                     >
-                      Fashion ipsum dolor sit amet, consetetur
+                      You are a fashion designer or brand.
                     </p>
                   </Col>
                 </Link>
@@ -147,7 +147,7 @@ class Registration extends Component {
                   <Col className="registrationProfessionBox artisan">
                     <h3 className="registrationProfessionHeadline">Artisan</h3>
                     <p className="registrationSmallText">
-                      Fashion ipsum dolor sit amet, consetetur
+                      You are part of an artisan community.
                     </p>
                   </Col>
                 </Link>
@@ -156,7 +156,8 @@ class Registration extends Component {
               {/*Create your account*/}
               <h2 className="registrationHeadline">Create your account</h2>
               <p className="registrationSubtitle">
-                After the first step you get an email with your access data
+                After you have filled out the fields we will guide you through
+                the sign up process.
               </p>
 
               <form
@@ -227,7 +228,7 @@ class Registration extends Component {
 
                 <p className="registrationSignUpText">
                   By clicking Sign Up, you agree to our Terms and that you have
-                  read our Privacy Policy, including our Cookie Policy.
+                  read our Privacy Policy.
                 </p>
 
                 <button className="registrationSignUpButton">Sign Up</button>
