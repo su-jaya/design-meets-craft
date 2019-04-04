@@ -46,13 +46,13 @@ class NavBar extends Component {
             </NavDropdown.Item>
           </NavDropdown> */}
             <Nav.Item as="li">
-              <Link to="#">Design for Good</Link>
+              <Link to="/editprofile">Design for Good</Link>
             </Nav.Item>
             <Nav.Item as="li">
-              <Link to="#">Shop</Link>
+              <Link to="/editprofile">Shop</Link>
             </Nav.Item>
             <Nav.Item as="li">
-              <Link to="#">Journal</Link>
+              <Link to="/editprofile">Journal</Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
