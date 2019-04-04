@@ -146,10 +146,9 @@ authRoutes.post("/signup/designer/needs", (req, res) => {
     lookingfor: req.body.lookingfor
   };
 
-  Designer.findByIdAndUpdate(userId, needs)
-    .then(user => console.log(user))
+  Designer.findByIdAndUpdate(userId, needs, { new: true })
+    .then(user => res.status(200).json(user))
     .catch(err => console.log(err));
-  res.status(200).json({ message: "no Error" });
 });
 
 // UPLOAD DESIGNER

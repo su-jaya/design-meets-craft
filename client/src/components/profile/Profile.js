@@ -4,7 +4,6 @@ import Header from "../Header";
 import NavBar from "../NavBar";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-// import Image from "react-bootstrap/Image";
 import ProfileCard from "./ProfileCard";
 import CardD from "../CardD";
 import CardA from "../CardA";
@@ -14,9 +13,9 @@ import Col from "react-bootstrap/Col";
 import Footer from "../Footer";
 import TagsInput from "react-tagsinput";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import _ from "lodash";
 import axios from "axios";
-import { Image, Transformation } from "cloudinary-react";
 
 class Profile extends Component {
   state = {
@@ -53,9 +52,12 @@ class Profile extends Component {
 
         {/* Banner */}
         <div className="profileBanner">
-          <Image cloudName="dfksfwvex" publicId={theUser.public_id_ti + ".jpg"}>
-            <Transformation width="1500" height="400" crop="fill" />
-          </Image>
+          <img
+            src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_400,w_1500,c_scale/v1/${
+              theUser.public_id_ti
+            }.jpg`}
+            alt="public profile"
+          />
         </div>
 
         {/* Profile Box */}
@@ -80,7 +82,16 @@ class Profile extends Component {
 
         <div className="profileMatchesHeadline">
           <h1>Matches by your needs</h1>
-          <button className="profileMatchesButton">SEE ALL</button>
+
+          {theUser.role === "artisan" ? (
+            <Link to="/designers">
+              <button className="profileMatchesButton">SEE ALL</button>
+            </Link>
+          ) : (
+            <Link to="/artisans">
+              <button className="profileMatchesButton">SEE ALL</button>
+            </Link>
+          )}
         </div>
 
         <div>
