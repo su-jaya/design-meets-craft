@@ -160,8 +160,8 @@ class Designers extends Component {
         <div className="artisansSearchContainer">
           <Container fluid>
             <Row>
-              <Col>
-                <label>Category</label>
+              <Col className="artisansSearchColumn">
+                <label>Category:</label>
                 <Select
                   options={this.state.tagsCategory.map(el => {
                     return { value: el, label: el };
@@ -172,8 +172,8 @@ class Designers extends Component {
                   isMulti
                 />
               </Col>
-              <Col>
-                <label>Material</label>
+              <Col className="artisansSearchColumn">
+                <label>Material:</label>
                 <Select
                   options={this.state.tagsMaterial.map(el => {
                     return { value: el, label: el };
@@ -184,8 +184,8 @@ class Designers extends Component {
                   isMulti
                 />
               </Col>
-              <Col>
-                <label>Destination</label>
+              <Col className="artisansSearchColumn">
+                <label>Destination:</label>
                 <Select
                   options={this.state.tagsDestination.map(el => {
                     return { value: el, label: el };
