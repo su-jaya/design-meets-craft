@@ -15,6 +15,7 @@ class Designers extends Component {
     // all designer user objects
     alldesigner: [],
     displaydesigner: [],
+    resortdesigner: [],
     // all available tags for dropdown
     tagsCategory: [],
     tagsMaterial: [],
@@ -72,17 +73,44 @@ class Designers extends Component {
   handleChange = (event, add) => {
     let selectedTagsArr = event.map(e => e.label);
     let fieldInState = `selected${add}`;
+    let secondSearch, thirdSearch;
 
-    let filterDesigners = this.state.alldesigner.filter(designer => {
-      let okay = 0;
+    if (fieldInState === "selectedCategory") {
+      secondSearch = "Material";
+      thirdSearch = "Destination";
+    } else if (fieldInState === "selectedMaterial") {
+      secondSearch = "Category";
+      thirdSearch = "Destination";
+    } else if (fieldInState === "selectedDestination") {
+      secondSearch = "Category";
+      thirdSearch = "Material";
+    }
 
-      for (let i = 0; i < selectedTagsArr.length; i++) {
-        if (designer.tagsCategory.includes(selectedTagsArr[i])) {
-          okay += 1;
-        }
-      }
-      return okay === selectedTagsArr.length;
-    });
+    let filterDesigners = this.state.alldesigner;
+
+    if (selectedTagsArr.length > 0) {
+      filterDesigners = filterDesigners.filter(designer => {
+        return selectedTagsArr.every(val =>
+          designer[`tags${add}`].includes(val)
+        );
+      });
+    }
+
+    if (this.state[`selected${secondSearch}`].length > 0) {
+      filterDesigners = filterDesigners.filter(designer => {
+        return this.state[`selected${secondSearch}`].every(val =>
+          designer[`tags${secondSearch}`].includes(val)
+        );
+      });
+    }
+
+    if (this.state[`selected${thirdSearch}`].length > 0) {
+      filterDesigners = filterDesigners.filter(designer => {
+        return this.state[`selected${thirdSearch}`].every(val =>
+          designer[`tags${thirdSearch}`].includes(val)
+        );
+      });
+    }
 
     this.setState({
       [fieldInState]: selectedTagsArr,
@@ -90,10 +118,35 @@ class Designers extends Component {
     });
   };
 
+  dropDownHandler = event => {
+    let copy = this.state.displaydesigner;
+
+    if (event.target.value === "firstName") {
+      copy.sort((a, b) => {
+        if (a.firstName < b.firstName) {
+          return -1;
+        }
+        if (a.firstName > b.firstName) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (event.target.value === "best-matches") {
+      copy.sort((a, b) => {
+        return b.matches - a.matches;
+      });
+    }
+
+    this.setState({
+      displaydesigner: copy
+    });
+  };
+
   render() {
     if (this.state.alldesigner.length === 0) {
       return "Loading...";
     }
+
     return (
       <div>
         <Header
@@ -108,6 +161,7 @@ class Designers extends Component {
           <Container fluid>
             <Row>
               <Col>
+                <label>Category</label>
                 <Select
                   options={this.state.tagsCategory.map(el => {
                     return { value: el, label: el };
@@ -117,17 +171,9 @@ class Designers extends Component {
                   }
                   isMulti
                 />
-
-                <button>
-                  <img
-                    src="/images/DmC_plusicon.png"
-                    alt="plus icon"
-                    width="20px"
-                  />
-                  Category
-                </button>
               </Col>
               <Col>
+                <label>Material</label>
                 <Select
                   options={this.state.tagsMaterial.map(el => {
                     return { value: el, label: el };
@@ -137,17 +183,9 @@ class Designers extends Component {
                   }
                   isMulti
                 />
-
-                <button>
-                  <img
-                    src="/images/DmC_plusicon.png"
-                    alt="plus icon"
-                    width="20px"
-                  />
-                  Material
-                </button>
               </Col>
               <Col>
+                <label>Destination</label>
                 <Select
                   options={this.state.tagsDestination.map(el => {
                     return { value: el, label: el };
@@ -157,15 +195,6 @@ class Designers extends Component {
                   }
                   isMulti
                 />
-
-                <button>
-                  <img
-                    src="/images/DmC_plusicon.png"
-                    alt="plus icon"
-                    width="20px"
-                  />
-                  Destination
-                </button>
               </Col>
             </Row>
           </Container>
@@ -173,19 +202,19 @@ class Designers extends Component {
 
         {/* Filter Dropdown */}
         <div className="artisansFilterDropdown">
-          <select>
+          <select onChange={event => this.dropDownHandler(event)}>
             <option value="best-matches">Best matches</option>
-            <option value="newest">Newest first</option>
-            <option value="by-name">Sort by name</option>
+            {/* <option value="newest">Newest first</option> */}
+            <option value="firstName">Sort by name</option>
           </select>
-          <button>
+          {/* <button>
             <img
               src="/images/DmC_cancelicon.png"
               alt="cancel icon"
               width="20px"
             />
             Reset to default
-          </button>
+          </button> */}
         </div>
 
         <Container className="homeDesignersContainer" fluid={true}>
@@ -203,7 +232,7 @@ class Designers extends Component {
             })}
           </Row>
         </Container>
-        <button className="artisansMoreButton">LOAD MORE</button>
+        {/* <button className="artisansMoreButton">LOAD MORE</button> */}
 
         <Footer />
       </div>
