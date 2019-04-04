@@ -19,11 +19,9 @@ router.get("/get/:role", (req, res) => {
 router.get("/match/:role/:slice", (req, res) => {
   let theRole, dest_req, dest_res;
 
-  console.log(req.user);
-
   req.params.role === "designer"
     ? ((theRole = "artisan"), (dest_req = req.user.tagsDestination))
-    : ((theRole = "designer"), (dest_req = [req.user.city]));
+    : ((theRole = "designer"), (dest_req = [req.user.country]));
 
   // current designer category + material
   let currentUser = [
@@ -39,7 +37,7 @@ router.get("/match/:role/:slice", (req, res) => {
     // how many matches?
     let countMatches = result.map(e => {
       req.params.role === "designer"
-        ? (dest_res = [e.city])
+        ? (dest_res = [e.country])
         : (dest_res = e.tagsDestination);
 
       // one artisan category + material
