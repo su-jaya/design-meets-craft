@@ -28,12 +28,12 @@ class AuthButtons extends Component {
             alignRight
             title={
               <div>
-                <img
+                {/* <img
                   src="/images/DmC_alarmicon.png"
                   alt="alarm icon"
                   width="25em"
-                />
-                <img
+                /> */}
+                 <img
                   className="authButtonsAvatar"
                   src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_45,w_45,g_face/v1/${
                     this.props.loggedIn.public_id_bl
@@ -83,7 +83,7 @@ class AuthButtons extends Component {
         </div>
       );
     } else {
-      dynamicbutton = <div className="headerEmptyDiv" />;
+      dynamicbutton = <div />;
     }
     return (
       <div>

@@ -1,13 +1,29 @@
 .artisansSearchContainer {
   background: #f5ede9;
-  height: 16em;
-  padding: 2em;
+  height: 12em;
+  padding: 3em 2em;
 }
 
 .artisansSearchColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  text-align: left;
+}
+
+.artisansSearchColumn label {
+  font-size: 1.3em;
+  color: #5b5a5a;
+}
+
+.css-vj8t7z:focus {
+  box-shadow: black !important;
+}
+
+.css-2o5izw {
+  border-color: #d4b5aa !important;
+  box-shadow: 0 0 0 1px #d4b5aa !important;
+}
+
+.css-2o5izw:hover {
+  border-color: #d4b5aa !important;
 }
 
 .artisansFilterDropdown {
@@ -16,34 +32,23 @@
   margin: 2em 3em;
 }
 
-.artisansSearchColumn button {
-  text-align: left;
-  margin: 1em 0;
-}
-
-.artisansSearchColumn img,
-.artisansFilterDropdown img {
-  margin-right: 0.5em;
-}
-
-.artisansSearchColumn div {
+/* .artisansSearchColumn div {
   width: 90%;
   border-bottom: 1px solid #5b5a5a;
   padding-bottom: 0.5em;
-}
+} */
 
-.artisansSearchColumn select {
+/* .artisansSearchColumn select {
   border: none;
   background: none;
   width: 90%;
   font-size: 1.4em;
   color: #5b5a5a;
   cursor: pointer;
-}
+} */
 
 .artisansFilterDropdown select,
-.artisansFilterDropdown button,
-.artisansSearchColumn button {
+.artisansFilterDropdown button {
   border: none;
   background: none;
   color: #a9aaac;
@@ -51,7 +56,7 @@
   cursor: pointer;
 }
 
-.artisansMoreButton {
+/* .artisansMoreButton {
   background: none;
   color: black;
   border: 2px solid black;
@@ -60,4 +65,4 @@
   font-weight: bold;
   margin: 3em;
   cursor: pointer;
-}
+} */
