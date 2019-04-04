@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./Card.css";
-import _ from "lodash";
-import { Image, Transformation } from "cloudinary-react";
 
 class CardA extends Component {
   render() {
@@ -10,27 +8,23 @@ class CardA extends Component {
       return "Loading...";
     }
 
-    let usertags = [...theUser.tagsCategory, ...theUser.tagsMaterial];
-
     return (
       <div className="cardContainer mx-auto">
         <div className="cardBanner">
-          <Image cloudName="dfksfwvex" publicId={theUser.public_id_ti + ".jpg"}>
-            <Transformation width="306" height="175" crop="fill" />
-          </Image>
-        </div>
-        <Image
-          cloudName="dfksfwvex"
-          publicId={theUser.public_id_bl + ".jpg"}
-          className="cardAvatar"
-        >
-          <Transformation
-            crop="thumb"
-            width="150"
-            height="150"
-            gravity="face"
+          <img
+            src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_fill,h_175,w_306/v1/${
+              theUser.public_id_ti
+            }.jpg`}
+            alt="public profile"
           />
-        </Image>
+        </div>
+        <img
+          className="cardAvatar"
+          src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_150,w_150,g_face/v1/${
+            theUser.public_id_bl
+          }.jpg`}
+          alt="public profile"
+        />
         <div className="cardText">
           <h3 className={this.props.class}> {theUser.brand}</h3>
           <p className="cardSubtitle">{`${theUser.city}, ${
@@ -39,7 +33,10 @@ class CardA extends Component {
           <p className="cardDescription">{theUser.youinasentence}</p>
           <div className="cardDivider" />
           <div className="cardTags">
-            {_.sampleSize(usertags, 7).map((e, idx) => {
+            {[
+              ...theUser.tagsCategory.slice(0, 4),
+              ...theUser.tagsMaterial.slice(0, 4)
+            ].map((e, idx) => {
               return <p key={idx}>{e}</p>;
             })}
           </div>

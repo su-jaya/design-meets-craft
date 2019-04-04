@@ -67,4 +67,13 @@ router.get("/match/:role/:slice", (req, res) => {
   });
 });
 
+router.get("/getNewest/:userType", (req, res) => {
+  Designer.find({ role: req.params.userType })
+    .sort("-date")
+    .then(users => {
+      return res.status(200).json(users);
+    })
+    .catch(err => console.log(err));
+});
+
 module.exports = router;

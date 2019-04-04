@@ -73,7 +73,12 @@ class App extends React.Component {
 
           <Route
             path="/needs"
-            render={() => <Needs userInSession={this.state.loggedInUser} />}
+            render={() => (
+              <Needs
+                setUser={userobj => this.setTheUser(userobj)}
+                userInSession={this.state.loggedInUser}
+              />
+            )}
           />
 
           <Route

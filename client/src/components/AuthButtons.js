@@ -4,7 +4,6 @@ import "./AuthButtons.css";
 import AuthService from "./signup/auth-service";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Image, Transformation } from "cloudinary-react";
 
 class AuthButtons extends Component {
   state = {
@@ -34,18 +33,13 @@ class AuthButtons extends Component {
                   alt="alarm icon"
                   width="25em"
                 /> */}
-                <Image
-                  cloudName="dfksfwvex"
-                  publicId={this.props.loggedIn.public_id_bl + ".jpg"}
+                 <img
                   className="authButtonsAvatar"
-                >
-                  <Transformation
-                    crop="thumb"
-                    width="45"
-                    height="45"
-                    gravity="face"
-                  />
-                </Image>
+                  src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_45,w_45,g_face/v1/${
+                    this.props.loggedIn.public_id_bl
+                  }.jpg`}
+                  alt="public profile"
+                />
                 <img
                   src="/images/DmC_arrowicon.png"
                   alt="alarm icon"
