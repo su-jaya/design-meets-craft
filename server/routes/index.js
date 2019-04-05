@@ -76,4 +76,10 @@ router.get("/getNewest/:userType", (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/getuserprofile/:id", (req, res) => {
+  Designer.findById(req.params.id)
+    .then(user => res.status(200).json(user))
+    .catch(err => console.log(err));
+});
+
 module.exports = router;

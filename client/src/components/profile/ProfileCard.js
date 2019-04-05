@@ -4,6 +4,7 @@ import "./Profile.css";
 class ProfileCard extends Component {
   render() {
     let theUser = this.props;
+
     return (
       <div className="profileBox">
         <img
