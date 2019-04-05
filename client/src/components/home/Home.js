@@ -93,10 +93,10 @@ class Home extends Component {
 
         <Container className="homeAboutBackground" fluid>
           <Row>
-            <Col sm={6}>
-              <Image src="./images/temp_match.png" alt="" fluid />
+            <Col sm>
+              <Image lg={6} src="./images/temp_match.png" alt="" fluid />
             </Col>
-            <Col sm={6} className="homeAboutText">
+            <Col lg={6} className="homeAboutText">
               <h2>It's in your Hands</h2>
               <p>
                 No matter if you are a big brand, independent designer or just
@@ -179,8 +179,8 @@ class Home extends Component {
         <div className="homeAdexBackground">
           <Container>
             <Row>
-              <Col />
-              <Col>
+              <Col md={6} />
+              <Col md={6}>
                 <h2>Vote for your Favourite Designer</h2>
                 <p>
                   The ABURY Design Experience (ADEx) is the first international
