@@ -207,7 +207,8 @@ class Designers extends Component {
 
         {/* Filter Dropdown */}
         <div className="artisansFilterDropdown">
-          {this.props.userInSession ? (
+          {this.props.userInSession &&
+          this.props.userInSession.role === "artisan" ? (
             <select onChange={event => this.dropDownHandler(event)}>
               <option value="best-matches">Best matches</option>
               {/* <option value="newest">Newest first</option> */}
