@@ -163,6 +163,7 @@
   background-color: #92b647;
   padding: 0.5em;
   border: none;
+  cursor: pointer;
 }
 
 .registrationNextButtonPosition {

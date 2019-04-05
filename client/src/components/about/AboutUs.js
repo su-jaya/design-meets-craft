@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import "./AboutUs.css";
+import { Link } from "react-router-dom";
 
 class AboutUs extends Component {
   render() {
@@ -136,7 +137,11 @@ class AboutUs extends Component {
                   needed for such a change. And this is why we created this
                   platform that connects the designers and the makers.
                 </p>
-                <button className="aboutUsArtisansButton">FOR ARTISANS</button>
+                <Link to="/artisans">
+                  <button className="aboutUsArtisansButton">
+                    FOR ARTISANS
+                  </button>
+                </Link>
               </Col>
             </Row>
           </Container>

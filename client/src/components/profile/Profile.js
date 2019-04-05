@@ -92,7 +92,6 @@ class Profile extends Component {
             </Link>
           ) : (
             <Link to="/designers">
-
               <button className="profileMatchesButton">SEE ALL</button>
             </Link>
           )}
@@ -187,63 +186,74 @@ class Profile extends Component {
                 />
               </div>
               <div className="homeDivider" />
-              <div>
-                <div className="profileEditHeadline">
-                  <h1>Destination</h1>
-                  <Link to="/editprofile">
-                    <button>
-                      <img
-                        className="profileEditIcon"
-                        src="/images/DmC_penicon.png"
-                        alt="pen icon"
-                        width="15em"
-                      />
-                      Edit
-                    </button>
-                  </Link>
+
+              {theUser.role === "designer" ? (
+                <div>
+                  <div>
+                    <div className="profileEditHeadline">
+                      <h1>Destination</h1>
+                      <Link to="/editprofile">
+                        <button>
+                          <img
+                            className="profileEditIcon"
+                            src="/images/DmC_penicon.png"
+                            alt="pen icon"
+                            width="15em"
+                          />
+                          Edit
+                        </button>
+                      </Link>
+                    </div>
+                    <TagsInput
+                      className="suggestedTags viewTagsOnly"
+                      id="destination"
+                      value={theUser.tagsDestination}
+                    />
+                  </div>
+
+                  <div className="homeDivider" />
+
+                  <div>
+                    <div className="profileEditHeadline">
+                      <h1>Production capacity</h1>
+                      <Link to="/editprofile">
+                        <button>
+                          <img
+                            className="profileEditIcon"
+                            src="/images/DmC_penicon.png"
+                            alt="pen icon"
+                            width="15em"
+                          />
+                          Edit
+                        </button>
+                      </Link>
+                    </div>
+                    <p className="profileEditText">{theUser.capacity}</p>
+                  </div>
+
+                  <div className="homeDivider" />
+
+                  <div>
+                    <div className="profileEditHeadline">
+                      <h1>Looking for</h1>
+                      <Link to="/editprofile">
+                        <button>
+                          <img
+                            className="profileEditIcon"
+                            src="/images/DmC_penicon.png"
+                            alt="pen icon"
+                            width="15em"
+                          />
+                          Edit
+                        </button>
+                      </Link>
+                    </div>
+                    <p className="profileEditText">{theUser.lookingfor}</p>
+                  </div>
                 </div>
-                <TagsInput
-                  className="suggestedTags viewTagsOnly"
-                  id="destination"
-                  value={theUser.tagsDestination}
-                />
-              </div>
-              <div className="homeDivider" />
-              <div>
-                <div className="profileEditHeadline">
-                  <h1>Production capacity</h1>
-                  <Link to="/editprofile">
-                    <button>
-                      <img
-                        className="profileEditIcon"
-                        src="/images/DmC_penicon.png"
-                        alt="pen icon"
-                        width="15em"
-                      />
-                      Edit
-                    </button>
-                  </Link>
-                </div>
-                <p className="profileEditText">{theUser.capacity}</p>
-              </div>
-              <div className="homeDivider" />
-              <div>
-                <div className="profileEditHeadline">
-                  <h1>Looking for</h1>
-                  <Link to="/editprofile">
-                    <button>
-                      <img
-                        className="profileEditIcon"
-                        src="/images/DmC_penicon.png"
-                        alt="pen icon"
-                        width="15em"
-                      />
-                      Edit
-                    </button>
-                  </Link>
-                </div>
-                <p className="profileEditText">{theUser.lookingfor}</p>
-              </div>
+              ) : (
+                ""
+              )}
 
               {/* GALLERY SECTION  */}
 
