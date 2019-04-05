@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Card.css";
+import { Link } from "react-router-dom";
 
 class CardA extends Component {
   render() {
@@ -10,6 +11,7 @@ class CardA extends Component {
 
     return (
       <div className="cardContainer mx-auto">
+        {/* <Link to={`/userprofile/${theUser._id}`}> */}
         <div className="cardBanner">
           <img
             src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_fill,h_175,w_306/v1/${
@@ -41,6 +43,7 @@ class CardA extends Component {
             })}
           </div>
         </div>
+        {/* </Link> */}
       </div>
     );
   }

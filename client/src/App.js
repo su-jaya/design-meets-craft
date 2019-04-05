@@ -13,6 +13,7 @@ import Artisans from "./components/designers-artisans/Artisans";
 import Designers from "./components/designers-artisans/Designers";
 import Uploads from "./components/signup/Uploads";
 import EditProfile from "./components/profile/EditProfile";
+import UserProfile from "./components/profile/UserProfile";
 
 class App extends React.Component {
   state = {
@@ -70,6 +71,17 @@ class App extends React.Component {
             path="/aboutyou"
             render={() => <AboutYou userInSession={this.state.loggedInUser} />}
           />
+
+          {/* <Route
+            path="/userprofile/:userId"
+            render={props => (
+              <UserProfile
+                setUser={this.setTheUser}
+                userInSession={this.state.loggedInUser}
+                {...props}
+              />
+            )}
+          /> */}
 
           <Route
             path="/needs"
