@@ -27,11 +27,15 @@ class Artisans extends Component {
   };
 
   componentDidMount() {
+    let url;
+
+    this.props.userInSession === null || this.props.userInSession === false
+      ? (url = "/getNewest/designer")
+      : (url = "/match/artisan/all");
+
     axios({
       method: "GET",
-      url:
-        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-        `/match/designer/all`,
+      url: (process.env.REACT_APP_API_URL || "http://localhost:5000") + url,
       withCredentials: true
     })
       .then(all =>
@@ -226,11 +230,7 @@ class Artisans extends Component {
           <Row className="homeDesignersRow">
             {this.state.displayartisan.map((e, idx) => {
               return (
-                <Col
-                  key={idx}
-                  theUser={e}
-                  className="homeDesignersColumn mx-auto"
-                >
+                <Col key={idx} className="homeDesignersColumn mx-auto">
                   <CardA key={idx} theUser={e} class="cardHeadlineArtisan" />
                 </Col>
               );

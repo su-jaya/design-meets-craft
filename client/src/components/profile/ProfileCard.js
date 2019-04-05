@@ -1,26 +1,18 @@
 import React, { Component } from "react";
 import "./Profile.css";
-import { Image, Transformation } from "cloudinary-react";
-
-// import cloudinary from "cloudinary-core";
 
 class ProfileCard extends Component {
   render() {
     let theUser = this.props;
     return (
       <div className="profileBox">
-        <Image
+        <img
           className="profileAvatar"
-          cloudName="dfksfwvex"
-          publicId={theUser.public_id_bl + ".jpg"}
-        >
-          <Transformation
-            width="350"
-            height="350"
-            gravity="face"
-            crop="thumb"
-          />
-        </Image>
+          src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_350,w_350,g_face/v1/${
+            theUser.public_id_bl
+          }.jpg`}
+          alt="public profile"
+        />
 
         <h1 className="profileBoxHeadline">
           {`${theUser.firstName} ${theUser.lastName}`}

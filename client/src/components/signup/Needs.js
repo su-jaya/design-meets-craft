@@ -110,7 +110,10 @@ class Needs extends Component {
           withCredentials: true
         }
       )
-      .then(() => this.setState({ redirect: true }))
+      .then(user => {
+        this.setState({ redirect: true });
+        return this.props.setUser(user.data);
+      })
       .catch(err => console.log(err));
   };
 
