@@ -50,48 +50,44 @@ class Login extends Component {
       <div>
         <Header button="none" setUser={this.props.setUser} />
         <Navbar />
-        <Container className="login">
-          <Row>
-            <Col md={{ span: 4, offset: 4 }}>
-              <form className="loginForm" onSubmit={this.handleFormSubmit}>
-                <label>Email:</label>
-                <input
-                  className="loginInput"
-                  required
-                  type="email"
-                  name="email"
-                  value={this.state.email}
-                  onChange={e => this.handleChange(e)}
-                />
-                <label>Password:</label>
-                <input
-                  className="loginInput"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={e => this.handleChange(e)}
-                />
+        <div className="login">
+          <form className="loginForm" onSubmit={this.handleFormSubmit}>
+            <label>Email:</label>
+            <input
+              className="loginInput"
+              required
+              type="email"
+              name="email"
+              value={this.state.email}
+              onChange={e => this.handleChange(e)}
+            />
+            <label>Password:</label>
+            <input
+              className="loginInput"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={e => this.handleChange(e)}
+            />
 
-                <input className="loginButton" type="submit" value="LOGIN" />
-              </form>
-              {this.state.error === "no Error" ? (
-                <Redirect
-                  to={{
-                    pathname: "/profile"
-                  }}
-                />
-              ) : (
-                <div className="errorMessage">{this.state.error}</div>
-              )}
-              <p className="loginNoAccount">
-                Don't have an account yet?<span> </span>
-                <Link to={"/signup"} className="loginSignupButton">
-                  Signup
-                </Link>
-              </p>
-            </Col>
-          </Row>
-        </Container>
+            <input className="loginButton" type="submit" value="LOGIN" />
+          </form>
+          {this.state.error === "no Error" ? (
+            <Redirect
+              to={{
+                pathname: "/profile"
+              }}
+            />
+          ) : (
+            <div className="errorMessage">{this.state.error}</div>
+          )}
+          <p className="loginNoAccount">
+            Don't have an account yet?<span> </span>
+            <Link to={"/signup"} className="loginSignupButton">
+              Signup
+            </Link>
+          </p>
+        </div>
         <Footer />
       </div>
     );
