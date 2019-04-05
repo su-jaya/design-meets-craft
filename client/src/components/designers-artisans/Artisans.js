@@ -206,16 +206,16 @@ class Artisans extends Component {
 
         {/* Filter Dropdown */}
         <div className="artisansFilterDropdown">
-          <select onChange={event => this.dropDownHandler(event)}>
-            {this.props.userInSession ? (
+          {this.props.userInSession ? (
+            <select onChange={event => this.dropDownHandler(event)}>
               <option value="best-matches">Best matches</option>
-            ) : (
-              ""
-            )}
 
-            {/* <option value="newest">Newest first</option> */}
-            <option value="firstName">Sort by name</option>
-          </select>
+              {/* <option value="newest">Newest first</option> */}
+              <option value="firstName">Sort by name</option>
+            </select>
+          ) : (
+            ""
+          )}
           {/* <button>
             <img
               src="/images/DmC_cancelicon.png"
