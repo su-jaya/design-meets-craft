@@ -208,7 +208,7 @@ class Artisans extends Component {
               <option value="best-matches">Best matches</option>
 
               {/* <option value="newest">Newest first</option> */}
-              <option value="firstName">Sort by name</option>
+              <option value="brand">Sort by brand name</option>
             </select>
           ) : (
             ""
