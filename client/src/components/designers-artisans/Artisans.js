@@ -103,14 +103,16 @@ class Artisans extends Component {
     if (this.state[secondSearch].length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
         return this.state[secondSearch].every(val =>
-          artisan[add].includes(val)
+          artisan[secondSearch].includes(val)
         );
       });
     }
 
     if (this.state[thirdSearch].length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
-        return this.state[thirdSearch].every(val => artisan[add].includes(val));
+        return this.state[thirdSearch].every(val =>
+          artisan[thirdSearch].includes(val)
+        );
       });
     }
 
