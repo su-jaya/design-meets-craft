@@ -17,21 +17,21 @@ class Artisans extends Component {
     displayartisan: [],
     resortartisan: [],
     // all available tags for dropdown
+    allTagsCategory: [],
+    allTagsMaterial: [],
+    allTagsDestination: [],
+    // selected tags to filter for
     tagsCategory: [],
     tagsMaterial: [],
-    tagsDestination: [],
-    // selected tags to filter for
-    selectedCategory: [],
-    selectedMaterial: [],
-    selectedDestination: []
+    country: []
   };
 
   componentDidMount() {
     let url;
 
     this.props.userInSession === null || this.props.userInSession === false
-      ? (url = "/getNewest/designer")
-      : (url = "/match/artisan/all");
+      ? (url = "/getNewest/artisan")
+      : (url = "/match/designer/all");
 
     axios({
       method: "GET",
@@ -42,7 +42,7 @@ class Artisans extends Component {
         this.setState({
           allartisan: all.data,
           displayartisan: all.data,
-          tagsCategory: [
+          allTagsCategory: [
             ...new Set(
               all.data
                 .map(e => {
@@ -51,7 +51,7 @@ class Artisans extends Component {
                 .flat(2)
             )
           ],
-          tagsMaterial: [
+          allTagsMaterial: [
             ...new Set(
               all.data
                 .map(e => {
@@ -60,7 +60,7 @@ class Artisans extends Component {
                 .flat(2)
             )
           ],
-          tagsDestination: [
+          allTagsDestination: [
             ...new Set(
               all.data
                 .map(e => {
@@ -76,18 +76,18 @@ class Artisans extends Component {
 
   handleChange = (event, add) => {
     let selectedTagsArr = event.map(e => e.label);
-    let fieldInState = `selected${add}`;
+    let fieldInState = add;
     let secondSearch, thirdSearch;
 
-    if (fieldInState === "selectedCategory") {
-      secondSearch = "Material";
-      thirdSearch = "Destination";
-    } else if (fieldInState === "selectedMaterial") {
-      secondSearch = "Category";
-      thirdSearch = "Destination";
-    } else if (fieldInState === "selectedDestination") {
-      secondSearch = "Category";
-      thirdSearch = "Material";
+    if (fieldInState === "tagsCategory") {
+      secondSearch = "tagsMaterial";
+      thirdSearch = "country";
+    } else if (fieldInState === "tagsMaterial") {
+      secondSearch = "tagsCategory";
+      thirdSearch = "country";
+    } else if (fieldInState === "country") {
+      secondSearch = "tagsCategory";
+      thirdSearch = "tagsMaterial";
     }
 
     let filterArtisan = this.state.allartisan;
@@ -95,24 +95,22 @@ class Artisans extends Component {
     if (selectedTagsArr.length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
         return selectedTagsArr.every(val =>
-          artisan[`tags${add}`].includes(val)
+          artisan[fieldInState].includes(val)
         );
       });
     }
 
-    if (this.state[`selected${secondSearch}`].length > 0) {
+    if (this.state[secondSearch].length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
-        return this.state[`selected${secondSearch}`].every(val =>
-          artisan[`tags${secondSearch}`].includes(val)
+        return this.state[secondSearch].every(val =>
+          artisan[add].includes(val)
         );
       });
     }
 
-    if (this.state[`selected${thirdSearch}`].length > 0) {
+    if (this.state[thirdSearch].length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
-        return this.state[`selected${thirdSearch}`].every(val =>
-          artisan[`tags${thirdSearch}`].includes(val)
-        );
+        return this.state[thirdSearch].every(val => artisan[add].includes(val));
       });
     }
 
@@ -167,11 +165,11 @@ class Artisans extends Component {
               <Col className="artisansSearchColumn">
                 <label>Category:</label>
                 <Select
-                  options={this.state.tagsCategory.map(el => {
+                  options={this.state.allTagsCategory.map(el => {
                     return { value: el, label: el };
                   })}
                   onChange={(event, cat) =>
-                    this.handleChange(event, "Category")
+                    this.handleChange(event, "tagsCategory")
                   }
                   isMulti
                 />
@@ -179,11 +177,11 @@ class Artisans extends Component {
               <Col className="artisansSearchColumn">
                 <label>Material:</label>
                 <Select
-                  options={this.state.tagsMaterial.map(el => {
+                  options={this.state.allTagsMaterial.map(el => {
                     return { value: el, label: el };
                   })}
                   onChange={(event, cat) =>
-                    this.handleChange(event, "Material")
+                    this.handleChange(event, "tagsMaterial")
                   }
                   isMulti
                 />
@@ -191,12 +189,10 @@ class Artisans extends Component {
               <Col className="artisansSearchColumn">
                 <label>Destination:</label>
                 <Select
-                  options={this.state.tagsDestination.map(el => {
+                  options={this.state.allTagsDestination.map(el => {
                     return { value: el, label: el };
                   })}
-                  onChange={(event, cat) =>
-                    this.handleChange(event, "Destination")
-                  }
+                  onChange={(event, cat) => this.handleChange(event, "country")}
                   isMulti
                 />
               </Col>
