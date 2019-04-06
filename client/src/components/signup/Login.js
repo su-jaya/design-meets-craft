@@ -5,9 +5,6 @@ import Header from "../Header";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
 import "./Login.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 class Login extends Component {
   constructor(props) {

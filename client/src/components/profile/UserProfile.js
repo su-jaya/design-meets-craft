@@ -4,7 +4,7 @@ import Header from "../Header";
 import NavBar from "../NavBar";
 import ProfileCard from "./ProfileCard";
 import TagsInput from "react-tagsinput";
-import _ from "lodash";
+// import _ from "lodash";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
