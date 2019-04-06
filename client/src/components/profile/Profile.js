@@ -56,7 +56,7 @@ class Profile extends Component {
         {/* Banner */}
         <div className="profileBanner">
           <img
-            src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_400,w_1500,c_scale/v1/${
+            src={`https://res.cloudinary.com/dfksfwvex/image/upload/c_thumb,h_400,w_1440,c_fill/v1/${
               theUser.public_id_ti
             }.jpg`}
             alt="public profile"
