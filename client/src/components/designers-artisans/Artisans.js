@@ -20,7 +20,7 @@ class Artisans extends Component {
     allTagsCategory: [],
     allTagsMaterial: [],
     allTagsDestination: [],
-    // selected tags to filter for
+    // user list per filter
     tagsCategory: [],
     tagsMaterial: [],
     country: []
@@ -74,9 +74,12 @@ class Artisans extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = (event, add) => {
+  handleChange = (event, fieldInState) => {
+    // all artisans
+    let filterArtisan = this.state.allartisan;
+    // selected tags
     let selectedTagsArr = event.map(e => e.label);
-    let fieldInState = add;
+    // to be displayed Artisans
     let secondSearch, thirdSearch;
 
     if (fieldInState === "tagsCategory") {
@@ -89,8 +92,6 @@ class Artisans extends Component {
       secondSearch = "tagsCategory";
       thirdSearch = "tagsMaterial";
     }
-
-    let filterArtisan = this.state.allartisan;
 
     if (selectedTagsArr.length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
