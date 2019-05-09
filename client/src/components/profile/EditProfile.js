@@ -8,47 +8,73 @@ import axios from "axios";
 import { Redirect } from "react-router";
 
 class EditProfile extends Component {
-  state = {
-    // Tagging for Category
-    tagsCategory: [],
-    tagCategory: "",
-    suggestedTagsCategory: [
-      "men",
-      "women",
-      "accessories",
-      "apparel",
-      "shoes",
-      "jewellery",
-      "interior"
-    ],
-    // Tagging for Material
-    tagsMaterial: [],
-    tagMaterial: "",
-    suggestedTagsMaterial: [
-      "wool",
-      "leather",
-      "stone",
-      "cotton",
-      "denim",
-      "satin",
-      "wood"
-    ],
-    // Tagging for Destination
-    tagsDestination: [],
-    tagDestination: "",
-    suggestedTagsDestination: [
-      "Morocco",
-      "Ecuador",
-      "Chile",
-      "Tanzania",
-      "India",
-      "Romania",
-      "France"
-    ],
-    capacity: "",
-    lookingfor: "",
-    redirect: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      // Tagging for Category
+      tagsCategory: [],
+      tagCategory: "",
+      suggestedTagsCategory: [
+        "men",
+        "women",
+        "accessories",
+        "apparel",
+        "shoes",
+        "jewellery",
+        "interior"
+      ],
+      // Tagging for Material
+      tagsMaterial: [],
+      tagMaterial: "",
+      suggestedTagsMaterial: [
+        "wool",
+        "leather",
+        "stone",
+        "cotton",
+        "denim",
+        "satin",
+        "wood"
+      ],
+      // Tagging for Destination
+      tagsDestination: [],
+      tagDestination: "",
+      suggestedTagsDestination: [
+        "Morocco",
+        "Ecuador",
+        "Chile",
+        "Tanzania",
+        "India",
+        "Romania",
+        "France"
+      ],
+      capacity: "",
+      lookingfor: "",
+      redirect: false,
+      error: false
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      tagsCategory: nextProps.userInSession.tagsCategory,
+      tagsDestination: nextProps.userInSession.tagsDestination,
+      tagsMaterial: nextProps.userInSession.tagsMaterial,
+      capacity: nextProps.userInSession.capacity,
+      lookingfor: nextProps.userInSession.lookingfor
+    });
+  }
+
+  componentDidMount() {
+    if (this.props.userInSession != null) {
+      this.setState({
+        tagsCategory: this.props.userInSession.tagsCategory,
+        tagsDestination: this.props.userInSession.tagsDestination,
+        tagsMaterial: this.props.userInSession.tagsMaterial,
+        capacity: this.props.userInSession.capacity,
+        lookingfor: this.props.userInSession.lookingfor
+      });
+    }
+  }
 
   // Add Own Tag
   onChangeInput(tag, toChange, tags) {
@@ -60,12 +86,21 @@ class EditProfile extends Component {
 
   // Remove Tags
   handleChange(tags, changed, changedIdx, toChange) {
+    if (tags.length === 0) {
+      this.setState({
+        error: true
+      });
+      return;
+    }
+
     let field = `tags${toChange}`;
     this.setState({
-      [field]: tags
+      [field]: tags,
+      error: false
     });
   }
 
+  // add new one
   addNewOne(event, change, toChange, field) {
     let copy;
 
@@ -91,27 +126,13 @@ class EditProfile extends Component {
   // SUBMIT
   submitHandler = event => {
     event.preventDefault();
-    let object = {};
-
-    this.state.tagsCategory.length === 0
-      ? (object.tagsCategory = this.props.userInSession.tagsCategory)
-      : (object.tagsCategory = [...new Set(this.state.tagsCategory)]);
-
-    this.state.tagsMaterial.length === 0
-      ? (object.tagsMaterial = this.props.userInSession.tagsMaterial)
-      : (object.tagsMaterial = [...new Set(this.state.tagsMaterial)]);
-
-    this.state.tagsDestination.length === 0
-      ? (object.tagsDestination = this.props.userInSession.tagsDestination)
-      : (object.tagsDestination = [...new Set(this.state.tagsDestination)]);
-
-    this.state.capacity.length === 0
-      ? (object.capacity = this.props.userInSession.capacity)
-      : (object.capacity = this.state.capacity);
-
-    this.state.lookingfor.length === 0
-      ? (object.lookingfor = this.props.userInSession.lookingfor)
-      : (object.lookingfor = this.state.lookingfor);
+    let object = {
+      tagsCategory: [...new Set(this.state.tagsCategory)],
+      tagsMaterial: [...new Set(this.state.tagsMaterial)],
+      tagsDestination: [...new Set(this.state.tagsDestination)],
+      capacity: this.state.capacity,
+      lookingfor: this.state.lookingfor
+    };
 
     axios
       .post(
@@ -134,8 +155,6 @@ class EditProfile extends Component {
       return "Loading...";
     }
 
-    let currentUser = this.props.userInSession;
-
     return (
       <div>
         {this.state.redirect ? <Redirect push to="/profile" /> : ""}
@@ -148,6 +167,7 @@ class EditProfile extends Component {
         <h1>
           <strong>Edit your profile</strong>
         </h1>
+        {this.state.error ? <p>at least one tag required</p> : ""}
         <form onSubmit={this.submitHandler}>
           {/* YOUR PROFESSION */}
           <div className="parentTag">
@@ -156,11 +176,7 @@ class EditProfile extends Component {
             <div className="inputField">
               <TagsInput
                 id="category"
-                value={
-                  this.state.tagsCategory.length === 0
-                    ? currentUser.tagsCategory
-                    : this.state.tagsCategory
-                }
+                value={this.state.tagsCategory}
                 onChange={(tags, changed, changedIdx) =>
                   this.handleChange(tags, changed, changedIdx, "Category")
                 }
@@ -192,11 +208,7 @@ class EditProfile extends Component {
             <div className="inputField">
               <TagsInput
                 id="materials"
-                value={
-                  this.state.tagsMaterial.length === 0
-                    ? currentUser.tagsMaterial
-                    : this.state.tagsMaterial
-                }
+                value={this.state.tagsMaterial}
                 onChange={(tags, changed, changedIdx) =>
                   this.handleChange(tags, changed, changedIdx, "Material")
                 }
@@ -229,11 +241,7 @@ class EditProfile extends Component {
             <div className="inputField">
               <TagsInput
                 id="destination"
-                value={
-                  this.state.tagsDestination.length === 0
-                    ? currentUser.tagsDestination
-                    : this.state.tagsDestination
-                }
+                value={this.state.tagsDestination}
                 onChange={(tags, changed, changedIdx) =>
                   this.handleChange(tags, changed, changedIdx, "Destination")
                 }
@@ -261,13 +269,13 @@ class EditProfile extends Component {
 
           <h2>Production capacity</h2>
           <textarea
-            defaultValue={currentUser.capacity}
+            defaultValue={this.props.userInSession.capacity}
             id="capacity"
             onChange={event => this.changeHandler(event)}
           />
           <h2>Looking for</h2>
           <textarea
-            defaultValue={currentUser.lookingfor}
+            defaultValue={this.props.userInSession.lookingfor}
             id="lookingfor"
             onChange={event => this.changeHandler(event)}
           />
