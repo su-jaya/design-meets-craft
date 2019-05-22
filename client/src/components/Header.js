@@ -26,7 +26,7 @@ class Header extends Component {
           <Col>
             <Link to="/">
               <img
-                src="./images/dmc_logo.png"
+                src="../images/dmc_logo.png"
                 alt="design-meets-craft logo"
                 height="140em"
               />
@@ -41,7 +41,6 @@ class Header extends Component {
           </Col>
         </Row>
       </Container>
-
     );
   }
 }

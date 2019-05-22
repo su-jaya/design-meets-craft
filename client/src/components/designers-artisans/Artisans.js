@@ -15,7 +15,7 @@ class Artisans extends Component {
     // all artisan user objects
     allartisan: [],
     displayartisan: [],
-    resortartisan: [],
+    // resortartisan: [],
     // all available tags for dropdown
     allTagsCategory: [],
     allTagsMaterial: [],
@@ -23,7 +23,11 @@ class Artisans extends Component {
     // user list per filter
     tagsCategory: [],
     tagsMaterial: [],
-    country: []
+    country: [],
+    // artisans per category
+    a_tagsCategory: [],
+    a_tagsMaterial: [],
+    a_country: []
   };
 
   componentDidMount() {
@@ -42,6 +46,9 @@ class Artisans extends Component {
         this.setState({
           allartisan: all.data,
           displayartisan: all.data,
+          a_tagsCategory: all.data,
+          a_tagsMaterial: all.data,
+          a_country: all.data,
           allTagsCategory: [
             ...new Set(
               all.data
@@ -77,22 +84,11 @@ class Artisans extends Component {
   handleChange = (event, fieldInState) => {
     // all artisans
     let filterArtisan = this.state.allartisan;
+
     // selected tags
     let selectedTagsArr = event.map(e => e.label);
-    // to be displayed Artisans
-    let secondSearch, thirdSearch;
 
-    if (fieldInState === "tagsCategory") {
-      secondSearch = "tagsMaterial";
-      thirdSearch = "country";
-    } else if (fieldInState === "tagsMaterial") {
-      secondSearch = "tagsCategory";
-      thirdSearch = "country";
-    } else if (fieldInState === "country") {
-      secondSearch = "tagsCategory";
-      thirdSearch = "tagsMaterial";
-    }
-
+    // filter artisans in target category
     if (selectedTagsArr.length > 0) {
       filterArtisan = filterArtisan.filter(artisan => {
         return selectedTagsArr.every(val =>
@@ -101,51 +97,75 @@ class Artisans extends Component {
       });
     }
 
-    if (this.state[secondSearch].length > 0) {
-      filterArtisan = filterArtisan.filter(artisan => {
-        return this.state[secondSearch].every(val =>
-          artisan[secondSearch].includes(val)
-        );
-      });
-    }
+    // all user objects per category
+    let array = [
+      filterArtisan,
+      this.state.a_country,
+      this.state.a_tagsCategory,
+      this.state.a_tagsMaterial
+    ];
 
-    if (this.state[thirdSearch].length > 0) {
-      filterArtisan = filterArtisan.filter(artisan => {
-        return this.state[thirdSearch].every(val =>
-          artisan[thirdSearch].includes(val)
-        );
-      });
-    }
+    // sort ascending & filter criteria
+    let byEmail = array.sort((a, b) => a.length - b.length);
+
+    //.map(e => e.map(e => e.email));
+
+    // filter unique emails
+    byEmail = byEmail[0].filter(e => {
+      return (
+        byEmail[1].includes(e) &&
+        byEmail[2].includes(e) &&
+        byEmail[3].includes(e)
+      );
+    });
+
+    // filter array
+    let display = [...filterArtisan];
+    display.filter(e => byEmail.includes(e.email));
 
     this.setState({
-      [fieldInState]: selectedTagsArr,
-      displayartisan: filterArtisan
+      [`a_${fieldInState}`]: filterArtisan,
+      displayartisan: display
     });
+
+    // to be displayed Artisans
+    // let secondSearch, thirdSearch;
+
+    // if (fieldInState === "tagsCategory") {
+    //   secondSearch = "tagsMaterial";
+    //   thirdSearch = "country";
+    // } else if (fieldInState === "tagsMaterial") {
+    //   secondSearch = "tagsCategory";
+    //   thirdSearch = "country";
+    // } else if (fieldInState === "country") {
+    //   secondSearch = "tagsCategory";
+    //   thirdSearch = "tagsMaterial";
+    // }
   };
 
-  dropDownHandler = event => {
-    let copy = this.state.displayartisan;
+  // dropDownHandler = event => {
+  //   let copy = this.state.displayartisan;
 
-    if (event.target.value === "brand") {
-      copy.sort((a, b) => {
-        if (a.brand < b.brand) {
-          return -1;
-        }
-        if (a.brand > b.brand) {
-          return 1;
-        }
-        return 0;
-      });
-    } else if (event.target.value === "best-matches") {
-      copy.sort((a, b) => {
-        return b.matches - a.matches;
-      });
-    }
+  //   if (event.target.value === "brand") {
+  //     copy.sort((a, b) => {
+  //       if (a.brand < b.brand) {
+  //         return -1;
+  //       }
+  //       if (a.brand > b.brand) {
+  //         return 1;
+  //       }
+  //       return 0;
+  //     });
+  //   } else if (event.target.value === "best-matches") {
+  //     copy.sort((a, b) => {
+  //       return b.matches - a.matches;
+  //     });
+  //   }
 
-    this.setState({
-      displayartisan: copy
-    });
-  };
+  //   this.setState({
+  //     displayartisan: copy
+  //   });
+  // };
 
   render() {
     if (this.state.allartisan.length === 0) {

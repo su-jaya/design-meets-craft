@@ -14,3 +14,7 @@
 .suggestedTags input {
   display: none;
 }
+
+.hide {
+  display: none;
+}

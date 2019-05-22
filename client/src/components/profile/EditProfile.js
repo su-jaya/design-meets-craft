@@ -171,7 +171,7 @@ class EditProfile extends Component {
         <form onSubmit={this.submitHandler}>
           {/* YOUR PROFESSION */}
           <div className="parentTag">
-            <h2>Your Profession</h2>
+            <h2>Your profession</h2>
 
             <div className="inputField">
               <TagsInput
@@ -204,7 +204,7 @@ class EditProfile extends Component {
 
           {/* YOUR NEEDS */}
           <div className="parentTag">
-            <h2>Your Profession</h2>
+            <h2>Your needs</h2>
             <div className="inputField">
               <TagsInput
                 id="materials"
@@ -235,51 +235,56 @@ class EditProfile extends Component {
           </div>
 
           {/* DESTINATION */}
-          <div className="parentTag">
-            <h2>Your Destination</h2>
+          <div
+            class={this.props.userInSession.role === "artisan" ? "hide" : ""}
+          >
+            <div className="parentTag">
+              <h2>Your destinations</h2>
 
-            <div className="inputField">
-              <TagsInput
-                id="destination"
-                value={this.state.tagsDestination}
-                onChange={(tags, changed, changedIdx) =>
-                  this.handleChange(tags, changed, changedIdx, "Destination")
-                }
-                inputValue={this.state.tagDestination}
-                onChangeInput={(tag, toChange) =>
-                  this.onChangeInput(tag, "Destination")
-                }
-              />
+              <div className="inputField">
+                <TagsInput
+                  id="destination"
+                  value={this.state.tagsDestination}
+                  onChange={(tags, changed, changedIdx) =>
+                    this.handleChange(tags, changed, changedIdx, "Destination")
+                  }
+                  inputValue={this.state.tagDestination}
+                  onChangeInput={(tag, toChange) =>
+                    this.onChangeInput(tag, "Destination")
+                  }
+                />
+              </div>
+              <div>
+                <TagsInput
+                  className="suggestedTags"
+                  value={this.state.suggestedTagsDestination}
+                  onChange={(event, change, toChange) =>
+                    this.addNewOne(
+                      event,
+                      change,
+                      this.state.tagsDestination,
+                      "tagsDestination"
+                    )
+                  }
+                />
+              </div>
             </div>
-            <div>
-              <TagsInput
-                className="suggestedTags"
-                value={this.state.suggestedTagsDestination}
-                onChange={(event, change, toChange) =>
-                  this.addNewOne(
-                    event,
-                    change,
-                    this.state.tagsDestination,
-                    "tagsDestination"
-                  )
-                }
-              />
-            </div>
+
+            <h2>Production capacity</h2>
+            <textarea
+              defaultValue={this.props.userInSession.capacity}
+              id="capacity"
+              onChange={event => this.changeHandler(event)}
+            />
+            <h2>Looking for</h2>
+            <textarea
+              defaultValue={this.props.userInSession.lookingfor}
+              id="lookingfor"
+              onChange={event => this.changeHandler(event)}
+            />
+            <br />
           </div>
 
-          <h2>Production capacity</h2>
-          <textarea
-            defaultValue={this.props.userInSession.capacity}
-            id="capacity"
-            onChange={event => this.changeHandler(event)}
-          />
-          <h2>Looking for</h2>
-          <textarea
-            defaultValue={this.props.userInSession.lookingfor}
-            id="lookingfor"
-            onChange={event => this.changeHandler(event)}
-          />
-          <br />
           <button type="submit">Save</button>
         </form>
         <Footer />
