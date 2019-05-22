@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Header";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
@@ -230,9 +231,12 @@ class Designers extends Component {
         <Container className="homeDesignersContainer" fluid={true}>
           <Row className="homeDesignersRow">
             {this.state.displaydesigner.map((e, idx) => {
+              console.log(e);
               return (
                 <Col key={idx} className="homeDesignersColumn mx-auto">
-                  <CardD key={idx} theUser={e} class="cardHeadlineArtisan" />
+                  <Link to={`userprofile/${e._id}`}>
+                    <CardD key={idx} theUser={e} class="cardHeadlineArtisan" />
+                  </Link>
                 </Col>
               );
             })}

@@ -167,17 +167,6 @@ class Profile extends Component {
               <div>
                 <div className="profileEditHeadline">
                   <h1>Your needs</h1>
-                  <Link to="/editprofile">
-                    <button>
-                      <img
-                        className="profileEditIcon"
-                        src="/images/DmC_penicon.png"
-                        alt="pen icon"
-                        width="15em"
-                      />
-                      Edit
-                    </button>
-                  </Link>
                 </div>
                 <TagsInput
                   className="suggestedTags viewTagsOnly"
@@ -192,17 +181,6 @@ class Profile extends Component {
                   <div>
                     <div className="profileEditHeadline">
                       <h1>Destination</h1>
-                      <Link to="/editprofile">
-                        <button>
-                          <img
-                            className="profileEditIcon"
-                            src="/images/DmC_penicon.png"
-                            alt="pen icon"
-                            width="15em"
-                          />
-                          Edit
-                        </button>
-                      </Link>
                     </div>
                     <TagsInput
                       className="suggestedTags viewTagsOnly"
@@ -216,17 +194,6 @@ class Profile extends Component {
                   <div>
                     <div className="profileEditHeadline">
                       <h1>Production capacity</h1>
-                      <Link to="/editprofile">
-                        <button>
-                          <img
-                            className="profileEditIcon"
-                            src="/images/DmC_penicon.png"
-                            alt="pen icon"
-                            width="15em"
-                          />
-                          Edit
-                        </button>
-                      </Link>
                     </div>
                     <p className="profileEditText">{theUser.capacity}</p>
                   </div>
@@ -236,17 +203,6 @@ class Profile extends Component {
                   <div>
                     <div className="profileEditHeadline">
                       <h1>Looking for</h1>
-                      <Link to="/editprofile">
-                        <button>
-                          <img
-                            className="profileEditIcon"
-                            src="/images/DmC_penicon.png"
-                            alt="pen icon"
-                            width="15em"
-                          />
-                          Edit
-                        </button>
-                      </Link>
                     </div>
                     <p className="profileEditText">{theUser.lookingfor}</p>
                   </div>
