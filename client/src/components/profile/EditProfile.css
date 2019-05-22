@@ -10,3 +10,11 @@
   justify-content: center;
   color: white;
 }
+
+.suggestedTags input {
+  display: none;
+}
+
+.hide {
+  display: none;
+}

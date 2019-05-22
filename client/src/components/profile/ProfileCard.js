@@ -24,7 +24,7 @@ class ProfileCard extends Component {
           <p>
             <img
               className="profileEditIcon"
-              src="images/DmC_mailicon.png"
+              src="../images/DmC_mailicon.png"
               alt="mail icon"
               width="20em"
             />
@@ -33,7 +33,7 @@ class ProfileCard extends Component {
           <p>
             <img
               className="profileEditIcon"
-              src="images/DmC_chaticon.png"
+              src="../images/DmC_chaticon.png"
               alt="mail icon"
               width="20em"
             />
@@ -42,7 +42,7 @@ class ProfileCard extends Component {
           <p>
             <img
               className="profileEditIcon"
-              src="images/DmC_settingsicon.png"
+              src="../images/DmC_settingsicon.png"
               alt="mail icon"
               width="20em"
             />
