@@ -15,7 +15,7 @@ import { withRouter } from "react-router";
 
 class Profile extends Component {
   state = {
-    active: "watchlist"
+    active: "myshowroom"
   };
 
   selectWatchlist() {
@@ -36,15 +36,16 @@ class Profile extends Component {
     });
   }
 
-  test() {
-    console.log("worked");
-  }
+  // resetstate() {
+  //   this.setState({
+  //     watchlistStatus: null
+  //   });
+  // }
 
   render() {
     let theUser = this.props.userInSession;
     let activeComponent;
-
-    if (this.state.active === "watchlist") {
+    if (this.state.active === "watchlist" || this.props.location.state) {
       activeComponent = <Watchlist />;
     } else if (this.state.active === "mymatches") {
       activeComponent = <MyMatches theUser={this.props.userInSession} />;

@@ -51,6 +51,13 @@ class AuthButtons extends Component {
             <Dropdown.Item as="li" eventKey="1">
               <Link to="profile">My Profile</Link>
             </Dropdown.Item>
+            <Dropdown.Item as="li" eventKey="1">
+              <Link
+                to={{ pathname: "/profile", state: { watchlist: "active" } }}
+              >
+                Watchlist
+              </Link>
+            </Dropdown.Item>
             <Dropdown.Item as="li" eventKey="2">
               <Link to="/editprofile">Settings</Link>
             </Dropdown.Item>
