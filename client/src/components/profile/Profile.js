@@ -15,11 +15,42 @@ import { withRouter } from "react-router";
 
 class Profile extends Component {
   state = {
-    active: []
+    active: "watchlist"
   };
+
+  selectWatchlist() {
+    this.setState({
+      active: "watchlist"
+    });
+  }
+
+  selectMyMatches() {
+    this.setState({
+      active: "mymatches"
+    });
+  }
+
+  selectMyShowroom() {
+    this.setState({
+      active: "myshowroom"
+    });
+  }
+
+  test() {
+    console.log("worked");
+  }
 
   render() {
     let theUser = this.props.userInSession;
+    let activeComponent;
+
+    if (this.state.active === "watchlist") {
+      activeComponent = <Watchlist />;
+    } else if (this.state.active === "mymatches") {
+      activeComponent = <MyMatches theUser={this.props.userInSession} />;
+    } else if (this.state.active === "myshowroom") {
+      activeComponent = <MyShowroom theUser={this.props.userInSession} />;
+    }
 
     return (
       <div>
@@ -50,21 +81,22 @@ class Profile extends Component {
         <div className="profileNavBar">
           <Navbar expand="lg">
             <Nav>
-              <Nav.Link>Watchlist</Nav.Link>
-              <Nav.Link>My Matches</Nav.Link>
-              <Nav.Link>My Showroom</Nav.Link>
+              <Nav.Link onClick={() => this.selectWatchlist()}>
+                Watchlist
+              </Nav.Link>
+              <Nav.Link onClick={() => this.selectMyMatches()}>
+                My Matches
+              </Nav.Link>
+              <Nav.Link onClick={() => this.selectMyShowroom()}>
+                My Showroom
+              </Nav.Link>
             </Nav>
           </Navbar>
         </div>
 
         {/* Watchlist */}
-        <Watchlist />
 
-        {/* My Matches */}
-        <MyMatches theUser={this.props.userInSession} />
-
-        {/* My Showroom */}
-        <MyShowroom theUser={this.props.userInSession} />
+        {activeComponent}
 
         <div className="homeDivider" />
 
