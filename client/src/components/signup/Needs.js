@@ -267,7 +267,7 @@ class Needs extends Component {
                       />
                     </div>
 
-                    <label htmlFor="capacity">Production capacity</label>
+                    <label htmlFor="capacity">Production need</label>
                     <textarea
                       id="capacity"
                       onChange={event => this.changeHandler(event)}
@@ -280,8 +280,21 @@ class Needs extends Component {
                     />
                   </div>
                 ) : (
-                  <div />
+                  <div className="registrationForm">
+                    <label htmlFor="capacity">Production capacity</label>
+                    <textarea
+                      id="capacity"
+                      onChange={event => this.changeHandler(event)}
+                    />
+
+                    <label htmlFor="lookingfor">You are looking for</label>
+                    <textarea
+                      id="lookingfor"
+                      onChange={event => this.changeHandler(event)}
+                    />
+                  </div>
                 )}
+
                 {this.state.redirect ? <Redirect to="/upload" /> : ""}
                 <div className="registrationNeedsButtons">
                   <Link to="/aboutyou">
