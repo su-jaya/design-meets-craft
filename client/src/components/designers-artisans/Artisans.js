@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Header";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
@@ -251,7 +252,12 @@ class Artisans extends Component {
             {this.state.displayartisan.map((e, idx) => {
               return (
                 <Col key={idx} className="homeDesignersColumn mx-auto">
-                  <CardA key={idx} theUser={e} class="cardHeadlineArtisan" />
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to={`userprofile/${e._id}`}
+                  >
+                    <CardA key={idx} theUser={e} class="cardHeadlineArtisan" />
+                  </Link>
                 </Col>
               );
             })}
