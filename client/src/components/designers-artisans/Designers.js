@@ -25,7 +25,8 @@ class Designers extends Component {
     // selected tags to filter for
     selectedCategory: [],
     selectedMaterial: [],
-    selectedDestination: []
+    selectedDestination: [],
+    amountOfDesignersToGet: 8
   };
 
   componentDidMount() {
@@ -231,10 +232,12 @@ class Designers extends Component {
         <Container className="homeDesignersContainer" fluid={true}>
           <Row className="homeDesignersRow">
             {this.state.displaydesigner.map((e, idx) => {
-              console.log(e);
               return (
                 <Col key={idx} className="homeDesignersColumn mx-auto">
-                  <Link to={`userprofile/${e._id}`}>
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to={`userprofile/${e._id}`}
+                  >
                     <CardD key={idx} theUser={e} class="cardHeadlineArtisan" />
                   </Link>
                 </Col>
