@@ -63,8 +63,9 @@
   background-image: url("/images/DmC_aboutArtisan.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #d7d8c5;
-  height: 34em;
+  background-size: cover;
+  height: 550px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,8 +94,33 @@
 }
 
 .aboutUsChallenges {
-  height: 40em;
+  margin-top: 4em;
+  margin-bottom: 4em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .aboutUsVisionText {
+    text-align: center;
+    font-size: 0.8em;
+  }
+  .aboutUsArtisans {
+    background-image: none;
+    text-align: center;
+    height: auto;
+    background-color: #d7d8c5;
+  }
+  .aboutUsArtisansText {
+    position: static;
+    padding-right: 4em;
+    padding-left: 4em;
+  }
+  .aboutUsArtisansButton {
+    margin-bottom: 2em;
+  }
+  .aboutUsChallenges {
+    height: auto;
+  }
 }

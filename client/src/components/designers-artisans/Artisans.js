@@ -263,7 +263,7 @@ class Artisans extends Component {
             })}
           </Row>
         </Container>
-        {/* <button className="artisansMoreButton">LOAD MORE</button> */}
+        <button className="artisansMoreButton">LOAD MORE</button>
 
         <Footer />
       </div>

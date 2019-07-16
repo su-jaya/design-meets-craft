@@ -126,8 +126,8 @@ class AboutUs extends Component {
         <div className="aboutUsArtisans">
           <Container>
             <Row>
-              <Col />
-              <Col className="aboutUsArtisansText">
+              <Col md />
+              <Col md className="aboutUsArtisansText">
                 <h2>Artisans</h2>
                 <p>
                   Our passion lies with creativity, designing and making – but
