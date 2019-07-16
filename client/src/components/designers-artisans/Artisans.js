@@ -144,29 +144,29 @@ class Artisans extends Component {
     // }
   };
 
-  // dropDownHandler = event => {
-  //   let copy = this.state.displayartisan;
+  dropDownHandler = event => {
+    let copy = this.state.displayartisan;
 
-  //   if (event.target.value === "brand") {
-  //     copy.sort((a, b) => {
-  //       if (a.brand < b.brand) {
-  //         return -1;
-  //       }
-  //       if (a.brand > b.brand) {
-  //         return 1;
-  //       }
-  //       return 0;
-  //     });
-  //   } else if (event.target.value === "best-matches") {
-  //     copy.sort((a, b) => {
-  //       return b.matches - a.matches;
-  //     });
-  //   }
+    if (event.target.value === "brand") {
+      copy.sort((a, b) => {
+        if (a.brand < b.brand) {
+          return -1;
+        }
+        if (a.brand > b.brand) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (event.target.value === "best-matches") {
+      copy.sort((a, b) => {
+        return b.matches - a.matches;
+      });
+    }
 
-  //   this.setState({
-  //     displayartisan: copy
-  //   });
-  // };
+    this.setState({
+      displayartisan: copy
+    });
+  };
 
   render() {
     if (this.state.allartisan.length === 0) {
@@ -230,8 +230,6 @@ class Artisans extends Component {
           this.props.userInSession.role === "designer" ? (
             <select onChange={event => this.dropDownHandler(event)}>
               <option value="best-matches">Best matches</option>
-
-              {/* <option value="newest">Newest first</option> */}
               <option value="brand">Sort by brand name</option>
             </select>
           ) : (
