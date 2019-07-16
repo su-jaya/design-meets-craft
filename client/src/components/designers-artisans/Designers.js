@@ -213,7 +213,7 @@ class Designers extends Component {
           this.props.userInSession.role === "artisan" ? (
             <select onChange={event => this.dropDownHandler(event)}>
               <option value="best-matches">Best matches</option>
-              {/* <option value="newest">Newest first</option> */}
+              <option value="newest">Newest first</option>
               <option value="firstName">Sort by name</option>
             </select>
           ) : (

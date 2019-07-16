@@ -26,7 +26,8 @@ const schema = mongoose.Schema(
     public_id_ti: String,
     gallery: Array,
     role: String,
-    matches: Number
+    matches: Number,
+    facebookID: String
   },
   {
     timestamps: { createdAt: "created_at" }
